@@ -14,7 +14,6 @@ import it.mat.unical.persistence.DBManager;
 
 @WebServlet("/Login")
 public class Login extends HttpServlet {
-
     @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Object utente = request.getSession().getAttribute("utente");
@@ -25,7 +24,7 @@ public class Login extends HttpServlet {
 			rd.forward(request, response);
 		}else {
 			if (utente == null) {
-				RequestDispatcher rd = request.getRequestDispatcher("loginPage.html");
+				RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 				rd.forward(request, response);
 			}
 		}
@@ -47,6 +46,6 @@ public class Login extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("loginErrorPage.html");
 			rd.forward(request, response);
 		}
-	} //METTERE GLI IF NELLE PAGINE PER DISTINGUERE QUANDO E' LOGGATO
+	}
 
 }
