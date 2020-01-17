@@ -1,13 +1,17 @@
 package it.mat.unical.ingsw.model;
 
-public class Atleta {
-	private String mail;
+public class Atleta extends Utente{
+	private Tessera tessera;
 	
-	public String getMail() {
-		return mail;
+	public Atleta() {
+		tessera = new Tessera();
 	}
 	
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setTessera(Tessera tessera) {
+		this.tessera = tessera;
+	}
+	
+	public Tessera getTessera() {
+		return tessera;
 	}
 }

@@ -44,7 +44,7 @@
     			<a class="nav-link" href="loginPage.html">Accedi</a>
 			</c:if>
 			<c:if test="${utente != null}">
-    			<a class="nav-link" href="index.jsp">Sei Loggato</a>
+    			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
 			</c:if>
           </li>
 

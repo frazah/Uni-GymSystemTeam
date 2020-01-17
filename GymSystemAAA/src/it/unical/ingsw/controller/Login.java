@@ -36,6 +36,7 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		Utente utente = DBManager.getInstance().login(username, password);
+		//System.out.println(utente.getNome() + " " + utente.getCognome());
 		if (utente != null) {
 			request.getSession().setAttribute("utente", utente);
 //			resp.sendRedirect(".");
