@@ -23,15 +23,6 @@ public class DBManager {
 	private DBManager() {
 	}
 	
-	public Utente getUtente()
-	{
-		return u;
-	}
-	
-	public void logoutUtente()
-	{
-		u = null;
-	}
 	
 	public Utente login(String username, String password) {
 		if (username.equals("atleta@atleta") && password.equals("atleta")) {

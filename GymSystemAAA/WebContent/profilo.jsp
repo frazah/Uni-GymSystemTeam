@@ -44,6 +44,8 @@
 			</c:if>
 			<c:if test="${utente != null}">
     			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
+    			 <li class="nav-item">
+    			<a class="nav-link" href="Login?logout=true">Logout</a>
 			</c:if>
           </li>
 
@@ -72,11 +74,9 @@
 
       <div class="col-md-2">
         <img class="img-fluid" src="http://placehold.it/200x200" alt="">
-        <form method="POST" action="Logout">
-        <button type="submit" class="btn btn-primary">Logout</button>
-        </form>
-      </div>
-      
+
+      </div> 
+     
       
       
       <div class="col-md-6">

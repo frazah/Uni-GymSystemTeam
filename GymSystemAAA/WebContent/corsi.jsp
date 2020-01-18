@@ -45,6 +45,8 @@
 			</c:if>
 			<c:if test="${utente != null}">
     			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
+    			 <li class="nav-item">
+    			<a class="nav-link" href="Login?logout=true">Logout</a>
 			</c:if>
           </li>
 
