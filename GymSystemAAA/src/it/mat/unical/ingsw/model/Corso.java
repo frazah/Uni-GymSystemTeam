@@ -8,19 +8,33 @@ public class Corso {
 	private ArrayList<Atleta> iscritti;
 	private String descrizione;
 	private String linkVideo;
+	private String url;
 	//Mettere feedback
 	
-	public Corso(String nome,Trainer trainer, ArrayList<Atleta> iscritti, String descrizione, String linkVideo) {
+	public Corso(String nome,Trainer trainer, ArrayList<Atleta> iscritti, String descrizione, String linkVideo, String url) {
 		super();
 		this.nome = nome;
 		this.trainer = trainer;
 		this.iscritti = iscritti;
 		this.descrizione = descrizione;
 		this.linkVideo = linkVideo;
+		this.url = url;
 	}
 	
 	
 	
+	public String getUrl() {
+		return url;
+	}
+
+
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+
+
 	public String getNome() {
 		return nome;
 	}

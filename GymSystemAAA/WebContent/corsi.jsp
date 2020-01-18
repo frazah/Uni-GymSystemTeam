@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,26 +27,31 @@
 <!-- Navigation -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-        <a class="navbar-brand" href="index.jsp">Gym System</a>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Chi siamo</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="corsi.html">Corsi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="loginPage.html">Accedi</a>
-                </li>
+      <a class="navbar-brand" href="index.jsp">Gym System</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="contact.jsp">Chi siamo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="corsi.jsp">Corsi</a>
+          </li>
+          <li class="nav-item">
+          	<c:if test="${utente == null}">
+    			<a class="nav-link" href="loginPage.jsp">Accedi</a>
+			</c:if>
+			<c:if test="${utente != null}">
+    			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
+			</c:if>
+          </li>
 
-            </ul>
-        </div>
+        </ul>
+      </div>
     </div>
-</nav>
+  </nav>
 
 <div class="my-5 text-center">
     <b>
@@ -56,18 +65,18 @@
         <thead>
         <tr>
             <th scope="col">Orari</th>
-            <th scope="col">Lunedì</th>
-            <th scope="col">Martedì</th>
-            <th scope="col">Mercoledì</th>
-            <th scope="col">Giovedì</th>
-            <th scope="col">Venerdì</th>
+            <th scope="col">LunedÃ¬</th>
+            <th scope="col">MartedÃ¬</th>
+            <th scope="col">MercoledÃ¬</th>
+            <th scope="col">GiovedÃ¬</th>
+            <th scope="col">VenerdÃ¬</th>
             <th scope="col">Sabato</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <th scope="row">8.00-10.00</th>
-            <td> <a href="corsoPugilato.html" style="color: yellow"> Mark </a></td>
+            <td> <a href="corsoPugilato.jsp" style="color: yellow"> Mark </a></td>
             <td>Otto</td>
             <td>@mdo</td>
             <td>Mark</td>
@@ -117,12 +126,12 @@
 
 
 <!-- Footer -->
-<footer class="fixed-bottom py-5 bg-dark">
+ <footer class=" py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
+      <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
     </div>
     <!-- /.container -->
-</footer>
+  </footer>
 
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>

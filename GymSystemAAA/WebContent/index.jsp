@@ -34,14 +34,14 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Chi siamo</a>
+            <a class="nav-link" href="contact.jsp">Chi siamo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="corsi.html">Corsi</a>
+            <a class="nav-link" href="corsi.jsp">Corsi</a>
           </li>
           <li class="nav-item">
           	<c:if test="${utente == null}">
-    			<a class="nav-link" href="loginPage.html">Accedi</a>
+    			<a class="nav-link" href="loginPage.jsp">Accedi</a>
 			</c:if>
 			<c:if test="${utente != null}">
     			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>

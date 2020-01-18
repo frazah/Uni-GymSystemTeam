@@ -11,6 +11,7 @@ import it.mat.unical.ingsw.model.Utente;
 public class DBManager {
 	private static DBManager instance = null;
 	List<Atleta> atleti;
+	Atleta u;
 	
 	public static DBManager getInstance() {
 		if (instance == null) {
@@ -22,6 +23,16 @@ public class DBManager {
 	private DBManager() {
 	}
 	
+	public Utente getUtente()
+	{
+		return u;
+	}
+	
+	public void logoutUtente()
+	{
+		u = null;
+	}
+	
 	public Utente login(String username, String password) {
 		if (username.equals("atleta@atleta") && password.equals("atleta")) {
 			Atleta u = new Atleta();
@@ -31,9 +42,9 @@ public class DBManager {
 			u.setCognome("Atletoso");
 			u.setEta(22);
 			ArrayList<Corso> corsi = new ArrayList<Corso>();
-			Corso corso1 = new Corso ("Pugilato",null,null,null,null);
-			Corso corso2 = new Corso ("Kickboxing",null,null,null,null);
-			Corso corso3 = new Corso ("Karate",null,null,null,null);
+			Corso corso1 = new Corso ("Pugilato",null,null,null,null, "corsoPugilato.jsp");
+			Corso corso2 = new Corso ("Kickboxing",null,null,null,null, null);
+			Corso corso3 = new Corso ("Karate",null,null,null,null, null);
 			corsi.add(corso1);
 			corsi.add(corso2);
 			corsi.add(corso3);

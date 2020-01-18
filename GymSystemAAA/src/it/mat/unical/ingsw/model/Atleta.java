@@ -3,6 +3,7 @@ package it.mat.unical.ingsw.model;
 public class Atleta extends Utente{
 	private Tessera tessera;
 	
+	
 	public Atleta() {
 		tessera = new Tessera();
 	}

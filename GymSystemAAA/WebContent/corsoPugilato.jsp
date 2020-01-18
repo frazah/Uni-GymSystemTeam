@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,27 +26,32 @@
 
 <!-- Navigation -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="index.jsp">Gym System</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Chi siamo</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="corsi.html">Corsi</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="loginPage.html">Accedi</a>
-        </li>
+    <div class="container">
+      <a class="navbar-brand" href="index.jsp">Gym System</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="contact.jsp">Chi siamo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="corsi.jsp">Corsi</a>
+          </li>
+          <li class="nav-item">
+          	<c:if test="${utente == null}">
+    			<a class="nav-link" href="loginPage.jsp">Accedi</a>
+			</c:if>
+			<c:if test="${utente != null}">
+    			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
+			</c:if>
+          </li>
 
-      </ul>
+        </ul>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
   <!-- Page Content -->
   <div class="container">
@@ -69,7 +78,7 @@
       </div>
       <div class="col-lg-6">
         <h2>Dettagli corso</h2>
-        <p>Anni fa, i pugili spinti dai film di Rocky o di Bruce Lee, si dilettavano a fine allenamento in qualche trazione alla sbarra oppure in qualche serie di piegamenti sulle braccia. Si pensava che questi esercizi a corpo libero, fossero una manna per un pugile e che l'allenamento pesi non era da prendere in considerazione perché rendeva goffi ed impacciati come un body builder.</p>
+        <p>Anni fa, i pugili spinti dai film di Rocky o di Bruce Lee, si dilettavano a fine allenamento in qualche trazione alla sbarra oppure in qualche serie di piegamenti sulle braccia. Si pensava che questi esercizi a corpo libero, fossero una manna per un pugile e che l'allenamento pesi non era da prendere in considerazione perchÃ© rendeva goffi ed impacciati come un body builder.</p>
         <p>ADD</p>
         <p>ADD</p>
       </div>
@@ -88,7 +97,7 @@
           <div class="card-body">
             <h4 class="card-title">Mike Tyson</h4>
             <h6 class="card-subtitle mb-2 text-muted">Trainer</h6>
-            <p class="card-text">Il nostro Trainer responsabile del corso di pugilato è il pluricampione del mondo Mike Tyson, The baddest man on the planet.</p>
+            <p class="card-text">Il nostro Trainer responsabile del corso di pugilato Ã¨ il pluricampione del mondo Mike Tyson, The baddest man on the planet.</p>
           </div>
           <div class="card-footer">
             <a href="mailto:miketyson@punchman.com">miketyson@punchman.com</a>

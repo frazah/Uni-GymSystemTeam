@@ -24,8 +24,7 @@
 
 <body>
 	
-  <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.jsp">Gym System</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,14 +33,14 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Chi siamo</a>
+            <a class="nav-link" href="contact.jsp">Chi siamo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="corsi.html">Corsi</a>
+            <a class="nav-link" href="corsi.jsp">Corsi</a>
           </li>
           <li class="nav-item">
           	<c:if test="${utente == null}">
-    			<a class="nav-link" href="loginPage.html">Accedi</a>
+    			<a class="nav-link" href="loginPage.jsp">Accedi</a>
 			</c:if>
 			<c:if test="${utente != null}">
     			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
@@ -73,7 +72,12 @@
 
       <div class="col-md-2">
         <img class="img-fluid" src="http://placehold.it/200x200" alt="">
+        <form method="POST" action="Logout">
+        <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
       </div>
+      
+      
       
       <div class="col-md-6">
         <h2>Le mie informazioni</h2>
@@ -106,14 +110,13 @@
         	<a>${utente.getTessera().getDataDiScadenza()}</a>
         	<br>
 		</c:if>
-			
-      </div>
-      
-      <div class="my-5 col-md-6"> 
-      	<c:if test="${utente.getTessera().getID() != null}">
-      		<b>I corsi che segui:</b>
+		
+		
+		<c:if test="${utente.getTessera().getID() != null}">
+		<div class="my-3">
+      		<h3>I corsi che segui:</h3>
       		<c:if test="${utente.getTessera().getCorsi().isEmpty()}">
-      		<div class="my-2"> 
+      		<div class="my-4"> 
       			<br>
       			<a>Non segui alcun corso</a>
       			<br>
@@ -121,10 +124,10 @@
       		</div>
       		</c:if>
       		<c:if test="${!utente.getTessera().getCorsi().isEmpty()}">
-      			<table class="table table-bordered table-dark my-5 text-center container" style="width: 1000px; height : 500px">
+      			<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 100px">
 		        <thead>
 		        <tr>
-		            <th scope="col">${utente.getTessera().getCorsi().get(0).getNome()}</th>
+		            <th scope="col"><a href=${utente.getTessera().getCorsi().get(0).getUrl()} style="color: yellow"> ${utente.getTessera().getCorsi().get(0).getNome()}</th>
 		            
 		        </tr>
 		        <tr>
@@ -137,7 +140,13 @@
 		        </thead>
    				</table>
       		</c:if>
+      		</div>
       	</c:if>
+			
+      </div>
+      
+      <div class="my-5 col-md-6"> 
+      	
       </div>
 
     </div>
@@ -147,7 +156,7 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="fixed-bottom py-5 bg-dark">
+   <footer class=" py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
     </div>

@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +25,7 @@
 <body>
 
   <!-- Navigation -->
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.jsp">Gym System</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,20 +34,24 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="about.html">Chi siamo</a>
+            <a class="nav-link" href="contact.jsp">Chi siamo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="corsi.html">Corsi</a>
+            <a class="nav-link" href="corsi.jsp">Corsi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="loginPage.html">Accedi</a>
+          	<c:if test="${utente == null}">
+    			<a class="nav-link" href="loginPage.jsp">Accedi</a>
+			</c:if>
+			<c:if test="${utente != null}">
+    			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
+			</c:if>
           </li>
 
         </ul>
       </div>
     </div>
   </nav>
-
 
   <div class="my-5 text-center container" style="width: 500px; height: 500px">
     <form method="POST" action="Login">
@@ -60,7 +68,7 @@
       </div>
     </form>
     <div>
-      <p><a href="registrazione.html">Non sei registrato? Clicca qui!</a></p>
+      <p><a href="registrazione.jsp">Non sei registrato? Clicca qui!</a></p>
     </div>
   </div>
 
