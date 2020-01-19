@@ -113,7 +113,7 @@
 		
 		
 		<c:if test="${utente.getTessera().getID() != null}">
-		<div class="my-3">
+		<div class="my-3 py-2">
       		<h3>I corsi che segui:</h3>
       		<c:if test="${utente.getTessera().getCorsi().isEmpty()}">
       		<div class="my-4"> 

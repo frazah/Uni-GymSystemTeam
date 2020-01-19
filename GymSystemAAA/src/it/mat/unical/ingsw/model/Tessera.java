@@ -19,7 +19,7 @@ public class Tessera {
 	}
 	
 	public Tessera() {
-		// TODO Auto-generated constructor stub
+		corsi = new ArrayList<Corso>();
 	}
 
 	public String getDataDiIscrizione() {

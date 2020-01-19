@@ -58,16 +58,20 @@
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Pricing
-      <small>Subheading</small>
+    <h1 class="mt-4 mb-3">Iscrizione
+      <small>Tessera</small>
     </h1>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
+        <a href="index.html">Homepage</a>
       </li>
-      <li class="breadcrumb-item active">Pricing</li>
+      <li class="breadcrumb-item active">Abbonamento</li>
     </ol>
+    
+    <div class = "my-4">
+    <h2>Ogni tipo di abbonamento ti permette di iscriverti a tre corsi che potrai scegliere in un secondo momento dal tuo profilo.</h2>
+    </div>
 
     <!-- Content Row -->
     <div class="row">
@@ -75,54 +79,48 @@
         <div class="card h-100">
           <h3 class="card-header">Mensile</h3>
           <div class="card-body">
-            <div class="display-4">â¬19.99</div>
+            <div class="display-4">Eur. 19.99</div>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+            
             <li class="list-group-item">
-              <a href="#" class="btn btn-primary">Sign Up!</a>
+              <input name = "scelta" type = "radio" class="btn btn-primary">Pacchetto 1 mese</a>
             </li>
           </ul>
         </div>
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card card-outline-primary h-100">
-          <h3 class="card-header bg-primary text-white">Plus</h3>
+          <h3 class="card-header">Semestrale</h3>
           <div class="card-body">
-            <div class="display-4">â¬39.99</div>
-            <div class="font-italic">per month</div>
+            <div class="display-4">Eur. 89.99</div>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+            
             <li class="list-group-item">
-              <a href="#" class="btn btn-primary">Sign Up!</a>
-            </li>
+			<input name = "scelta" type = "radio" class="btn btn-primary">Pacchetto 6 mesi</a>            </li>
           </ul>
         </div>
       </div>
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
-          <h3 class="card-header">Ultra</h3>
+          <h3 class="card-header bg-primary text-white">Annuale</h3>
           <div class="card-body">
-            <div class="display-4">$159.99</div>
-            <div class="font-italic">per month</div>
+            <div class="display-4">Eur. 159.99</div>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item">Cras justo odio</li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Vestibulum at eros</li>
+            
             <li class="list-group-item">
-              <a href="#" class="btn btn-primary">Sign Up!</a>
-            </li>
+			<input name = "scelta" type = "radio" class="btn btn-primary">Pacchetto 12 mesi!!!</a>            </li>
           </ul>
         </div>
       </div>
     </div>
     <!-- /.row -->
+    
+    <div class = "my-5 mx-5 text-center">
+    	<button type="submit" class="btn btn-primary">Paga ora</button>
+    </div>
 
   </div>
   <!-- /.container -->
