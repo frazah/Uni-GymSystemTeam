@@ -97,7 +97,7 @@
       <div class="col-md-4">
       	<h3>Il mio abbonamento</h3>
       	<c:if test="${utente.getTessera().getID() == null}">
-    		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Attiva abbonamento</button>
+    		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'pricing.jsp';">Attiva abbonamento</button>
 		</c:if>
 		<c:if test="${utente.getTessera().getID() != null}">
     		<b>ID: </b>

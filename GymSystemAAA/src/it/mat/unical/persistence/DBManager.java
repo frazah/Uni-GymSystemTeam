@@ -47,7 +47,7 @@ public class DBManager {
 			corsi.add(corso2);
 			corsi.add(corso3);
 			Tessera tessera = new Tessera("11/11/2011","11/11/2012","1",corsi);
-			u.setTessera(tessera);
+			//u.setTessera(tessera);
 			u.setFotoProfilo("immagini/trainerMikeTyson.jpeg");
 			return u;
 		}
