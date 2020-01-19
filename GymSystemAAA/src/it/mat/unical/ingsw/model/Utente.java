@@ -3,7 +3,7 @@ package it.mat.unical.ingsw.model;
 import java.awt.Image;
 
 public class Utente {
-	private Image fotoProfilo;
+	private String fotoProfilo;
 	private String password;
 	private String nome;
 	private String cognome;
@@ -46,4 +46,14 @@ public class Utente {
 	public String getCognome() {
 		return cognome;
 	}
+
+	public String getFotoProfilo() {
+		return fotoProfilo;
+	}
+
+	public void setFotoProfilo(String fotoProfilo) {
+		this.fotoProfilo = fotoProfilo;
+	}
+	
+	
 }

@@ -73,7 +73,7 @@
     <div class="row">
 
       <div class="col-md-2">
-        <img class="img-fluid" src="http://placehold.it/200x200" alt="">
+        <img class="img-fluid" src="${utente.getFotoProfilo()}" alt="">
 
       </div> 
      

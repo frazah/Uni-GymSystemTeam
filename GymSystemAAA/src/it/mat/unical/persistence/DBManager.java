@@ -1,7 +1,14 @@
 package it.mat.unical.persistence;
 
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import it.mat.unical.ingsw.model.Atleta;
 import it.mat.unical.ingsw.model.Corso;
@@ -41,6 +48,7 @@ public class DBManager {
 			corsi.add(corso3);
 			Tessera tessera = new Tessera("11/11/2011","11/11/2012","1",corsi);
 			u.setTessera(tessera);
+			u.setFotoProfilo("immagini/trainerMikeTyson.jpeg");
 			return u;
 		}
 		return null;
