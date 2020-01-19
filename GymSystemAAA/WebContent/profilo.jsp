@@ -74,7 +74,9 @@
 
       <div class="col-md-2">
         <img class="img-fluid" src="${utente.getFotoProfilo()}" alt="">
-
+        <div class = "my-2">
+    	<button type="button" class="btn btn-primary" >Carica foto profilo</button>
+		</div>
       </div> 
      
       
@@ -89,9 +91,7 @@
         	<br>
         	<b>Mail: </b>
         	<a>${utente.getMail()}</a>
-        	<br>
-        	<b>Età: </b>
-        	<a>${utente.getEta()}</a>
+
       </div>
       
       <div class="col-md-4">

@@ -8,15 +8,17 @@ public class Utente {
 	private String nome;
 	private String cognome;
 	private String mail;
-	private int eta;
-	
-	
-	public int getEta() {
-		return eta;
+
+	public Utente(String nome, String cognome, String mail, String password) {
+		super();
+		this.nome = nome;
+		this.cognome = cognome;
+		this.mail = mail;
+		this.password = password;
 	}
 
-	public void setEta(int eta) {
-		this.eta = eta;
+	public Utente() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getMail() {
@@ -25,6 +27,12 @@ public class Utente {
 	
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+	
+	@Override
+	public String toString() {
+		String s = nome+" "+cognome+" "+mail+" "+password;
+		return s;
 	}
 	
 	

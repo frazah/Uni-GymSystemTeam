@@ -62,13 +62,21 @@
 
 <div class="my-5 text-center container" style="width: 500px; height: 500px">
     <form method="POST" action="IscriviAtleta">
+    	<div class="form-group col-xl-auto" >
+            <label for="exampleInputText1">Nome</label>
+            <input type="text" name = "nome" class="form-control" id="exampleInputText1"  placeholder="Inserisci nome">
+        </div>
         <div class="form-group col-xl-auto" >
+            <label for="exampleInputText2">Cognome</label>
+            <input type="text" name = "cognome" class="form-control" id="exampleInputText2"  placeholder="Inserisci cognome">
+        </div>
+                <div class="form-group col-xl-auto" >
             <label for="exampleInputEmail1">Indirizzo email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Inserisci email">
+            <input type="email" name = "mail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Inserisci email">
         </div>
         <div class="form-group col-xl-auto" >
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" name = "password" class="form-control" id="exampleInputPassword1" placeholder="Password">
         </div>
         <div class="form-group col-xl-auto">
             <button type="submit" class="btn btn-primary">Registrati</button>

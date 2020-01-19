@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.mat.unical.ingsw.model.Atleta;
+import it.mat.unical.ingsw.model.Utente;
+import it.mat.unical.persistence.DBManager;
+
 /**
  * Servlet implementation class IscriviAtleta
  */
@@ -28,6 +32,18 @@ public class IscriviAtleta extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String nome = request.getParameter("nome");
+		String cognome = request.getParameter("cognome");
+		String mail = request.getParameter("mail");
+		String password = request.getParameter("password");
+		//System.out.println(nome + cognome + username + password);
+		
+		Atleta atleta = new Atleta (nome,cognome,mail,password);
+		
+		DBManager.getInstance().registraUtente(atleta);
+		
+		request.getSession().setAttribute("utente", atleta);
+		
 		RequestDispatcher view = request.getRequestDispatcher("iscritto.jsp");
 		view.forward(request, response);
 	}
