@@ -6,12 +6,10 @@ public class Atleta extends Utente{
 	
 	public Atleta() {
 		super();
-		tessera = new Tessera();
 	}
 	
 	public Atleta(String nome, String cognome, String mail, String password) {
 		super(nome,cognome,mail,password);
-		tessera = new Tessera();
 	}
 
 	public void setTessera(Tessera tessera) {
@@ -25,5 +23,10 @@ public class Atleta extends Utente{
 	@Override
 	public String toString() {
 		return super.toString();
+	}
+	
+	public void creaTessera()
+	{
+		tessera = new Tessera();
 	}
 }
