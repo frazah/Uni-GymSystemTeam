@@ -105,10 +105,18 @@
       </div>
       
       
+		<div class="col-md-2">
+		
+      		<h3 class = "my-3">Corsi</h3>
+      		<div class="my-3">
+      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'gestioneCorsiAdmin.jsp';">Gestisci corsi</button>
+      		</div>
+      		<h3 class = "my-3">Trainer</h3>
+      		<div class="my-3">
+      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Gestisci trainer</button>
+     		</div>
+     	</div> 
       
-      <div class="my-5 col-md-6"> 
-      	
-      </div>
 
     </div>
     <!-- /.row -->
@@ -117,7 +125,7 @@
   <!-- /.container -->
 
   <!-- Footer -->
-   <footer class=" py-5 bg-dark">
+   <footer class="py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
     </div>

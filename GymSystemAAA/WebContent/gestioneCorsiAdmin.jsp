@@ -64,103 +64,49 @@
     </div>
   </nav>
 
+ 
+
   <!-- Page Content -->
   <div class="container">
-
-    <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Profilo
-      <small>${utente.getNome()} ${utente.getCognome()}</small>
-    </h1>
-
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="index.jsp">Homepage</a>
-      </li>
-      <li class="breadcrumb-item active">Profilo</li>
-    </ol>
-
-    <!-- Portfolio Item Row -->
-    <div class="row">
-
-      <div class="col-md-2">
-        <img class="img-fluid" src="${utente.getFotoProfilo()}" alt="">
-        <div class = "my-2">
-    	<button type="button" class="btn btn-primary" >Carica foto profilo</button>
-		</div>
-      </div> 
-     
-      
-      
-      <div class="col-md-6">
-        <h2>Le mie informazioni</h2>
-        	<b>Nome: </b>
-        	<a>${utente.getNome()}</a>
-        	<br>
-        	<b>Cognome: </b>
-        	<a>${utente.getCognome()}</a>
-        	<br>
-        	<b>Mail: </b>
-        	<a>${utente.getMail()}</a>
-
-      </div>
-      
-      <div class="col-md-4">
-      	<h3>Il mio abbonamento</h3>
-      	<c:if test="${utente.getTessera() == null}">
-    		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Attiva abbonamento</button>
-		</c:if>
-		<c:if test="${utente.getTessera() != null}">
-    		<b>ID: </b>
-        	<a>${utente.getTessera().getID()}</a>
-        	<br>
-        	<b>Data di iscrizione: </b>
-        	<a>${utente.getTessera().getDataDiIscrizione()}</a>
-        	<br>
-        	<b>Data di scadenza: </b>
-        	<a>${utente.getTessera().getDataDiScadenza()}</a>
-        	<br>
-		</c:if>
-		
-		
-		<c:if test="${utente.getTessera() != null}">
-		<div class="my-3">
-      		<h3>I corsi che segui:</h3>
-      		<c:if test="${utente.getTessera().getCorsi().isEmpty()}">
-      		<div class="my-4"> 
-      			<br>
-      			<a>Non segui alcun corso</a>
-      			<br>
-      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Visualizza corsi disponibili</button>
-      		</div>
-      		</c:if>
-      		<c:if test="${!utente.getTessera().getCorsi().isEmpty()}">
-      			  <c:forEach items="${utente.getTessera().getCorsi()}" var="corso">
-    				<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 100px">
-						<thead>
-							<tr>
-								<th scope="col"><a href=${corso.getUrl()} style="color: yellow"> ${corso.getNome()}</th>
-		    				</tr>
-						</thead>
- 					</table>
- 			</c:forEach>
-      		</c:if>
-      		</div>
-      	</c:if>
-			
-      </div>
-      
-      <div class="my-5 col-md-6"> 
-      	
-      </div>
+  
+  <div class = "mx-5 my-5">
+  	<button type="button" class="btn btn-primary" onclick = "aggiungiCorso()"">Crea corso</button>
+  </div>
+  
+  <script>
+  	function aggiungiCorso()
+  	{
+  		var nome = prompt("Nome corso");
+  		var descrizione = prompt("Descrizione corso");
+  		var linkVideo = prompt("Link YouTube");
+  		
+  	}
+  </script>
+  
+  <c:forEach items="${corsi}" var="corso">
+    <table class="table table-bordered table-dark mx-5 my-5 text-center container" style="width: 500px; height : 500px">
+		<thead>
+			<tr>
+				<th scope="col"><a href=${corso.getUrl()} style="color: yellow"> ${corso.getNome()}
+		        <c:if test="${corso.getTrainer() != null}">
+		        	<button type="button" class="btn btn-primary" onclick = "window.location.href = 'gestioneCorsiAdmin.jsp';">Assegna trainer</button>
+		        </c:if>
+		        </th>
+		    </tr>
+		</thead>
+ 	</table>
+ </c:forEach>
 
     </div>
     <!-- /.row -->
+
+    <hr>
 
   </div>
   <!-- /.container -->
 
   <!-- Footer -->
-   <footer class=" py-5 bg-dark">
+  <footer class=" py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
     </div>
@@ -174,3 +120,4 @@
 </body>
 
 </html>
+    

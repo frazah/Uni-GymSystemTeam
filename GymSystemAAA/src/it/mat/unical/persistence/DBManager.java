@@ -18,14 +18,11 @@ import it.mat.unical.ingsw.model.Trainer;
 import it.mat.unical.ingsw.model.Utente;
 
 public class DBManager {
+	
 	private static DBManager instance = null;
-
 	ArrayList<Atleta> registrati;
-	
 	ArrayList<Corso> corsi;
-	
 	ArrayList<Trainer> trainer;
-	
 	Admin admin;
 	
 	public static DBManager getInstance() {
@@ -35,6 +32,24 @@ public class DBManager {
 		return instance;
 	}
 	
+		
+
+	
+
+
+
+	public ArrayList<Corso> getCorsi() {
+		return corsi;
+	}
+
+
+
+	public ArrayList<Trainer> getTrainer() {
+		return trainer;
+	}
+
+
+
 	private DBManager() {
 		registrati = new ArrayList<Atleta>();
 		admin = new Admin();
