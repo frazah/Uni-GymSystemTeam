@@ -74,6 +74,7 @@
     </div>
 
     <!-- Content Row -->
+    <form method="POST" action="ScegliAbbonamento">
     <div class="row">
       <div class="col-lg-4 mb-4">
         <div class="card h-100">
@@ -84,7 +85,7 @@
           <ul class="list-group list-group-flush">
             
             <li class="list-group-item">
-              <input name = "scelta" type = "radio" class="btn btn-primary">Pacchetto 1 mese</a>
+              <input name = "scelta" type = "radio" value = "mensile" class="btn btn-primary">Pacchetto 1 mese</a>
             </li>
           </ul>
         </div>
@@ -98,7 +99,7 @@
           <ul class="list-group list-group-flush">
             
             <li class="list-group-item">
-			<input name = "scelta" type = "radio" class="btn btn-primary">Pacchetto 6 mesi</a>            </li>
+			<input name = "scelta" type = "radio" value = "semestrale" class="btn btn-primary">Pacchetto 6 mesi</a>            </li>
           </ul>
         </div>
       </div>
@@ -111,11 +112,12 @@
           <ul class="list-group list-group-flush">
             
             <li class="list-group-item">
-			<input name = "scelta" type = "radio" class="btn btn-primary">Pacchetto 12 mesi!!!</a>            </li>
+			<input name = "scelta" type = "radio" value = "annuale" class="btn btn-primary">Pacchetto 12 mesi!!!</a>            </li>
           </ul>
         </div>
       </div>
     </div>
+    </form>
     <!-- /.row -->
     
     <div class = "my-5 mx-5 text-center">
