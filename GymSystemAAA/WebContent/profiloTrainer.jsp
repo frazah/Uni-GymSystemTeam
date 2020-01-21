@@ -108,7 +108,7 @@
       		
       <div class="my-3">
       <c:if test="${utente.getCorsi().isEmpty()}">
-    		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Richiedi corso</button>
+    		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'richiestaModificaCorso.jsp';">Richiedi corso</button>
 		</c:if>
       </div>
       
@@ -116,7 +116,7 @@
       	<c:if test="${!utente.getCorsi().isEmpty()}">
 		
       		
-      			<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 100px">
+      			<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 50px">
 		        <thead>
 		        <tr>
 		            <th scope="col"><a href=${utente.getCorsi().get(0).getUrl()} style="color: yellow"> ${utente.getCorsi().get(0).getNome()}</th>
@@ -127,11 +127,9 @@
    				</table>
    				
    				<tr>
-		            <button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Modifica corso</button>
+		            <button type="button" class="btn btn-primary" onclick = "window.location.href = 'richiestaModificaCorso.jsp';">Modifica o rimuovi corso</button>
 		        </tr> 
-		        <tr>
-		            <button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Elimina corso</button>
-		        </tr>
+
       		
       		
       	</c:if>

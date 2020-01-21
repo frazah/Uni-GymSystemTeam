@@ -23,6 +23,13 @@ public class Corso {
 	
 	
 	
+	public Corso() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
 	public String getUrl() {
 		return url;
 	}

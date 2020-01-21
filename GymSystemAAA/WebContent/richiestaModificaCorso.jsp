@@ -64,76 +64,30 @@
     </div>
   </nav>
 
-  <!-- Page Content -->
-  <div class="container">
-
-    <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Profilo
-      <small>${utente.getNome()} ${utente.getCognome()}</small>
-    </h1>
-
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="index.jsp">Homepage</a>
-      </li>
-      <li class="breadcrumb-item active">Profilo</li>
-    </ol>
-
-    <!-- Portfolio Item Row -->
-    <div class="row">
-
-      <div class="col-md-2">
-        <img class="img-fluid" src="${utente.getFotoProfilo()}" alt="">
-        <div class = "my-2">
-    	<button type="button" class="btn btn-primary" >Carica foto profilo</button>
-		</div>
-      </div> 
-     
-      
-      
-      <div class="col-md-6">
-        <h2>Le mie informazioni</h2>
-        	<b>Nome: </b>
-        	<a>${utente.getNome()}</a>
-        	<br>
-        	<b>Cognome: </b>
-        	<a>${utente.getCognome()}</a>
-        	<br>
-        	<b>Mail: </b>
-        	<a>${utente.getMail()}</a>
-
+  <div class="my-5  container" style="width: 500px; height: 500px">
+    <form >
+      <div class="form-group col-xs-6" >
+        <label for="exampleMotivations1">Inserisci la tua richiesta:</label>
+		  <select class="browser-default custom-select">
+			  <option selected name = "modifica">Modifica corso</option>
+			  <option name = "rimozione">Elimina corso</option>
+			</select>
+        <textarea type="form-control rounded-0" rows="10" class="form-control" name="motivazioni" placeholder="Inserisci le tue motivazioni"></textarea>
       </div>
-      
-      
-		<div class="col-md-2">
-		
-      		<h3 class = "my-3">Corsi</h3>
-      		<div class="my-3">
-      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'gestioneCorsiAdmin.jsp';">Gestisci corsi</button>
-      		</div>
-      		<h3 class = "my-3">Trainer</h3>
-      		<div class="my-3">
-      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Gestisci trainer</button>
-     		</div>
-     	</div> 
-      
-
+     <div class= "panel-footer row">
+      <div class="form-group col-xs-6 text-left px-3">
+        <button type="submit" class="btn btn-primary">Invia</button>
+      </div>
+    </form>
+    <div class = "col-xs-6 text-right mx-2 py-2">
+      <a href = "profiloTrainer.jsp">Annulla</a>
     </div>
-    <!-- /.row -->
-    
-    <div class = "my-3 col-md-6">
-    	<h2>Richieste:</h2>
-    		<a>ciao</a>
-    		<br>
-    		<a>ok</a>
-    </div>
-    
-
   </div>
-  <!-- /.container -->
+  </div>
+
 
   <!-- Footer -->
-   <footer class="py-5 bg-dark">
+  <footer class="fixed-bottom py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
     </div>
