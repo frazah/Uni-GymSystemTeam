@@ -64,26 +64,60 @@
     </div>
   </nav>
 
+ 
 
+  <!-- Page Content -->
+  <div class="container">
+  
+  <div class = "mx-5 my-5">
+  	<button type="button" class="btn btn-primary" onclick = "aggiungiCorso()"">Crea corso</button>
+  </div>
+  
+  <script>
+  	function aggiungiCorso()
+  	{
+  		var nome = prompt("Nome corso");
+  		var descrizione = prompt("Descrizione corso");
+  		var linkVideo = prompt("Link YouTube");
+  		
+  	}
+  </script>
+  
+  <c:forEach items="${corsi}" var="corso">
+    <table class="table table-bordered table-dark mx-5 my-5 text-center container" style="width: 500px; height : 500px">
+		<thead>
+			<tr>
+				<th scope="col"><a href=${corso.getUrl()} style="color: yellow"> ${corso.getNome()}
+		        <c:if test="${corso.getTrainer() != null}">
+		        	<button type="button" class="btn btn-primary" onclick = "window.location.href = 'gestioneCorsiAdmin.jsp';">Assegna trainer</button>
+		        </c:if>
+		        </th>
+		    </tr>
+		</thead>
+ 	</table>
+ </c:forEach>
 
+    </div>
+    <!-- /.row -->
 
-<div class="my-5 text-center container" style="width: 500px; height: 500px">
-    <h2>Iscritto</h2>
-</div>
+    <hr>
 
+  </div>
+  <!-- /.container -->
 
-<!-- Footer -->
-<footer class="fixed-bottom py-5 bg-dark">
+  <!-- Footer -->
+  <footer class=" py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
+      <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
     </div>
     <!-- /.container -->
-</footer>
+  </footer>
 
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
 </html>
+    

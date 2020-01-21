@@ -63,7 +63,6 @@
       </div>
     </div>
   </nav>
-
   <!-- Page Content -->
   <div class="container">
 
@@ -104,54 +103,40 @@
 
       </div>
       
-      <div class="col-md-4">
-      	<h3>Il mio abbonamento</h3>
-
-      	<c:if test="${utente.getTessera() == null}">
-    		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'pricing.jsp';">Attiva abbonamento</button>
-
+      <div class="my-3">
+      		<h3>Il tuo corso:</h3>
+      		
+      <div class="my-3">
+      <c:if test="${utente.getCorsi().isEmpty()}">
+    		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Richiedi corso</button>
 		</c:if>
-		<c:if test="${utente.getTessera() != null}">
-    		<b>ID: </b>
-        	<a>${utente.getTessera().getID()}</a>
-        	<br>
-        	<b>Data di iscrizione: </b>
-        	<a>${utente.getTessera().getDataDiIscrizione()}</a>
-        	<br>
-        	<b>Data di scadenza: </b>
-        	<a>${utente.getTessera().getDataDiScadenza()}</a>
-        	<br>
-		</c:if>
-		
-		
-
-		<c:if test="${utente.getTessera() != null}">
-		<div class="my-3">
-
-      		<h3>I corsi che segui:</h3>
-      		<c:if test="${utente.getTessera().getCorsi().isEmpty()}">
-      		<div class="my-4"> 
-      			<br>
-      			<a>Non segui alcun corso</a>
-      			<br>
-      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Visualizza corsi disponibili</button>
-      		</div>
-      		</c:if>
-      		<c:if test="${!utente.getTessera().getCorsi().isEmpty()}">
-      			  <c:forEach items="${utente.getTessera().getCorsi()}" var="corso">
-    				<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 100px">
-						<thead>
-							<tr>
-								<th scope="col"><a href=${corso.getUrl()} style="color: yellow"> ${corso.getNome()}</th>
-		    				</tr>
-						</thead>
- 					</table>
- 			</c:forEach>
-      		</c:if>
-      		</div>
-      	</c:if>
-			
       </div>
+      
+      
+      	<c:if test="${!utente.getCorsi().isEmpty()}">
+		
+      		
+      			<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 100px">
+		        <thead>
+		        <tr>
+		            <th scope="col"><a href=${utente.getCorsi().get(0).getUrl()} style="color: yellow"> ${utente.getCorsi().get(0).getNome()}</th>
+		        </tr>
+		        
+		        
+		        </thead>
+   				</table>
+   				
+   				<tr>
+		            <button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Modifica corso</button>
+		        </tr> 
+		        <tr>
+		            <button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Elimina corso</button>
+		        </tr>
+      		
+      		
+      	</c:if>
+      </div>
+      
       
       <div class="my-5 col-md-6"> 
       	

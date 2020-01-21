@@ -44,7 +44,16 @@
     			<a class="nav-link" href="loginPage.jsp">Accedi</a>
 			</c:if>
 			<c:if test="${utente != null}">
+				<c:if test="${utente.getClass().getSimpleName().equals('Atleta')}">
     			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
+    			</c:if>
+    			<c:if test="${utente.getClass().getSimpleName().equals('Trainer')}">
+    			<a class="nav-link" href="profiloTrainer.jsp">Il mio profilo</a>
+    			</c:if>
+    			<c:if test="${utente.getClass().getSimpleName().equals('Admin')}">
+    			<a class="nav-link" href="profiloAdmin.jsp">Il mio profilo</a>
+    			</c:if>
+    			
     			 <li class="nav-item">
     			<a class="nav-link" href="Login?logout=true">Logout</a>
 			</c:if>

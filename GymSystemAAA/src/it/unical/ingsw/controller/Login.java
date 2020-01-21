@@ -1,6 +1,7 @@
 package it.unical.ingsw.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.mat.unical.ingsw.model.Corso;
+import it.mat.unical.ingsw.model.Trainer;
 import it.mat.unical.ingsw.model.Utente;
 import it.mat.unical.persistence.DBManager;
 
@@ -36,11 +39,14 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		Utente utente = DBManager.getInstance().login(username, password);
+		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
+		ArrayList<Trainer> trainer = DBManager.getInstance().getTrainer();
+		//System.out.println(utente.getClass().getSimpleName());
 		//System.out.println(utente.getNome() + " " + utente.getCognome());
 		if (utente != null) {
 			request.getSession().setAttribute("utente", utente);
+			request.getSession().setAttribute("corsi", corsi);
 //			resp.sendRedirect(".");
-			
 			RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
 			rd.forward(request, response);
 		}else {

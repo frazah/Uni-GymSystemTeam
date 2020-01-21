@@ -12,7 +12,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Modern Business - Start Bootstrap Template</title>
+  <title>Gym System</title>
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,9 +23,9 @@
 </head>
 
 <body>
-
+	
   <!-- Navigation -->
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="index.jsp">Gym System</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,7 +44,16 @@
     			<a class="nav-link" href="loginPage.jsp">Accedi</a>
 			</c:if>
 			<c:if test="${utente != null}">
+				<c:if test="${utente.getClass().getSimpleName().equals('Atleta')}">
     			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
+    			</c:if>
+    			<c:if test="${utente.getClass().getSimpleName().equals('Trainer')}">
+    			<a class="nav-link" href="profiloTrainer.jsp">Il mio profilo</a>
+    			</c:if>
+    			<c:if test="${utente.getClass().getSimpleName().equals('Admin')}">
+    			<a class="nav-link" href="profiloAdmin.jsp">Il mio profilo</a>
+    			</c:if>
+    			
     			 <li class="nav-item">
     			<a class="nav-link" href="Login?logout=true">Logout</a>
 			</c:if>

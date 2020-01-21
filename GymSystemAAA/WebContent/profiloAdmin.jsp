@@ -64,25 +64,77 @@
     </div>
   </nav>
 
+  <!-- Page Content -->
+  <div class="container">
 
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Profilo
+      <small>${utente.getNome()} ${utente.getCognome()}</small>
+    </h1>
 
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.jsp">Homepage</a>
+      </li>
+      <li class="breadcrumb-item active">Profilo</li>
+    </ol>
 
-<div class="my-5 text-center container" style="width: 500px; height: 500px">
-    <h2>Iscritto</h2>
-</div>
+    <!-- Portfolio Item Row -->
+    <div class="row">
 
+      <div class="col-md-2">
+        <img class="img-fluid" src="${utente.getFotoProfilo()}" alt="">
+        <div class = "my-2">
+    	<button type="button" class="btn btn-primary" >Carica foto profilo</button>
+		</div>
+      </div> 
+     
+      
+      
+      <div class="col-md-6">
+        <h2>Le mie informazioni</h2>
+        	<b>Nome: </b>
+        	<a>${utente.getNome()}</a>
+        	<br>
+        	<b>Cognome: </b>
+        	<a>${utente.getCognome()}</a>
+        	<br>
+        	<b>Mail: </b>
+        	<a>${utente.getMail()}</a>
 
-<!-- Footer -->
-<footer class="fixed-bottom py-5 bg-dark">
+      </div>
+      
+      
+		<div class="col-md-2">
+		
+      		<h3 class = "my-3">Corsi</h3>
+      		<div class="my-3">
+      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'gestioneCorsiAdmin.jsp';">Gestisci corsi</button>
+      		</div>
+      		<h3 class = "my-3">Trainer</h3>
+      		<div class="my-3">
+      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Gestisci trainer</button>
+     		</div>
+     	</div> 
+      
+
+    </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+  <!-- Footer -->
+   <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
+      <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
     </div>
     <!-- /.container -->
-</footer>
+  </footer>
 
-<!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
