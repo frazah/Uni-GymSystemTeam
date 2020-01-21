@@ -117,7 +117,7 @@
         </div>
       </div>
     </div>
-    </form>
+    
     <!-- /.row -->
     
     <div class = "my-5 mx-5 text-center">
@@ -125,6 +125,7 @@
     </div>
 
   </div>
+  </form>
   <!-- /.container -->
 
   <!-- Footer -->
