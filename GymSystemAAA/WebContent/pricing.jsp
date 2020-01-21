@@ -119,7 +119,7 @@
     <!-- /.row -->
     
     <div class = "my-5 mx-5 text-center">
-    	<button type="submit" class="btn btn-primary">Paga ora</button>
+    	<button type="submit" href = "profilo.jsp" class="btn btn-primary">Paga ora</button>
     </div>
 
   </div>

@@ -9,4 +9,16 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>SceltaAbbonamento</display-name>
+    <servlet-name>SceltaAbbonamento</servlet-name>
+    <servlet-class>javax.servlet.http.HttpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SceltaAbbonamento</servlet-name>
+    <url-pattern>/SceltaAbbonamento</url-pattern>
+    <url-pattern>/WebContent/pricing.jsp</url-pattern>
+    <url-pattern>/Atleta.java</url-pattern>
+  </servlet-mapping>
 </web-app>

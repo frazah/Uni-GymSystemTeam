@@ -139,7 +139,7 @@
       		</c:if>
       		<c:if test="${!utente.getTessera().getCorsi().isEmpty()}">
       			  <c:forEach items="${utente.getTessera().getCorsi()}" var="corso">
-    				<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 100px">
+    				<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 50px">
 						<thead>
 							<tr>
 								<th scope="col"><a href=${corso.getUrl()} style="color: yellow"> ${corso.getNome()}</th>
