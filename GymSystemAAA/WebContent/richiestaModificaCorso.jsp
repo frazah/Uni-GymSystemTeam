@@ -65,14 +65,14 @@
   </nav>
 
   <div class="my-5  container" style="width: 500px; height: 500px">
-    <form >
+    <form method = "POST" action = "RichiestaModificaCorso">
       <div class="form-group col-xs-6" >
         <label for="exampleMotivations1">Inserisci la tua richiesta:</label>
-		  <select class="browser-default custom-select">
-			  <option selected name = "modifica">Modifica corso</option>
-			  <option name = "rimozione">Elimina corso</option>
+		  <select class="browser-default custom-select" name = "scelta">
+			  <option selected value = "modifica" >Modifica corso</option>
+			  <option value = "rimozione">Elimina corso</option>
 			</select>
-        <textarea type="form-control rounded-0" rows="10" class="form-control" name="motivazioni" placeholder="Inserisci le tue motivazioni"></textarea>
+        <textarea type="form-control rounded-0" rows="10" class="form-control" name="motivazioni" placeholder="Inserisci le tue motivazioni" required></textarea>
       </div>
      <div class= "panel-footer row">
       <div class="form-group col-xs-6 text-left px-3">

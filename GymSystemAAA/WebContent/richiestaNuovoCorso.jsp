@@ -16,7 +16,6 @@
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/ProfiloAdmin.css">
 
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
@@ -65,92 +64,38 @@
     </div>
   </nav>
 
-  <!-- Page Content -->
-  <div class="container">
-
-    <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Profilo
-      <small>${utente.getNome()} ${utente.getCognome()}</small>
-    </h1>
-
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="index.jsp">Homepage</a>
-      </li>
-      <li class="breadcrumb-item active">Profilo</li>
-    </ol>
-
-    <!-- Portfolio Item Row -->
-    <div class="row">
-
-      <div class="col-md-2">
-        <img class="img-fluid" src="${utente.getFotoProfilo()}" alt="">
-        <div class = "my-2">
-    	<button type="button" class="btn btn-primary" >Carica foto profilo</button>
-		</div>
-      </div> 
-     
-      
-      
-      <div class="col-md-6">
-        <h2>Le mie informazioni</h2>
-        	<b>Nome: </b>
-        	<a>${utente.getNome()}</a>
-        	<br>
-        	<b>Cognome: </b>
-        	<a>${utente.getCognome()}</a>
-        	<br>
-        	<b>Mail: </b>
-        	<a>${utente.getMail()}</a>
-
+  <div class="my-5  container" style="width: 500px; height: 500px">
+    <form method = "POST" action = "RichiestaNuovoCorso">
+      <div class="form-group col-xs-6" >
+        <div class="form-group col-xl-auto" >
+        <label for="exampleTeaching1">Inserisci il codice del tuo documento di abilitazione all'insegnamento:</label>
+            <input type="text" name = "codice" class="form-control" id="exampleInputText1"  placeholder="Inserisci codice" required>
+        </div>
+        
+        <div class="form-group col-xl-auto" >
+        <label for="exampleTeaching1">Inserisci il nome del corso:</label>
+            <input type="text" name = "nome" class="form-control" id="exampleInputText1"  placeholder="Inserisci nome" required>
+        </div>
+        
+        <div class="form-group col-xl-auto" >
+        <label for="exampleTeaching1">Inserisci le tue motivazioni:</label>
+        <textarea type="form-control rounded-0" rows="10" class="form-control" name="motivazioni" placeholder="Inserisci le tue motivazioni"></textarea>
+        </div>
       </div>
-      
-      
-		<div class="col-md-2">
-		
-      		<h3 class = "my-3">Corsi</h3>
-      		<div class="my-3">
-      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'gestioneCorsiAdmin.jsp';">Gestisci corsi</button>
-      		</div>
-      		<h3 class = "my-3">Trainer</h3>
-      		<div class="my-3">
-      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Gestisci trainer</button>
-     		</div>
-     	</div> 
-      
-
+     <div class= "panel-footer row">
+      <div class="form-group col-xs-6 text-left px-3">
+        <button type="submit" class="btn btn-primary">Invia</button>
+      </div>
+    </form>
+    <div class = "col-xs-6 text-right mx-2 py-2">
+      <a href = "profiloTrainer.jsp">Annulla</a>
     </div>
-    <!-- /.row -->
-    
-    <div class = "my-5 col-md-6">
-    	<div class = "my-3">
-    	<h2>Richieste:</h2>
-    	</div>
-    		<c:if test="${utente.getRichieste().isEmpty()}">
-    		<a>Non ci sono richieste</a>
-    		</c:if>
-    		<c:if test="${utente.getRichieste().size() > 0}">
-    		<b class = "nMessaggio" id = "1">Messaggio più recente: </b>
-    		<div> <a class = "messaggio">${utente.getRichieste().get(utente.getRichieste().size()-1)}</a></div>
-    		</c:if>
-    		<c:if test="${utente.getRichieste().size() > 1}">
-    		<br>
-    		<b class = "nMessaggio" id = "2">Messaggio 2: </b>
-    		<div> <a class = "messaggio">${utente.getRichieste().get(utente.getRichieste().size()-2)}</a></div>
-    		</c:if>
-    		<c:if test="${utente.getRichieste().size() > 2}">
-    		<br>
-    		<b class = "nMessaggio" id = "3">Messaggio 3: </b>
-    		<div> <a class = "messaggio">${utente.getRichieste().get(utente.getRichieste().size()-3)}</a></div>
-    		</c:if>
-    </div>
-    
-
   </div>
-  <!-- /.container -->
+  </div>
+
 
   <!-- Footer -->
-   <footer class="py-5 bg-dark">
+  <footer class="fixed-bottom py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
     </div>

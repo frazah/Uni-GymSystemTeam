@@ -108,7 +108,7 @@
       		
       <div class="my-3">
       <c:if test="${utente.getCorsi().isEmpty()}">
-    		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'richiestaModificaCorso.jsp';">Richiedi corso</button>
+    		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'richiestaNuovoCorso.jsp';">Richiedi corso</button>
 		</c:if>
       </div>
       

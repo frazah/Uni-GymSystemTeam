@@ -107,6 +107,13 @@ public class DBManager {
 		stampaRegistrati();
 	}
 	
+	public Admin getAdmin() {
+		return admin;
+	}
+
+
+
+
 	public void stampaRegistrati()
 	{
 		for (int i = 0; i<registrati.size();i++)
@@ -117,7 +124,7 @@ public class DBManager {
 		if (username.equals("admin@admin.com") && password.equals("admin"))
 			return admin;
 		
-		if (username.equals("a@a") && password.equals("a"))
+		if (username.equals("tyson@hothotmail.com") && password.equals("onepunchman"))
 			return trainer.get(0);
 		
 		for (int i = 0; i<registrati.size();i++)
