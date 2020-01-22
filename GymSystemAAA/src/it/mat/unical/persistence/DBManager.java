@@ -31,25 +31,15 @@ public class DBManager {
 		}
 		return instance;
 	}
-	
-		
-
-	
-
-
 
 	public ArrayList<Corso> getCorsi() {
 		return corsi;
 	}
 
-
-
 	public ArrayList<Trainer> getTrainer() {
 		return trainer;
 	}
-
-
-
+	
 	private DBManager() {
 		registrati = new ArrayList<Atleta>();
 		admin = new Admin();
@@ -83,7 +73,9 @@ public class DBManager {
 
 	private void creaCorsiDefault() {
 		Corso c1 = new Corso("Pugilato",trainer.get(0),null,null,null,"corsoPugilato.jsp");
+		Corso c2 = new Corso("Difesa",trainer.get(0),null,null,null,"corsoPugilato.jsp");
 		corsi.add(c1);
+		corsi.add(c2);
 	}
 	
 	private void creaTrainerDefault()
