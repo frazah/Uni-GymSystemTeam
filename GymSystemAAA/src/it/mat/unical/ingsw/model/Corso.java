@@ -6,23 +6,48 @@ public class Corso {
 	private String nome;
 	private Trainer trainer;
 	private ArrayList<Atleta> iscritti;
+	private String fasciaOraria;
+	private String giorni[];
 	private String descrizione;
 	private String linkVideo;
 	private String url;
 	//Mettere feedback
 	
-	public Corso(String nome,Trainer trainer, ArrayList<Atleta> iscritti, String descrizione, String linkVideo, String url) {
+	
+	public Corso(String nome, Trainer trainer, ArrayList<Atleta> iscritti, String fasciaOraria, String [] giorni,
+			String descrizione, String linkVideo, String url) {
 		super();
 		this.nome = nome;
 		this.trainer = trainer;
 		this.iscritti = iscritti;
+		this.fasciaOraria = fasciaOraria;
+		this.setGiorni(giorni);
 		this.descrizione = descrizione;
 		this.linkVideo = linkVideo;
 		this.url = url;
 	}
+
 	
 	
 	
+	public String getFasciaOraria() {
+		return fasciaOraria;
+	}
+
+
+
+
+	
+
+
+
+	public void setFasciaOraria(String fasciaOraria) {
+		this.fasciaOraria = fasciaOraria;
+	}
+
+
+
+
 	public String getUrl() {
 		return url;
 	}
@@ -71,6 +96,20 @@ public class Corso {
 	}
 	public void setLinkVideo(String linkVideo) {
 		this.linkVideo = linkVideo;
+	}
+
+
+
+
+	public String[] getGiorni() {
+		return giorni;
+	}
+
+
+
+
+	public void setGiorni(String giorni[]) {
+		this.giorni = giorni;
 	}
 	
 	

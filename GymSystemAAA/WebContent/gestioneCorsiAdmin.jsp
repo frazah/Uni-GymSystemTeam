@@ -70,28 +70,23 @@
   <div class="container">
   
   <div class = "mx-5 my-5">
-  	<button type="button" class="btn btn-primary" onclick = "aggiungiCorso()"">Crea corso</button>
+  	<button type="submit" class="btn btn-primary" id = "nuovoCorso" onclick = "window.location.href = 'creaCorso.jsp' "">Crea corso</button>
   </div>
   
-  <script>
-  	function aggiungiCorso()
-  	{
-  		var nome = prompt("Nome corso");
-  		var descrizione = prompt("Descrizione corso");
-  		var linkVideo = prompt("Link YouTube");
-  		
-  	}
-  </script>
   
   <c:forEach items="${corsi}" var="corso">
     <table class="table table-bordered table-dark mx-5 my-5 text-center container" style="width: 500px; height : 500px">
 		<thead>
 			<tr>
-				<th scope="col"><a href=${corso.getUrl()} style="color: yellow"> ${corso.getNome()}
-		        <c:if test="${corso.getTrainer() != null}">
+				<td scope="col">
+				<a href=${corso.getUrl()} style="color: yellow"> ${corso.getNome()}</a>
+		        <c:if test="${corso.getTrainer() == null}">
 		        	<button type="button" class="btn btn-primary" onclick = "window.location.href = 'gestioneCorsiAdmin.jsp';">Assegna trainer</button>
 		        </c:if>
-		        </th>
+		        <c:if test="${corso.getTrainer() != null}">
+		        	<button type="button" class="btn btn-primary" onclick = "window.location.href = 'gestioneCorsiAdmin.jsp';">Rimuovi trainer</button>
+		        </c:if>
+		        </td>
 		    </tr>
 		</thead>
  	</table>

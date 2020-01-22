@@ -55,8 +55,9 @@ public class DBManager {
 		admin = new Admin();
 		corsi = new ArrayList<Corso>();
 		trainer = new ArrayList<Trainer>();
-		creaTrainerDefault();
 		creaCorsiDefault();
+		creaTrainerDefault();
+		
 		creaRegistratiDefault();
 		
 	}
@@ -82,18 +83,21 @@ public class DBManager {
 	}
 
 	private void creaCorsiDefault() {
-		Corso c1 = new Corso("Pugilato",trainer.get(0),null,null,null,"corsoPugilato.jsp");
+		Corso c1 = new Corso("Pugilato", null, null, "1", null, null, null, "corsoPugilato.jsp");
 		corsi.add(c1);
 	}
 	
 	private void creaTrainerDefault()
 	{
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
-		t1.setCorsi(corsi);
+		Trainer t2 = new Trainer("Connor","McGreggor","ufc@hothotmail.com","notorius");
+		t1.setCorso(corsi.get(0));
+		corsi.get(0).setTrainer(t1);
 		/*Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");*/
 		trainer.add(t1);
+		trainer.add(t2);
 	}
 
 	public void svuotaRegistrati()
