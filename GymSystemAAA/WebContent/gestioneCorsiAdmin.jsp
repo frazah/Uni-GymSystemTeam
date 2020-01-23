@@ -73,24 +73,47 @@
   	<button type="submit" class="btn btn-primary" id = "nuovoCorso" onclick = "window.location.href = 'creaCorso.jsp' "">Crea corso</button>
   </div>
   
+  <c:choose>
+  	<c:when test="${empty corsi}">
+  		<h1>Nel sistema non è presente nessun corso</h1>
+  	</c:when>
+  	<c:when test="${not empty corsi}">
+  		<c:forEach items="${corsi}" var="corso">
+	    <table class="table table-bordered table-dark mx-5 my-5 text-center container" style="width: 500px; height : 500px">
+			<thead>
+				<tr>
+					<td scope="col">
+					<a href=${corso.getUrl()} style="color: yellow"> ${corso.getNome()}</a>
+					<c:if test="${corso.getTrainer() != null}">
+						<div>
+			             	<a style = "color: white">Trainer associato: ${corso.getTrainer().getNome()} ${corso.getTrainer().getCognome()}</a>
+			        	</div>
+			        </c:if>
+			        <c:if test="${corso.getTrainer() == null}">
+			        	<form method = "POST" action = "assegnaTrainerCorso.jsp" class = "my-2">
+			        	<input type = "hidden" name = "corso" value = ${corso.getNome()} >
+			        		<button type="submit" class="btn btn-primary" onclick = "window.location.href = 'assegnaTrainerCorso.jsp';">Assegna trainer</button>
+			        	</form>
+			        </c:if>
+			        <c:if test="${corso.getTrainer() != null}">
+						<form method = "POST" action = "RimuoviTrainerCorso" class = "my-2">
+			        		<button type="submit" class="btn btn-primary" name ="trainer" value = "${corso.getTrainer().getMail() }">Rimuovi trainer</button>
+			        	</form>			        
+			        </c:if>
+			        	<form method = "POST" action = "EliminaCorso">
+			        		<button type="submit" class="btn btn-primary" name = "nome" value = "${corso.getNome()}">Elimina corso</button>
+			        	</form>
+			        </td>
+			    </tr>
+			</thead>
+	 	</table>
+ 		</c:forEach>
+  	</c:when>
+  </c:choose>
+
+  	
   
-  <c:forEach items="${corsi}" var="corso">
-    <table class="table table-bordered table-dark mx-5 my-5 text-center container" style="width: 500px; height : 500px">
-		<thead>
-			<tr>
-				<td scope="col">
-				<a href=${corso.getUrl()} style="color: yellow"> ${corso.getNome()}</a>
-		        <c:if test="${corso.getTrainer() == null}">
-		        	<button type="button" class="btn btn-primary" onclick = "window.location.href = 'gestioneCorsiAdmin.jsp';">Assegna trainer</button>
-		        </c:if>
-		        <c:if test="${corso.getTrainer() != null}">
-		        	<button type="button" class="btn btn-primary" onclick = "window.location.href = 'gestioneCorsiAdmin.jsp';">Rimuovi trainer</button>
-		        </c:if>
-		        </td>
-		    </tr>
-		</thead>
- 	</table>
- </c:forEach>
+  
 
     </div>
     <!-- /.row -->

@@ -57,11 +57,18 @@ public class DBManager {
 		trainer = new ArrayList<Trainer>();
 		creaCorsiDefault();
 		creaTrainerDefault();
-		
 		creaRegistratiDefault();
+		assegnamentoTrainerCorsi();
 		
 	}
 	
+	private void assegnamentoTrainerCorsi() {
+		corsi.get(0).setTrainer(trainer.get(0)); //Pugilato --> Tyson
+		trainer.get(0).setCorso(corsi.get(0)); //Tyson --> Pugilato
+		
+	}
+
+
 	private void creaRegistratiDefault() {
 		Atleta a1 = new Atleta("Marco","Grande","marcogrande1998@gmail.com","slaythespire");
 		Atleta a2 = new Atleta("Andrea","De Seta","squame4@gmail.com","h22rew");
@@ -84,15 +91,15 @@ public class DBManager {
 
 	private void creaCorsiDefault() {
 		Corso c1 = new Corso("Pugilato", null, null, "1", null, null, null, "corsoPugilato.jsp");
+		Corso c2 = new Corso("UFC", null, null, "2", null, null, null, "corsoPugilato.jsp");
 		corsi.add(c1);
+		corsi.add(c2);
 	}
 	
 	private void creaTrainerDefault()
 	{
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		Trainer t2 = new Trainer("Connor","McGreggor","ufc@hothotmail.com","notorius");
-		t1.setCorso(corsi.get(0));
-		corsi.get(0).setTrainer(t1);
 		/*Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");*/
