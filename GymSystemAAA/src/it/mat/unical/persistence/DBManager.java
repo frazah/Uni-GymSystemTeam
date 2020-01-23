@@ -90,6 +90,7 @@ public class DBManager {
 	{
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		t1.setCorsi(corsi);
+		//commento
 		/*Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");*/
