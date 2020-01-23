@@ -74,8 +74,10 @@ public class DBManager {
 	private void creaCorsiDefault() {
 		Corso c1 = new Corso("Pugilato",trainer.get(0),null,null,null,"corsoPugilato.jsp");
 		Corso c2 = new Corso("Difesa",trainer.get(0),null,null,null,"corsoPugilato.jsp");
+		Corso c3 = new Corso("Danza",trainer.get(0),null,null,null,"corsoPugilato.jsp");
 		corsi.add(c1);
 		corsi.add(c2);
+		corsi.add(c3);
 	}
 	
 	private void creaTrainerDefault()

@@ -138,7 +138,7 @@
       		</div>
       		</c:if>
       		<c:if test="${!utente.getTessera().getCorsi().isEmpty()}">
-      			  <c:forEach items="${utente.getTessera().getCorsi()}" var="corso">
+      			 <c:forEach items="${utente.getTessera().getCorsi()}" var="corso">
     				<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 50px">
 						<thead>
 							<tr>
@@ -146,7 +146,7 @@
 		    				</tr>
 						</thead>
  					</table>
- 			</c:forEach>
+ 				</c:forEach>
       		</c:if>
       		</div>
       	</c:if>
