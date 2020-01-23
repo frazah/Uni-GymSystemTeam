@@ -68,7 +68,7 @@
 
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">CORSO
-      <small>${nomeCorso}</small>
+      <small>Pugilato</small>
     </h1>
 
     <ol class="breadcrumb">
@@ -78,60 +78,62 @@
       <li class="breadcrumb-item">
         <a href="corsi.html">Corsi</a>
       </li>
-      <li class="breadcrumb-item active">${nomeCorso}</li>
+      <li class="breadcrumb-item active">Pugilato</li>
     </ol>
 
     <!-- Intro Content -->
     <div class="row">
       <div class="col-lg-6">
-        <iframe width="560" height="315" src="${linkVideo}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/3gHcQe8Q56s?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="col-lg-6">
         <h2>Dettagli corso</h2>
-        <p>${descrizione}</p>
-        
+        <p>Anni fa, i pugili spinti dai film di Rocky o di Bruce Lee, si dilettavano a fine allenamento in qualche trazione alla sbarra oppure in qualche serie di piegamenti sulle braccia. Si pensava che questi esercizi a corpo libero, fossero una manna per un pugile e che l'allenamento pesi non era da prendere in considerazione perchÃ© rendeva goffi ed impacciati come un body builder.</p>
+        <p>ADD</p>
+        <p>ADD</p>
       </div>
     </div>
     <!-- /.row -->
 
     <!-- Team Members -->
     <div class="py-3">
-      <h2>Il Trainer</h2>
-    </div>
+    <h2>Il Trainer</h2>
+</div>
 
-    <div class="row">
-      <div class="col-md-6 mb-4">
+<div class="row">
+    <div class="col-md-6 mb-4">
         <div class="card h-100 text-center">
-          <img class="card-img-top" src="${fotoTrainer}" alt="">
-          <div class="card-body">
-            <h4 class="card-title">${nomeTrainer} ${cognomeTrainer}</h4>
-            <h6 class="card-subtitle mb-2 text-muted">Trainer</h6>
-          </div>
-          <div class="card-footer">
-            <a href="mailto:${mailTrainer}">${mailTrainer}</a>
-          </div>
+            <img class="card-img-top" src="immagini/trainerMikeTyson.jpeg" alt="">
+            <div class="card-body">
+                <h4 class="card-title">Mike Tyson</h4>
+                <h6 class="card-subtitle mb-2 text-muted">Trainer</h6>
+                <p class="card-text">Il nostro Trainer responsabile del corso di pugilato è il pluricampione del mondo Mike Tyson, The baddest man on the planet.</p>
+            </div>
+            <div class="card-footer">
+                <a href="mailto:miketyson@punchman.com">miketyson@punchman.com</a>
+            </div>
         </div>
-      </div>
-      <div class="col-md-6 mb-4">
+    </div>
+    <div class="col-md-6 mb-4">
         <div class="card h-100 text-center">
             <div class="card-body">
             
            
             <div class="py-5">
             <h4 class="card-title">La media dei feedback</h4>
-            <c:if test="${mediaFeedback == 1}">
+            <c:if test="${utente.getTessera().getCorsi().get(0).getMediaFeedback() == 1}">
             <h5 class="card-text">&#10032</h5>
             </c:if>
-            <c:if test="${mediaFeedback == 2}">
+            <c:if test="${utente.getTessera().getCorsi().get(0).getMediaFeedback() == 2}">
             <h5 class="card-text">&#10032 &#10032</h5>
             </c:if>
-            <c:if test="${mediaFeedback == 3}">
+            <c:if test="${utente.getTessera().getCorsi().get(0).getMediaFeedback() == 3}">
             <h5 class="card-text">&#10032 &#10032 &#10032</h5>
             </c:if>
-            <c:if test="${mediaFeedback == 4}">
+            <c:if test="${utente.getTessera().getCorsi().get(0).getMediaFeedback() == 4}">
             <h5 class="card-text">&#10032 &#10032 &#10032 &#10032</h5>
             </c:if>
-            <c:if test="${mediaFeedback == 5}">
+            <c:if test="${utente.getTessera().getCorsi().get(0).getMediaFeedback() == 5}">
             <h5 class="card-text">&#10032 &#10032 &#10032 &#10032 &#10032</h5>
             </c:if>
             </div> 
@@ -140,24 +142,24 @@
             
             <h4>Ultimo feedback ricevuto :</h4>
             
-            <c:if test= "${feedback.isEmpty() }">
+            <c:if test= "${utente.getTessera().getCorsi().get(0).getFeedback().isEmpty() }">
             <h5>Nessun feedback</h5>
             </c:if>
-            <c:if test= "${!feedback.isEmpty() }">
-            	<h5>${feedback.get(feedback.size()-1).getTesto()}</h5>
-            <c:if test="${feedback.get(feedback.size()-1).getVoto() == 1}">
+            <c:if test= "${!utente.getTessera().getCorsi().get(0).getFeedback().isEmpty() }">
+            	<h5>${utente.getTessera().getCorsi().get(0).getUltimaRecensione()}</h5>
+            <c:if test="${utente.getTessera().getCorsi().get(0).getUltimoVoto() == 1}">
             <h5 class="card-text">&#10032</h5>
             </c:if>
-            <c:if test="${feedback.get(feedback.size()-1).getVoto() == 2}">
+            <c:if test="${utente.getTessera().getCorsi().get(0).getUltimoVoto() == 2}">
             <h5 class="card-text">&#10032 &#10032</h5>
             </c:if>
-            <c:if test="${feedback.get(feedback.size()-1).getVoto() == 3}">
+            <c:if test="${utente.getTessera().getCorsi().get(0).getUltimoVoto() == 3}">
             <h5 class="card-text">&#10032 &#10032 &#10032</h5>
             </c:if>
-            <c:if test="${feedback.get(feedback.size()-1).getVoto() == 4}">
+            <c:if test="${utente.getTessera().getCorsi().get(0).getUltimoVoto() == 4}">
             <h5 class="card-text">&#10032 &#10032 &#10032 &#10032</h5>
             </c:if>
-            <c:if test="${feedback.get(feedback.size()-1).getVoto() == 5}">
+            <c:if test="${utente.getTessera().getCorsi().get(0).getUltimoVoto() == 5}">
             <h5 class="card-text">&#10032 &#10032 &#10032 &#10032 &#10032</h5>
             </c:if>
             </c:if>
@@ -168,10 +170,7 @@
            
             
             <c:if test="${utente != null}">
-            <c:if test="${utente.getType()==1}" >
-            <c:set var = "a" scope = "session" value = "${nomeCorso}"/>
-            <c:if test="${utente.segue(a)}">
-            
+            <c:if test="${utente.getType().equals("atleta")}" >
                 <h4 class="card-title">Il tuo feedback sul corso</h4>
                 
                 
@@ -182,26 +181,22 @@
                 <br />
                 <input name="mail" type="text" value = "${utente.getMail()}" readonly>
                 <br />
-                <input name="nomeCorso" type="text" value = "${nomeCorso}" readonly>
-                <br />
                 <input type="submit" value="Invia feedback"/>
             </form>
-            
             </c:if>
-            </c:if>
-            
             </c:if>
             
             </div>
         </div>
     </div>
-    </div>
+</div>
+</div>
     <!-- /.row -->
 
-    </div>
+    
     <!-- /.row -->
 
-  </div>
+ 
   <!-- /.container -->
 
 <!-- Footer -->

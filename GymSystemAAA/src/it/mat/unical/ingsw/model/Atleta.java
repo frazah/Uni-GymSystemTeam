@@ -3,6 +3,19 @@ package it.mat.unical.ingsw.model;
 public class Atleta extends Utente{
 	private Tessera tessera;
 	
+	public int getType()
+	{
+		return 1;
+	}
+
+	public boolean segue(String s)
+	{
+		for(Corso c : tessera.getCorsi())
+			if( c.getNome().equals(s) )
+				return true;
+		
+		return false;
+	}
 	
 	public Atleta() {
 		super();

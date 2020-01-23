@@ -16,6 +16,11 @@ public class Utente {
 		this.mail = mail;
 		this.password = password;
 	}
+	
+	public int getType()
+	{
+		return 0;
+	}
 
 	public Utente() {
 		// TODO Auto-generated constructor stub

@@ -12,6 +12,12 @@ public class Admin extends Utente{
 		richieste = new ArrayList<String>();
 	}
 
+	public int getType()
+	{
+		return 3;
+	}
+
+	
 	public ArrayList<String> getRichieste() {
 		return richieste;
 	}

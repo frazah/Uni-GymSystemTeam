@@ -16,17 +16,25 @@ import it.mat.unical.ingsw.model.Trainer;
 import it.mat.unical.persistence.DBManager;
 
 /**
- * Servlet implementation class ReindirizzaCorso
+ * Servlet implementation class InviaFeedback
  */
-@WebServlet("/ReindirizzaCorso")
-public class ReindirizzaCorso extends HttpServlet {
+@WebServlet("/InviaFeedback")
+public class InviaFeedback extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public InviaFeedback() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
 		
 		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
 		ArrayList<Trainer> trainer = DBManager.getInstance().getTrainer();
@@ -36,7 +44,7 @@ public class ReindirizzaCorso extends HttpServlet {
 		request.getSession().setAttribute("trainer", trainer);
 		
 		
-		String nomeCorso = request.getParameter("corso");
+		String nomeCorso = request.getParameter("nomeCorso");
 		System.out.println(nomeCorso);
 		Corso corso = null;
 		
@@ -47,11 +55,11 @@ public class ReindirizzaCorso extends HttpServlet {
 		}
 		
 		
+		
 		request.setAttribute("nomeCorso", corso.getNome());
 		request.setAttribute("descrizione", corso.getDescrizione());
 		request.setAttribute("linkVideo", corso.getLinkVideo());
-		request.setAttribute("feedback", corso.getFeedback());
-		request.setAttribute("mediaFeedback", corso.getMediaFeedback());
+		
 		
 		
 		
@@ -71,17 +79,31 @@ public class ReindirizzaCorso extends HttpServlet {
 		}
 		
 		
+		String testo = request.getParameter("testo");
+		String voto = request.getParameter("voto");
+		String autore = request.getParameter("mail");
+	
+		int v = Integer.parseInt(voto);
+		//String corso = request.getParameter("nomeCorso");
+		
+		for(Corso c : DBManager.getInstance().getCorsi())
+		{
+			if(c.getNome().equals(nomeCorso))
+				c.aggiungiFeedback(new Feedback(v,testo,autore));
+		}
+		
+		
+		request.setAttribute("feedback", corso.getFeedback());
+		request.setAttribute("mediaFeedback", corso.getMediaFeedback());
+		
+		
+		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("corso.jsp");
 		rd.forward(request, response);
 		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		
 		
 	}
 

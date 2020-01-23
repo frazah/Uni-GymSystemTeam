@@ -10,7 +10,8 @@ public class Corso {
 	private String giorni[];
 	private String descrizione;
 	private String linkVideo;
-	//Mettere feedback
+	private ArrayList<Feedback> feedback;
+	
 	
 	
 	public Corso(String nome, Trainer trainer, ArrayList<Atleta> iscritti, String fasciaOraria, String [] giorni,
@@ -23,9 +24,72 @@ public class Corso {
 		this.setGiorni(giorni);
 		this.descrizione = descrizione;
 		this.linkVideo = linkVideo;
-		
+		feedback = new ArrayList<Feedback>();
 	}
 
+	
+	public String getUltimaRecensione()
+	{
+		return feedback.get(feedback.size()-1).getTesto();
+	}
+	
+	public int getUltimoVoto()
+	{
+		return feedback.get(feedback.size()-1).getVoto();
+	}
+	
+	
+	public ArrayList<Feedback> getFeedback() {
+		return feedback;
+	}
+
+
+
+	public void setFeedback(ArrayList<Feedback> feedback) {
+		this.feedback = feedback;
+	}
+
+
+
+	public int getMediaFeedback()
+	{
+		
+		if(feedback.isEmpty())
+			return 1;
+		else
+		{
+			int m = 0;
+			for(Feedback f : feedback)
+			{
+				m+=f.getVoto();
+			}
+			m/=feedback.size();
+			
+			return m;
+		}
+	
+	}
+	
+	public void aggiungiFeedback(Feedback f)
+	{
+		boolean presente = false;
+		for(Feedback feed : feedback)
+		{
+			if(feed.getAutore().equals(f.getAutore()))
+			{
+				presente =true;
+				feed.setTesto(f.getTesto());
+				feed.setVoto(f.getVoto());
+			}
+			
+		}
+		
+		
+
+		if(!presente)
+		feedback.add(f);
+	}
+	
 	
 	
 	

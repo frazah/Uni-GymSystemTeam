@@ -9,6 +9,12 @@ public class Trainer extends Utente{
 		super();
 	}
 	
+	public int getType()
+	{
+		return 2;
+	}
+
+	
 	public Trainer(String nome, String cognome, String mail, String password)
 	{
 		super(nome,cognome,mail,password);
