@@ -55,12 +55,20 @@ public class DBManager {
 		admin = new Admin();
 		corsi = new ArrayList<Corso>();
 		trainer = new ArrayList<Trainer>();
-		creaTrainerDefault();
 		creaCorsiDefault();
+		creaTrainerDefault();
 		creaRegistratiDefault();
+		assegnamentoTrainerCorsi();
 		
 	}
 	
+	private void assegnamentoTrainerCorsi() {
+		corsi.get(0).setTrainer(trainer.get(0)); //Pugilato --> Tyson
+		trainer.get(0).setCorso(corsi.get(0)); //Tyson --> Pugilato
+		
+	}
+
+
 	private void creaRegistratiDefault() {
 		Atleta a1 = new Atleta("Marco","Grande","marcogrande1998@gmail.com","slaythespire");
 		Atleta a2 = new Atleta("Andrea","De Seta","squame4@gmail.com","h22rew");
@@ -82,19 +90,22 @@ public class DBManager {
 	}
 
 	private void creaCorsiDefault() {
-		Corso c1 = new Corso("Pugilato",trainer.get(0),null,null,null,"corsoPugilato.jsp");
+		Corso c1 = new Corso("Pugilato", null, null, "1", null, null, null, "corsoPugilato.jsp");
+		Corso c2 = new Corso("UFC", null, null, "2", null, null, null, "corsoPugilato.jsp");
 		corsi.add(c1);
+		corsi.add(c2);
 	}
 	
 	private void creaTrainerDefault()
 	{
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
-		t1.setCorsi(corsi);
-		//commento
+		Trainer t2 = new Trainer("Connor","McGreggor","ufc@hothotmail.com","notorius");
+
 		/*Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");*/
 		trainer.add(t1);
+		trainer.add(t2);
 	}
 
 	public void svuotaRegistrati()
@@ -125,30 +136,14 @@ public class DBManager {
 		if (username.equals("admin@admin.com") && password.equals("admin"))
 			return admin;
 		
-		if (username.equals("tyson@hothotmail.com") && password.equals("onepunchman"))
-			return trainer.get(0);
-		
 		for (int i = 0; i<registrati.size();i++)
-		{
-			if (username.equals(registrati.get(i).getMail()) && password.equals(registrati.get(i).getPassword())) {
-				/*Atleta u = new Atleta();
-				u.setMail("atleta@atleta");
-				u.setPassword("atleta");
-				u.setNome("Atleta");
-				u.setCognome("Atletoso");
-				ArrayList<Corso> corsi = new ArrayList<Corso>();
-				Corso corso1 = new Corso ("Pugilato",null,null,null,null, "corsoPugilato.jsp");
-				Corso corso2 = new Corso ("Kickboxing",null,null,null,null, null);
-				Corso corso3 = new Corso ("Karate",null,null,null,null, null);
-				corsi.add(corso1);
-				corsi.add(corso2);
-				corsi.add(corso3);
-				Tessera tessera = new Tessera("11/11/2011","11/11/2012","1",corsi);
-				u.setTessera(tessera);
-				u.setFotoProfilo("immagini/trainerMikeTyson.jpeg");*/
+			if (username.equals(registrati.get(i).getMail()) && password.equals(registrati.get(i).getPassword()))
 				return registrati.get(i);
-			}
-		}
+
+		
+		for (int i = 0; i<trainer.size();i++)
+			if (username.equals(trainer.get(i).getMail()) && password.equals(trainer.get(i).getPassword()))
+				return trainer.get(i);
 
 		return null;
 	}

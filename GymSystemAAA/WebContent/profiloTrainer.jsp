@@ -107,19 +107,19 @@
       		<h3>Il tuo corso:</h3>
       		
       <div class="my-3">
-      <c:if test="${utente.getCorsi().isEmpty()}">
+      <c:if test="${utente.getCorso() == null}">
     		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'richiestaNuovoCorso.jsp';">Richiedi corso</button>
 		</c:if>
       </div>
       
       
-      	<c:if test="${!utente.getCorsi().isEmpty()}">
+      	<c:if test="${utente.getCorso() != null}">
 		
       		
       			<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 50px">
 		        <thead>
 		        <tr>
-		            <th scope="col"><a href=${utente.getCorsi().get(0).getUrl()} style="color: yellow"> ${utente.getCorsi().get(0).getNome()}</th>
+		            <th scope="col"><a href=${utente.getCorso().getUrl()} style="color: yellow"> ${utente.getCorso().getNome()}</th>
 		        </tr>
 		        
 		        
