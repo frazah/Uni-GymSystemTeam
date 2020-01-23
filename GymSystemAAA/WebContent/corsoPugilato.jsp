@@ -68,7 +68,7 @@
 
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">CORSO
-      <small>PUGILATO</small>
+      <small>Pugilato</small>
     </h1>
 
     <ol class="breadcrumb">
@@ -97,39 +97,104 @@
 
     <!-- Team Members -->
     <div class="py-3">
-      <h2>Il Trainer</h2>
-    </div>
+    <h2>Il Trainer</h2>
+</div>
 
-    <div class="row">
-      <div class="col-md-6 mb-4">
+<div class="row">
+    <div class="col-md-6 mb-4">
         <div class="card h-100 text-center">
-          <img class="card-img-top" src="immagini/trainerMikeTyson.jpeg" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Mike Tyson</h4>
-            <h6 class="card-subtitle mb-2 text-muted">Trainer</h6>
-            <p class="card-text">Il nostro Trainer responsabile del corso di pugilato Ã¨ il pluricampione del mondo Mike Tyson, The baddest man on the planet.</p>
-          </div>
-          <div class="card-footer">
-            <a href="mailto:miketyson@punchman.com">miketyson@punchman.com</a>
-          </div>
+            <img class="card-img-top" src="immagini/trainerMikeTyson.jpeg" alt="">
+            <div class="card-body">
+                <h4 class="card-title">Mike Tyson</h4>
+                <h6 class="card-subtitle mb-2 text-muted">Trainer</h6>
+                <p class="card-text">Il nostro Trainer responsabile del corso di pugilato è il pluricampione del mondo Mike Tyson, The baddest man on the planet.</p>
+            </div>
+            <div class="card-footer">
+                <a href="mailto:miketyson@punchman.com">miketyson@punchman.com</a>
+            </div>
         </div>
-      </div>
-      <div class="col-md-6 mb-4">
-        <div class="card h-100 text-center">
-          <img class="card-img-top" src="http://placehold.it/750x450" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Feedback corso</h4>
-            <p class="card-text">FEEDBACK.</p>
-          </div>
-        </div>
-      </div>
     </div>
+    <div class="col-md-6 mb-4">
+        <div class="card h-100 text-center">
+            <div class="card-body">
+            
+           
+            <div class="py-5">
+            <h4 class="card-title">La media dei feedback</h4>
+            <c:if test="${utente.getTessera().getCorsi().get(0).getMediaFeedback() == 1}">
+            <h5 class="card-text">&#10032</h5>
+            </c:if>
+            <c:if test="${utente.getTessera().getCorsi().get(0).getMediaFeedback() == 2}">
+            <h5 class="card-text">&#10032 &#10032</h5>
+            </c:if>
+            <c:if test="${utente.getTessera().getCorsi().get(0).getMediaFeedback() == 3}">
+            <h5 class="card-text">&#10032 &#10032 &#10032</h5>
+            </c:if>
+            <c:if test="${utente.getTessera().getCorsi().get(0).getMediaFeedback() == 4}">
+            <h5 class="card-text">&#10032 &#10032 &#10032 &#10032</h5>
+            </c:if>
+            <c:if test="${utente.getTessera().getCorsi().get(0).getMediaFeedback() == 5}">
+            <h5 class="card-text">&#10032 &#10032 &#10032 &#10032 &#10032</h5>
+            </c:if>
+            </div> 
+            
+            <div class="py-5">
+            
+            <h4>Ultimo feedback ricevuto :</h4>
+            
+            <c:if test= "${utente.getTessera().getCorsi().get(0).getFeedback().isEmpty() }">
+            <h5>Nessun feedback</h5>
+            </c:if>
+            <c:if test= "${!utente.getTessera().getCorsi().get(0).getFeedback().isEmpty() }">
+            	<h5>${utente.getTessera().getCorsi().get(0).getUltimaRecensione()}</h5>
+            <c:if test="${utente.getTessera().getCorsi().get(0).getUltimoVoto() == 1}">
+            <h5 class="card-text">&#10032</h5>
+            </c:if>
+            <c:if test="${utente.getTessera().getCorsi().get(0).getUltimoVoto() == 2}">
+            <h5 class="card-text">&#10032 &#10032</h5>
+            </c:if>
+            <c:if test="${utente.getTessera().getCorsi().get(0).getUltimoVoto() == 3}">
+            <h5 class="card-text">&#10032 &#10032 &#10032</h5>
+            </c:if>
+            <c:if test="${utente.getTessera().getCorsi().get(0).getUltimoVoto() == 4}">
+            <h5 class="card-text">&#10032 &#10032 &#10032 &#10032</h5>
+            </c:if>
+            <c:if test="${utente.getTessera().getCorsi().get(0).getUltimoVoto() == 5}">
+            <h5 class="card-text">&#10032 &#10032 &#10032 &#10032 &#10032</h5>
+            </c:if>
+            </c:if>
+            
+            
+            </div>
+            
+           
+            
+            <c:if test="${utente != null}">
+                <h4 class="card-title">Il tuo feedback sul corso</h4>
+                
+                
+            <form action="InviaFeedback" method="post">
+                <textarea cols="20" name="testo" rows="5" placeholder="Scrivi qui la tua esperienza" required></textarea>
+                <br /> Voto &#10032
+                <input max="5" min="1" name="voto" step="1" type="number" value="3" />
+                <br />
+                <input name="mail" type="text" value = "${utente.getMail()}" readonly>
+                <br />
+                <input type="submit" value="Invia feedback"/>
+            </form>
+            </c:if>
+            
+            </div>
+        </div>
+    </div>
+</div>
+</div>
     <!-- /.row -->
 
-    </div>
+    
     <!-- /.row -->
 
-  </div>
+ 
   <!-- /.container -->
 
 <!-- Footer -->
