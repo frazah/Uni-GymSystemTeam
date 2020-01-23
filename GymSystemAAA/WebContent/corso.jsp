@@ -68,7 +68,7 @@
 
     <!-- Page Heading/Breadcrumbs -->
     <h1 class="mt-4 mb-3">CORSO
-      <small>PUGILATO</small>
+      <small>${nomeCorso}</small>
     </h1>
 
     <ol class="breadcrumb">
@@ -78,19 +78,18 @@
       <li class="breadcrumb-item">
         <a href="corsi.html">Corsi</a>
       </li>
-      <li class="breadcrumb-item active">Pugilato</li>
+      <li class="breadcrumb-item active">${nomeCorso}</li>
     </ol>
 
     <!-- Intro Content -->
     <div class="row">
       <div class="col-lg-6">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/3gHcQe8Q56s?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="${linkVideo}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="col-lg-6">
         <h2>Dettagli corso</h2>
-        <p>Anni fa, i pugili spinti dai film di Rocky o di Bruce Lee, si dilettavano a fine allenamento in qualche trazione alla sbarra oppure in qualche serie di piegamenti sulle braccia. Si pensava che questi esercizi a corpo libero, fossero una manna per un pugile e che l'allenamento pesi non era da prendere in considerazione perchÃ© rendeva goffi ed impacciati come un body builder.</p>
-        <p>ADD</p>
-        <p>ADD</p>
+        <p>${descrizione}</p>
+        
       </div>
     </div>
     <!-- /.row -->
@@ -103,14 +102,13 @@
     <div class="row">
       <div class="col-md-6 mb-4">
         <div class="card h-100 text-center">
-          <img class="card-img-top" src="immagini/trainerMikeTyson.jpeg" alt="">
+          <img class="card-img-top" src="${fotoTrainer}" alt="">
           <div class="card-body">
-            <h4 class="card-title">Mike Tyson</h4>
+            <h4 class="card-title">${nomeTrainer} ${cognomeTrainer}</h4>
             <h6 class="card-subtitle mb-2 text-muted">Trainer</h6>
-            <p class="card-text">Il nostro Trainer responsabile del corso di pugilato Ã¨ il pluricampione del mondo Mike Tyson, The baddest man on the planet.</p>
           </div>
           <div class="card-footer">
-            <a href="mailto:miketyson@punchman.com">miketyson@punchman.com</a>
+            <a href="mailto:${mailTrainer}">${mailTrainer}</a>
           </div>
         </div>
       </div>

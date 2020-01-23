@@ -138,7 +138,8 @@
     				<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 100px">
 						<thead>
 							<tr>
-								<th scope="col"><a href=${corso.getUrl()} style="color: yellow"> ${corso.getNome()}</th>
+								<th  scope="col">
+								<a href="ReindirizzaCorso?corso=${corso.getNome()}">${corso.getNome()}</a>								</th>
 		    				</tr>
 						</thead>
  					</table>

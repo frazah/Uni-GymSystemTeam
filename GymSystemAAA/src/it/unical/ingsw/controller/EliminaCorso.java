@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 
+import it.mat.unical.ingsw.model.Atleta;
 import it.mat.unical.ingsw.model.Corso;
 import it.mat.unical.ingsw.model.Trainer;
 import it.mat.unical.ingsw.model.Utente;
@@ -29,7 +30,9 @@ public class EliminaCorso extends HttpServlet {
 		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
 		ArrayList<Trainer> trainer = DBManager.getInstance().getTrainer();
 		Trainer trainerAssegnato;
-	
+		ArrayList<Atleta> iscritti = DBManager.getInstance().getRegistrati();
+		
+		Corso corsoDaEliminare = null;
 	
 		request.getSession().setAttribute("corsi", corsi);
 		request.getSession().setAttribute("trainer", trainer);
@@ -48,9 +51,28 @@ public class EliminaCorso extends HttpServlet {
 				}
 					
 				
-				
+				corsoDaEliminare = corsi.get(i);
 				corsi.remove(i);
 			}
+		
+		for(Atleta a : iscritti)
+		{
+			if(a.getTessera()!=null && corsoDaEliminare != null)
+			{
+				a.getTessera().getCorsi().remove(corsoDaEliminare);
+				/*
+				for(int i = 0; i < a.getTessera().getCorsi().size(); i++)
+				{
+					if(a.getTessera().getCorsi().get(i) == corsoDaEliminare)
+					a.getTessera().getCorsi().remove(i);
+				
+				}
+				*/
+			}
+		}
+		
+		
+		
 				
 		
 		

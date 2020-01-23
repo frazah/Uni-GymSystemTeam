@@ -83,7 +83,7 @@
 			<thead>
 				<tr>
 					<td scope="col">
-					<a href=${corso.getUrl()} style="color: yellow"> ${corso.getNome()}</a>
+					<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
 					<c:if test="${corso.getTrainer() != null}">
 						<div>
 			             	<a style = "color: white">Trainer associato: ${corso.getTrainer().getNome()} ${corso.getTrainer().getCognome()}</a>

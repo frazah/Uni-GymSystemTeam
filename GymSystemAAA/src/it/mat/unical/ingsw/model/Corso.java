@@ -10,12 +10,11 @@ public class Corso {
 	private String giorni[];
 	private String descrizione;
 	private String linkVideo;
-	private String url;
 	//Mettere feedback
 	
 	
 	public Corso(String nome, Trainer trainer, ArrayList<Atleta> iscritti, String fasciaOraria, String [] giorni,
-			String descrizione, String linkVideo, String url) {
+			String descrizione, String linkVideo) {
 		super();
 		this.nome = nome;
 		this.trainer = trainer;
@@ -24,7 +23,7 @@ public class Corso {
 		this.setGiorni(giorni);
 		this.descrizione = descrizione;
 		this.linkVideo = linkVideo;
-		this.url = url;
+		
 	}
 
 	
@@ -47,15 +46,7 @@ public class Corso {
 
 
 
-	public String getUrl() {
-		return url;
-	}
-
-
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
+	
 
 
 

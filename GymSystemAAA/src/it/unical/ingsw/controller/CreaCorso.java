@@ -41,7 +41,7 @@ public class CreaCorso extends HttpServlet {
 		String giorni [] = request.getParameterValues("giorno");
 		String fasciaOraria = request.getParameter("fasciaOra");
 		String trainerI = request.getParameter("trainer");
-		Corso corsoCreato = new Corso(nomeCorso, null, null, fasciaOraria, giorni, descCorso, videoCorso, null);
+		Corso corsoCreato = new Corso(nomeCorso, null, null, fasciaOraria, giorni, descCorso, videoCorso);
 		
 		for (int i = 0; i < corsi.size(); i++) {
 			
@@ -82,7 +82,7 @@ public class CreaCorso extends HttpServlet {
 		}
 		else {
 			Utente utente = DBManager.getInstance().login("admin@admin.com", "admin");
-			request.setAttribute("nomeErrore","Corso già presente, è pregato di scegliere un altro nome.");
+			request.setAttribute("nomeErrore","Corso giï¿½ presente, ï¿½ pregato di scegliere un altro nome.");
 			RequestDispatcher rd = request.getRequestDispatcher("creaCorso.jsp");
 			rd.forward(request, response);
 		}

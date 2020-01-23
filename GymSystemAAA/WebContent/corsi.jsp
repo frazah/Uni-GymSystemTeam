@@ -87,7 +87,7 @@
         <tbody>
         <tr>
             <th scope="row">8.00-10.00</th>
-            <td> <a href="corsoPugilato.jsp" style="color: yellow"> Mark </a></td>
+            <td> <a href="corso.jsp" style="color: yellow"> Mark </a></td>
             <td>Otto</td>
             <td>@mdo</td>
             <td>Mark</td>

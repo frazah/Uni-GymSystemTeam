@@ -34,7 +34,10 @@ public class DBManager {
 	
 		
 
-	
+	public ArrayList<Atleta> getRegistrati()
+	{
+		return registrati;
+	}
 
 
 
@@ -78,8 +81,8 @@ public class DBManager {
 		ArrayList<Corso> corsiA1 = new ArrayList<Corso>();
 		
 		corsiA1.add(corsi.get(0));
-		corsiA1.add(corsi.get(0));
-		corsiA1.add(corsi.get(0));
+		
+		
 		a1.creaTessera();
 		a1.getTessera().setCorsi(corsiA1);
 		
@@ -90,8 +93,8 @@ public class DBManager {
 	}
 
 	private void creaCorsiDefault() {
-		Corso c1 = new Corso("Pugilato", null, null, "1", null, null, null, "corsoPugilato.jsp");
-		Corso c2 = new Corso("UFC", null, null, "2", null, null, null, "corsoPugilato.jsp");
+		Corso c1 = new Corso("Pugilato", null, null, "1", null, "Corso Pugilato OwO", "https://www.youtube.com/embed/3gHcQe8Q56s?autoplay=1");
+		Corso c2 = new Corso("UFC", null, null, "2", null, null, null);
 		corsi.add(c1);
 		corsi.add(c2);
 	}
@@ -99,6 +102,7 @@ public class DBManager {
 	private void creaTrainerDefault()
 	{
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
+		t1.setFotoProfilo("immagini/trainerMikeTyson.jpeg");
 		Trainer t2 = new Trainer("Connor","McGreggor","ufc@hothotmail.com","notorius");
 
 		/*Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
