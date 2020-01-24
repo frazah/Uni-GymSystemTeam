@@ -21,14 +21,6 @@ body {
   margin-bottom: 30px;
 }
 
-html {
-  background: lightgray;
-}
-
-body {
-  font-family: 'Source Sans Pro', sans-serif;
-}
-
 .unstyled {
   margin: 0;
   padding: 0;
