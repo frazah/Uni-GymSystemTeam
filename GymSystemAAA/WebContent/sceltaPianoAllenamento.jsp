@@ -20,7 +20,8 @@
 
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>	
+	
 </head>
 
 <body>
@@ -86,6 +87,8 @@
 			Consectetur adipiscing elit, sed do eiusmod tempor incididunt
   		</div>
       	
+      	<div id="showError" class="col-md-6" style="color: red"><h5>Seleziona esattamente 3 corsi!</h5></div>
+      	
       	<form method="POST" action="RegistraPianoAllenamento">
       		<div class="my-5 col-md-12"> 
 			    <div class="row">
@@ -131,12 +134,20 @@
   
   <script>
   $('#submit').prop("disabled", true);
+  $('#showError').hide();
   $('input:checkbox').click(function() {
    if ($(this).is(':checked')) {
    $('#submit').prop("disabled", false);
-   } else {
-   if ($('.checks').filter(':checked').length < 1){
-   $('#submit').attr('disabled',true);}
+   }
+   
+   if ($('.checks').filter(':checked').length != 3) {
+	   $('#showError').show();
+	   $('#submit').attr('disabled',true);
+   }
+   
+   if ($('.checks').filter(':checked').length == 3) {
+	   $('#showError').hide();
+	   $('#submit').attr('disabled',false);
    }
   });
   </script>
