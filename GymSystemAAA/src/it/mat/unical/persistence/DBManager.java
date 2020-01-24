@@ -56,15 +56,7 @@ public class DBManager {
 		Atleta a2 = new Atleta("Andrea","De Seta","squame4@gmail.com","h22rew");
 		Atleta a3 = new Atleta("Francesco","Corigliano","francesco.fbhz@gmail.com","pagliusi");
 		Atleta a4 = new Atleta("Antonino","Scarpelli","antonino@gmail.com","royaldoppioperry");
-		
-		ArrayList<Corso> corsiA1 = new ArrayList<Corso>();
-		
-		corsiA1.add(corsi.get(0));
-		corsiA1.add(corsi.get(0));
-		corsiA1.add(corsi.get(0));
-		a1.creaTessera();
-		a1.getTessera().setCorsi(corsiA1);
-		
+
 		registrati.add(a1);
 		registrati.add(a2);
 		registrati.add(a3);

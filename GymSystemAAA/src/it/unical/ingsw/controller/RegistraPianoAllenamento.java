@@ -69,7 +69,14 @@ public class RegistraPianoAllenamento extends HttpServlet {
 		    }
 		    
 		    LocalDateTime today =  LocalDateTime.now();
-		    LocalDateTime scadenza = today.plusYears(1);
+		    LocalDateTime scadenza = LocalDateTime.now();
+		    if (utente.getTipoTessera().equals("mensile"))
+		    	scadenza = today.plusMonths(1);
+		    else if (utente.getTipoTessera().equals("semestrale"))
+		    	scadenza = today.plusMonths(6);
+		    else if (utente.getTipoTessera().equals("annuale"))
+		    	scadenza = today.plusYears(1);
+		    //scadenza = today.minusDays(10);
 		    Tessera tessera = new Tessera(today, scadenza, utente.getCognome(), corsiInserire);
 		    utente.setTessera(tessera);
 		    

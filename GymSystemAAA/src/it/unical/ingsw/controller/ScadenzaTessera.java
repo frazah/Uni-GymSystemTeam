@@ -1,7 +1,7 @@
 package it.unical.ingsw.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,32 +11,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.mat.unical.ingsw.model.Atleta;
-import it.mat.unical.ingsw.model.Corso;
-import it.mat.unical.persistence.DBManager;
 
-
-@WebServlet("/ScegliAbbonamento")
-public class ScegliAbbonamento extends HttpServlet {
-	
-	DBManager db = DBManager.getInstance();
-	ArrayList<Corso> corsi = db.getCorsi();
+/**
+ * Servlet implementation class ScadenzaTessera
+ */
+@WebServlet("/ScadenzaTessera")
+public class ScadenzaTessera extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		Atleta atleta = (Atleta) request.getSession().getAttribute("utente"); 
+		LocalDateTime today =  LocalDateTime.now();
+		if (atleta.getTessera() != null && today.isAfter(atleta.getTessera().getDataDiScadenza()))
+		{
+			atleta.setTessera(null);
+		}
+		RequestDispatcher rd = request.getRequestDispatcher("profilo.jsp");
+		rd.forward(request, response);
 	}
 
-	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("arraylist", corsi);
-
-		String scelta = request.getParameter("scelta");
-		//System.out.println(scelta);
-		Atleta utente = (Atleta) request.getSession().getAttribute("utente");
-		utente.setTipoTessera(scelta);
-		RequestDispatcher rd = request.getRequestDispatcher("sceltaPianoAllenamento.jsp");
-		rd.forward(request, response);
+		
 	}
 
 }

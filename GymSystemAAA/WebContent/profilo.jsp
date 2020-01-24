@@ -45,7 +45,7 @@
 			</c:if>
 			<c:if test="${utente != null}">
 				<c:if test="${utente.getClass().getSimpleName().equals('Atleta')}">
-    			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
+    			<a class="nav-link" href="ScadenzaTessera">Il mio profilo</a>
     			</c:if>
     			<c:if test="${utente.getClass().getSimpleName().equals('Trainer')}">
     			<a class="nav-link" href="profiloTrainer.jsp">Il mio profilo</a>
@@ -107,7 +107,8 @@
       <div class="col-md-4">
       	<h3>Il mio abbonamento</h3>
 
-      	<c:if test="${utente.getTessera() == null}">
+      	<c:if test="${utente.getTessera() == null }">
+
     		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'pricing.jsp';">Attiva abbonamento</button>
 
 		</c:if>
@@ -116,10 +117,10 @@
         	<a>${utente.getTessera().getID()}</a>
         	<br>
         	<b>Data di iscrizione: </b>
-        	<a>${utente.getTessera().getDataDiIscrizione()}</a>
+        	<a>${utente.getTessera().getIscrizione()}</a>
         	<br>
         	<b>Data di scadenza: </b>
-        	<a>${utente.getTessera().getDataDiScadenza()}</a>
+        	<a>${utente.getTessera().getScadenza()}</a>
         	<br>
 		</c:if>
 		
