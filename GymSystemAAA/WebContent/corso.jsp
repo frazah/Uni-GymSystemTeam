@@ -84,7 +84,7 @@
     <!-- Intro Content -->
     <div class="row">
       <div class="col-lg-6">
-        <iframe width="560" height="315" src="${linkVideo}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="${linkVideo}" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="col-lg-6">
         <h2>Dettagli corso</h2>
