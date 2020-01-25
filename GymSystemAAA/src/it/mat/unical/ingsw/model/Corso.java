@@ -166,6 +166,17 @@ public class Corso {
 		this.giorni = giorni;
 	}
 	
-	
+	public Boolean contieneGiorno(String s)
+	{
+		for (int i = 0;i < giorni.length; i++)
+		{
+			if (s.contentEquals(giorni[i]))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 	
 }

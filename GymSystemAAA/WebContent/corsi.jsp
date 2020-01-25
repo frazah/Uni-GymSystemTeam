@@ -37,7 +37,7 @@
             <a class="nav-link" href="contact.jsp">Chi siamo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="corsi.jsp">Corsi</a>
+            <a class="nav-link" href="SchedaOrari">Corsi</a>
           </li>
           <li class="nav-item">
           	<c:if test="${utente == null}">
@@ -45,7 +45,7 @@
 			</c:if>
 			<c:if test="${utente != null}">
 				<c:if test="${utente.getClass().getSimpleName().equals('Atleta')}">
-    			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
+    			<a class="nav-link" href="ScadenzaTessera">Il mio profilo</a>
     			</c:if>
     			<c:if test="${utente.getClass().getSimpleName().equals('Trainer')}">
     			<a class="nav-link" href="profiloTrainer.jsp">Il mio profilo</a>
@@ -64,6 +64,7 @@
     </div>
   </nav>
 
+
 <div class="my-5 text-center">
     <b>
         Clicca sul nome del corso per visualizzarne la pagina
@@ -76,59 +77,242 @@
         <thead>
         <tr>
             <th scope="col">Orari</th>
-            <th scope="col">LunedÃ¬</th>
-            <th scope="col">MartedÃ¬</th>
-            <th scope="col">MercoledÃ¬</th>
-            <th scope="col">GiovedÃ¬</th>
-            <th scope="col">VenerdÃ¬</th>
+            <th scope="col">Lunedi'</th>
+            <th scope="col">Martedi'</th>
+            <th scope="col">Mercoledi'</th>
+            <th scope="col">Giovedi'</th>
+            <th scope="col">Venerdi'</th>
             <th scope="col">Sabato</th>
         </tr>
         </thead>
         <tbody>
         <tr>
             <th scope="row">8.00-10.00</th>
-            <td> <a href="corso.jsp" style="color: yellow"> Mark </a></td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('1') && corso.contieneGiorno('1')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('1') && corso.contieneGiorno('2')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('1') && corso.contieneGiorno('3')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('1') && corso.contieneGiorno('4')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('1') && corso.contieneGiorno('5')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('1') && corso.contieneGiorno('6')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+            
+            
         </tr>
         <tr>
             <th scope="row">10.00-12.00</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('2') && corso.contieneGiorno('1')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('2') && corso.contieneGiorno('2')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('2') && corso.contieneGiorno('3')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('2') && corso.contieneGiorno('4')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('2') && corso.contieneGiorno('5')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('2') && corso.contieneGiorno('6')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
         </tr>
         <tr>
             <th scope="row">14.00-16.00</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('3') && corso.contieneGiorno('1')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('3') && corso.contieneGiorno('2')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('3') && corso.contieneGiorno('3')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('3') && corso.contieneGiorno('4')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('3') && corso.contieneGiorno('5')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('3') && corso.contieneGiorno('6')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
         </tr>
         <tr>
             <th scope="row">16.00-18.00</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('4') && corso.contieneGiorno('1')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('4') && corso.contieneGiorno('2')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('4') && corso.contieneGiorno('3')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('4') && corso.contieneGiorno('4')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('4') && corso.contieneGiorno('5')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('4') && corso.contieneGiorno('6')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
         </tr>
         <tr>
             <th scope="row">18.00-20.00</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('5') && corso.contieneGiorno('1')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('5') && corso.contieneGiorno('2')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('5') && corso.contieneGiorno('3')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('5') && corso.contieneGiorno('4')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('5') && corso.contieneGiorno('5')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
+	            <td>
+	            <c:forEach var = "corso" items = "${corsi}">
+	            	<c:if test = "${corso.getFasciaOraria().equals('5') && corso.contieneGiorno('6')}">
+	            		<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+	            			</c:if>
+	            				</c:forEach>
+	            					</td>
         </tr>
         </tbody>
     </table>

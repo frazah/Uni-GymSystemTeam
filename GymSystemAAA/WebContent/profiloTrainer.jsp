@@ -37,7 +37,7 @@
             <a class="nav-link" href="contact.jsp">Chi siamo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="corsi.jsp">Corsi</a>
+            <a class="nav-link" href="SchedaOrari">Corsi</a>
           </li>
           <li class="nav-item">
           	<c:if test="${utente == null}">
@@ -45,7 +45,7 @@
 			</c:if>
 			<c:if test="${utente != null}">
 				<c:if test="${utente.getClass().getSimpleName().equals('Atleta')}">
-    			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
+    			<a class="nav-link" href="ScadenzaTessera">Il mio profilo</a>
     			</c:if>
     			<c:if test="${utente.getClass().getSimpleName().equals('Trainer')}">
     			<a class="nav-link" href="profiloTrainer.jsp">Il mio profilo</a>
@@ -63,6 +63,8 @@
       </div>
     </div>
   </nav>
+
+  
   <!-- Page Content -->
   <div class="container">
 
@@ -119,7 +121,7 @@
       			<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 50px">
 		        <thead>
 		        <tr>
-		            <th scope="col"><a href=${utente.getCorso().getUrl()} style="color: yellow"> ${utente.getCorso().getNome()}</th>
+		            <th scope="col"><a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${utente.getCorso().getNome()}</th>
 		        </tr>
 		        
 		        

@@ -31,8 +31,6 @@ public class DBManager {
 		}
 		return instance;
 	}
-	
-		
 
 	public ArrayList<Atleta> getRegistrati()
 	{
@@ -45,14 +43,10 @@ public class DBManager {
 		return corsi;
 	}
 
-
-
 	public ArrayList<Trainer> getTrainer() {
 		return trainer;
 	}
-
-
-
+	
 	private DBManager() {
 		registrati = new ArrayList<Atleta>();
 		admin = new Admin();
@@ -77,15 +71,7 @@ public class DBManager {
 		Atleta a2 = new Atleta("Andrea","De Seta","squame4@gmail.com","h22rew");
 		Atleta a3 = new Atleta("Francesco","Corigliano","francesco.fbhz@gmail.com","pagliusi");
 		Atleta a4 = new Atleta("Antonino","Scarpelli","antonino@gmail.com","royaldoppioperry");
-		
-		ArrayList<Corso> corsiA1 = new ArrayList<Corso>();
-		
-		corsiA1.add(corsi.get(0));
-		
-		
-		a1.creaTessera();
-		a1.getTessera().setCorsi(corsiA1);
-		
+
 		registrati.add(a1);
 		registrati.add(a2);
 		registrati.add(a3);
@@ -93,10 +79,18 @@ public class DBManager {
 	}
 
 	private void creaCorsiDefault() {
-		Corso c1 = new Corso("Pugilato", null, null, "1", null, "Corso Pugilato OwO", "https://www.youtube.com/embed/3gHcQe8Q56s?autoplay=1");
-		Corso c2 = new Corso("UFC", null, null, "2", null, null, null);
+
+		String[] giorni1 = new String[]{"1", "2", "3"};
+		String[] giorni2 = new String[]{"1", "4", "3"};
+		String[] giorni3 = new String[]{"5", "2", "3"};
+		
+		Corso c1 = new Corso("Pugilato", null, null, "1", giorni1, "Corso Pugilato OwO", "https://www.youtube.com/embed/3gHcQe8Q56s?autoplay=1");
+		Corso c2 = new Corso("UFC", null, null, "2", giorni2, null, null);
+		Corso c3 = new Corso("Danza",null,null,"3",giorni3,null,null);
+
 		corsi.add(c1);
 		corsi.add(c2);
+		corsi.add(c3);
 	}
 	
 	private void creaTrainerDefault()
@@ -137,9 +131,11 @@ public class DBManager {
 	}
 	
 	public Utente login(String username, String password) {
+
 		if (username.equals("admin@admin.com") && password.equals("admin"))
 			return admin;
 		
+
 		for (int i = 0; i<registrati.size();i++)
 			if (username.equals(registrati.get(i).getMail()) && password.equals(registrati.get(i).getPassword()))
 				return registrati.get(i);

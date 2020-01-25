@@ -64,29 +64,82 @@
     </div>
   </nav>
 
+  <!-- Page Content -->
+  <div class="container">
 
-  <div class="my-5 text-center container" style="width: 500px; height: 500px">
-    <form method="POST" action="Login">
-      <div class="form-group col-xl-auto" >
-        <label for="exampleInputEmail1">Indirizzo email</label>
-        <input type="email" class="form-control" name="mail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Inserisci email">
-      </div>
-      <div class="form-group col-xl-auto" >
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
-      </div>
-      <div class="form-group col-xl-auto">
-        <button type="submit" class="btn btn-primary">Accedi</button>
-      </div>
-    </form>
-    <div>
-      <p><a href="registrazione.jsp">Non sei registrato? Clicca qui!</a></p>
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">Iscrizione
+      <small>Tessera</small>
+    </h1>
+
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">Homepage</a>
+      </li>
+      <li class="breadcrumb-item active">Abbonamento</li>
+    </ol>
+    
+    <div class = "my-4">
+    <h2>Ogni tipo di abbonamento ti permette di iscriverti a tre corsi che potrai scegliere in un secondo momento dal tuo profilo.</h2>
     </div>
-  </div>
 
+    <!-- Content Row -->
+    <form method="POST" action="ScegliAbbonamento">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h3 class="card-header">Mensile</h3>
+          <div class="card-body">
+            <div class="display-4">Eur. 19.99</div>
+          </div>
+          <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+              <input required name = "scelta" type = "radio" value = "mensile" class="btn btn-primary">Pacchetto 1 mese</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card card-outline-primary h-100">
+          <h3 class="card-header">Semestrale</h3>
+          <div class="card-body">
+            <div class="display-4">Eur. 89.99</div>
+          </div>
+          <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+			<input name = "scelta" type = "radio" value = "semestrale" class="btn btn-primary">Pacchetto 6 mesi</a>            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-4 mb-4">
+        <div class="card h-100">
+          <h3 class="card-header bg-primary text-white">Annuale</h3>
+          <div class="card-body">
+            <div class="display-4">Eur. 159.99</div>
+          </div>
+          <ul class="list-group list-group-flush">
+            
+            <li class="list-group-item">
+			<input name = "scelta" type = "radio" value = "annuale" class="btn btn-primary">Pacchetto 12 mesi!!!</a>            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <!-- /.row -->
+    
+    <div class = "my-5 mx-5 text-center">
+    	<button type="submit" href = "profilo.jsp" class="btn btn-primary">Paga ora</button>
+    </div>
+
+  </div>
+  </form>
+  <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="fixed-bottom py-5 bg-dark">
+   <footer class=" py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
     </div>

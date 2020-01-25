@@ -37,7 +37,7 @@
             <a class="nav-link" href="contact.jsp">Chi siamo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="corsi.jsp">Corsi</a>
+            <a class="nav-link" href="SchedaOrari">Corsi</a>
           </li>
           <li class="nav-item">
           	<c:if test="${utente == null}">
@@ -45,7 +45,7 @@
 			</c:if>
 			<c:if test="${utente != null}">
 				<c:if test="${utente.getClass().getSimpleName().equals('Atleta')}">
-    			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
+    			<a class="nav-link" href="ScadenzaTessera">Il mio profilo</a>
     			</c:if>
     			<c:if test="${utente.getClass().getSimpleName().equals('Trainer')}">
     			<a class="nav-link" href="profiloTrainer.jsp">Il mio profilo</a>
@@ -63,6 +63,7 @@
       </div>
     </div>
   </nav>
+
 
   <!-- Page Content -->
   <div class="container">
@@ -106,36 +107,41 @@
       
       <div class="col-md-4">
       	<h3>Il mio abbonamento</h3>
-      	<c:if test="${utente.getTessera() == null}">
-    		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Attiva abbonamento</button>
+
+      	<c:if test="${utente.getTessera() == null }">
+
+    		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'pricing.jsp';">Attiva abbonamento</button>
+
 		</c:if>
 		<c:if test="${utente.getTessera() != null}">
     		<b>ID: </b>
         	<a>${utente.getTessera().getID()}</a>
         	<br>
         	<b>Data di iscrizione: </b>
-        	<a>${utente.getTessera().getDataDiIscrizione()}</a>
+        	<a>${utente.getTessera().getIscrizione()}</a>
         	<br>
         	<b>Data di scadenza: </b>
-        	<a>${utente.getTessera().getDataDiScadenza()}</a>
+        	<a>${utente.getTessera().getScadenza()}</a>
         	<br>
 		</c:if>
 		
 		
+
 		<c:if test="${utente.getTessera() != null}">
 		<div class="my-3">
+
       		<h3>I corsi che segui:</h3>
       		<c:if test="${utente.getTessera().getCorsi().isEmpty()}">
       		<div class="my-4"> 
       			<br>
       			<a>Non segui alcun corso</a>
       			<br>
-      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Visualizza corsi disponibili</button>
+      			<!-- <button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Visualizza corsi disponibili</button>  -->
       		</div>
       		</c:if>
       		<c:if test="${!utente.getTessera().getCorsi().isEmpty()}">
-      			  <c:forEach items="${utente.getTessera().getCorsi()}" var="corso">
-    				<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 100px">
+      			 <c:forEach items="${utente.getTessera().getCorsi()}" var="corso">
+    				<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 50px">
 						<thead>
 							<tr>
 								<th  scope="col">
@@ -143,7 +149,7 @@
 		    				</tr>
 						</thead>
  					</table>
- 			</c:forEach>
+ 				</c:forEach>
       		</c:if>
       		</div>
       	</c:if>

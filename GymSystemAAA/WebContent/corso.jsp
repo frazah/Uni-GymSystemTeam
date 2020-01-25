@@ -37,7 +37,7 @@
             <a class="nav-link" href="contact.jsp">Chi siamo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="corsi.jsp">Corsi</a>
+            <a class="nav-link" href="SchedaOrari">Corsi</a>
           </li>
           <li class="nav-item">
           	<c:if test="${utente == null}">
@@ -45,7 +45,7 @@
 			</c:if>
 			<c:if test="${utente != null}">
 				<c:if test="${utente.getClass().getSimpleName().equals('Atleta')}">
-    			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
+    			<a class="nav-link" href="ScadenzaTessera">Il mio profilo</a>
     			</c:if>
     			<c:if test="${utente.getClass().getSimpleName().equals('Trainer')}">
     			<a class="nav-link" href="profiloTrainer.jsp">Il mio profilo</a>
@@ -63,6 +63,7 @@
       </div>
     </div>
   </nav>
+
   <!-- Page Content -->
   <div class="container">
 
@@ -84,7 +85,7 @@
     <!-- Intro Content -->
     <div class="row">
       <div class="col-lg-6">
-        <iframe width="560" height="315" src="${linkVideo}" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe width="560" height="315" src="${linkVideo}" autostart = "false" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <div class="col-lg-6">
         <h2>Dettagli corso</h2>
@@ -170,6 +171,7 @@
             <c:if test="${utente != null}">
             <c:if test="${utente.getType()==1}" >
             <c:set var = "a" scope = "session" value = "${nomeCorso}"/>
+            
             <c:if test="${utente.segue(a)}">
             
                 <h4 class="card-title">Il tuo feedback sul corso</h4>
@@ -189,8 +191,8 @@
             
             </c:if>
             </c:if>
-            
             </c:if>
+ 
             
             </div>
         </div>

@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@page import="java.util.ArrayList" %>
+<%@ page import="it.mat.unical.ingsw.model.Corso" %>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -64,39 +65,98 @@
     </div>
   </nav>
 
+  <!-- Page Content -->
+  <div class="container">
 
-  <div class="my-5 text-center container" style="width: 500px; height: 500px">
-    <form method="POST" action="Login">
-      <div class="form-group col-xl-auto" >
-        <label for="exampleInputEmail1">Indirizzo email</label>
-        <input type="email" class="form-control" name="mail" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Inserisci email">
-      </div>
-      <div class="form-group col-xl-auto" >
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="Password">
-      </div>
-      <div class="form-group col-xl-auto">
-        <button type="submit" class="btn btn-primary">Accedi</button>
-      </div>
-    </form>
-    <div>
-      <p><a href="registrazione.jsp">Non sei registrato? Clicca qui!</a></p>
+    <!-- Page Heading/Breadcr. -->
+    <h1 class="mt-4 mb-3">Selezione Piano</h1>
+
+    	<ol class="breadcrumb">
+      		<li class="breadcrumb-item">
+        		<a href="index.jsp">Homepage</a>
+      		</li>
+      		<li class="breadcrumb-item active">Profilo</li>
+    	</ol>
+    	
+    	<div class="my-5 col-md-6">
+	  		<h2>Seleziona i corsi da attribuire alla tua tessera:</h2>
+	  		<br>
+
+  		</div>
+      	
+      	<div id="showError" class="col-md-6" style="color: red"><h5>Seleziona esattamente 3 corsi!</h5></div>
+      	
+      	<form method="POST" action="RegistraPianoAllenamento">
+      		<div class="my-5 col-md-12"> 
+			    <div class="row">
+				  	<%
+						ArrayList<Corso> corsi = (ArrayList<Corso>) request.getAttribute("arraylist");
+					%>
+					
+					<%
+						for(Corso c: corsi) {
+						%>
+							<div class="col-5">
+							     <div class="form-check form-check-group">
+							        <input class="checks" id="checkbox" type="checkbox" name="boxes" value=<%=c.getNome()%>>
+							        <label for="checkbox"><b><%=c.getNome()%></b>
+							        <c:if test="${c.getTrainer() != null }">
+							        - gestito da <b><%=c.getTrainer().getNome()%> <%=c.getTrainer().getCognome()%></b>
+							        </c:if>
+							         
+							         </label>
+							     </div>
+						     </div>
+						<%
+						}
+					%>
+			  	</div>
+	 		</div>
+	 	
+		 	<div class = "col-md-12 text-center" style="padding-bottom: 20px;">
+	    		<button id="submit" type="submit" value="Submit" class="btn btn-primary">Conferma piano</button>
+	    	</div>
+	  	</form>
+			
+  	</div>
+
     </div>
-  </div>
+    <!-- /.row -->
 
+  </div>
+  <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="fixed-bottom py-5 bg-dark">
+   <footer class=" py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
     </div>
     <!-- /.container -->
   </footer>
+  
+  <script>
+  $('#submit').prop("disabled", true);
+  $('#showError').hide();
+  $('input:checkbox').click(function() {
+   if ($(this).is(':checked')) {
+   $('#submit').prop("disabled", false);
+   }
+   
+   if ($('.checks').filter(':checked').length != 3) {
+	   $('#showError').show();
+	   $('#submit').attr('disabled',true);
+   }
+   
+   if ($('.checks').filter(':checked').length == 3) {
+	   $('#showError').hide();
+	   $('#submit').attr('disabled',false);
+   }
+  });
+  </script>
 
   <!-- Bootstrap core JavaScript -->
   <script src="vendor/jquery/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
-
 </html>

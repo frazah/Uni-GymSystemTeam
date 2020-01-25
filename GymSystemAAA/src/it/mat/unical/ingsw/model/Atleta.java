@@ -2,6 +2,7 @@ package it.mat.unical.ingsw.model;
 
 public class Atleta extends Utente{
 	private Tessera tessera;
+	private String tipoTessera;
 	
 	public int getType()
 	{
@@ -10,13 +11,24 @@ public class Atleta extends Utente{
 
 	public boolean segue(String s)
 	{
-		for(Corso c : tessera.getCorsi())
-			if( c.getNome().equals(s) )
-				return true;
+		if (tessera != null)
+		{
+			for(Corso c : tessera.getCorsi())
+				if( c.getNome().equals(s) )
+					return true;
+		}
 		
 		return false;
 	}
 	
+	public String getTipoTessera() {
+		return tipoTessera;
+	}
+
+	public void setTipoTessera(String tipoTessera) {
+		this.tipoTessera = tipoTessera;
+	}
+
 	public Atleta() {
 		super();
 	}

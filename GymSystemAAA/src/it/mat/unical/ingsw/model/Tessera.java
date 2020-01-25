@@ -1,37 +1,70 @@
 package it.mat.unical.ingsw.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class Tessera {
-	private String dataDiIscrizione;
-	private String dataDiScadenza;
+	private LocalDateTime dataDiIscrizione;
+	private LocalDateTime dataDiScadenza;
 	private String id;
 	private ArrayList<Corso> corsi;
+	private String iscrizione;
+	private String scadenza;
 
 	
 	
-	public Tessera(String dataDiIscrizione, String dataDiScadenza, String id, ArrayList<Corso> corsi) {
+	public String getIscrizione() {
+		return iscrizione;
+	}
+
+	public void setIscrizione(String iscrizione) {
+		this.iscrizione = iscrizione;
+	}
+
+	public String getScadenza() {
+		return scadenza;
+	}
+
+	public void setScadenza(String scadenza) {
+		this.scadenza = scadenza;
+	}
+
+	public Tessera(LocalDateTime dataDiIscrizione, LocalDateTime dataDiScadenza, String id, ArrayList<Corso> corsi) {
 		super();
 		this.dataDiIscrizione = dataDiIscrizione;
 		this.dataDiScadenza = dataDiScadenza;
 		this.id = id;
 		this.corsi = corsi;
+		iscrizione = new String();
+		scadenza = new String();
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		iscrizione = dataDiIscrizione.format(myFormatObj);
+		scadenza = dataDiScadenza.format(myFormatObj);
 	}
 	
 	public Tessera() {
-		// TODO Auto-generated constructor stub
+		corsi = new ArrayList<Corso>();
+		iscrizione = new String();
+		scadenza = new String();
+		/*LocalDateTime localTime = LocalDateTime.now();
+		LocalDateTime scadenza = localTime.plusDays(90);
+		System.out.println(localTime);*/
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		iscrizione = dataDiIscrizione.format(myFormatObj);
+		scadenza = dataDiScadenza.format(myFormatObj);
 	}
 
-	public String getDataDiIscrizione() {
+	public LocalDateTime getDataDiIscrizione() {
 		return dataDiIscrizione;
 	}
-	public void setDataDiIscrizione(String dataDiIscrizione) {
+	public void setDataDiIscrizione(LocalDateTime dataDiIscrizione) {
 		this.dataDiIscrizione = dataDiIscrizione;
 	}
-	public String getDataDiScadenza() {
+	public LocalDateTime getDataDiScadenza() {
 		return dataDiScadenza;
 	}
-	public void setDataDiScadenza(String dataDiScadenza) {
+	public void setDataDiScadenza(LocalDateTime dataDiScadenza) {
 		this.dataDiScadenza = dataDiScadenza;
 	}
 	public String getID() {

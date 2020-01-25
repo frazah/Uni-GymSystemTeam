@@ -7,6 +7,7 @@
 
 <head>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -20,9 +21,6 @@
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-	
 </head>
 
 <body>
@@ -40,7 +38,7 @@
             <a class="nav-link" href="contact.jsp">Chi siamo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="corsi.jsp">Corsi</a>
+            <a class="nav-link" href="SchedaOrari">Corsi</a>
           </li>
           <li class="nav-item">
           	<c:if test="${utente == null}">
@@ -48,7 +46,7 @@
 			</c:if>
 			<c:if test="${utente != null}">
 				<c:if test="${utente.getClass().getSimpleName().equals('Atleta')}">
-    			<a class="nav-link" href="profilo.jsp">Il mio profilo</a>
+    			<a class="nav-link" href="ScadenzaTessera">Il mio profilo</a>
     			</c:if>
     			<c:if test="${utente.getClass().getSimpleName().equals('Trainer')}">
     			<a class="nav-link" href="profiloTrainer.jsp">Il mio profilo</a>
@@ -66,6 +64,7 @@
       </div>
     </div>
   </nav>
+
 
 
 
@@ -113,7 +112,7 @@
         </select>
         </div>
         <div class="form-group col-xl-auto">
-            <button type="submit" class="btn btn-primary">Crea corso</button>
+            <button id = "submit" type="submit" class="btn btn-primary">Crea corso</button>
         </div>
     </form>
     
@@ -127,7 +126,25 @@
 
 <script src = "js/creaCorso.js"></script>
 
+<script>
+  $('#submit').prop("disabled", true);
+  
+  $('input:checkbox').click(function() {
+   if ($(this).is(':checked')) {
+   $('#submit').prop("disabled", false);
+   }
+   
+   if ($('.single-checkbox').filter(':checked').length == 0 ) {
+	  
+	   $('#submit').attr('disabled',true);
+   }
+   
+   if ($('.single-checkbox').filter(':checked').length > 0) {
 
+	   $('#submit').attr('disabled',false);
+   }
+  });
+  </script>
 
 
 <!-- Footer -->
