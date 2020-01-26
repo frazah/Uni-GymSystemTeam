@@ -64,43 +64,52 @@
     </div>
   </nav>
 
+  <!-- Page Content -->
+  <div class="container">
 
-
-
-<div class="my-5 text-center container" style="width: 500px; height: 500px">
-    <form method="POST" action="AssegnaTrainerCorso" onsubmit="return confirm('Sei sicuro di voler assegnare questo trainer al corso?')">
-        <div class="form-group col-xl-auto" >
-        <h1>Seleziona Trainer da assegnare:</h1>
-        <c:if test = "${trainerDisponibili.isEmpty()}">
-        <a> Nessun Trainer libero disponibile </a>
-        </c:if>
-        <select name="trainer">
-        <c:forEach items="${trainer}" var="trainer" varStatus="loop">
-        	<c:if test="${trainer.getCorso() == null}">
-        		<option value="${loop.index}">${trainer.getNome()} ${trainer.getCognome()}</option>
-        	</c:if>
-        </c:forEach>
-        </select>
-        </div>
-        <div class="form-group col-xl-auto">
-        <input type = "hidden" name = "corso" value = ${param.corso} >
-            <button type="submit" class="btn btn-primary">Assegna trainer</button>
-        </div>
-    </form>
     
 
-</div>
+   
 
+    <!-- Team Members -->
+    <div class="py-3">
+      <h2>I nostri Trainer</h2>
+    </div>
 
+	<c:forEach items="${trainer}" var="trainer">
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="card h-100 text-center">
+          <img class="card-img-top" src="${trainer.getFotoProfilo()}" alt="">
+          <div class="card-body">
+            <h4 class="card-title">${trainer.getNome()} ${trainer.getCognome()}</h4>
+            <c:if test="${trainer.getCorso() != null}">
+            <h6 class="card-subtitle mb-2 text-muted"> <a href="ReindirizzaCorso?corso=${trainer.getCorso().getNome()}"> ${trainer.getCorso().getNome()}</a> </h6>
+            </c:if>
+          </div>
+          <div class="card-footer">
+            <a href="mailto:${trainer.getMail()}">${trainer.getMail()}</a>
+          </div>
+        </div>
+      </div>
+      </c:forEach>
+      
+      
+    </div>
+    <!-- /.row -->
 
+    </div>
+    <!-- /.row -->
 
+  </div>
+  <!-- /.container -->
 
 <!-- Footer -->
-<footer class="fixed-bottom py-5 bg-dark">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
-    </div>
-    <!-- /.container -->
+<footer class=" py-5 bg-dark">
+  <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
+  </div>
+  <!-- /.container -->
 </footer>
 
 <!-- Bootstrap core JavaScript -->

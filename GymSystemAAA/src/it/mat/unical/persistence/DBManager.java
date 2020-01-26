@@ -97,7 +97,9 @@ public class DBManager {
 	{
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		t1.setFotoProfilo("immagini/trainerMikeTyson.jpeg");
-		Trainer t2 = new Trainer("Connor","McGreggor","ufc@hothotmail.com","notorius");
+		Trainer t2 = new Trainer("Connor","McGregor","ufc@hothotmail.com","notorius");
+		t2.setFotoProfilo("immagini/mcgregor.jpg");
+
 
 		/*Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");

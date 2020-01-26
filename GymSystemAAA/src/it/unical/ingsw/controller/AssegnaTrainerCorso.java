@@ -28,12 +28,24 @@ public class AssegnaTrainerCorso extends HttpServlet {
 		
 		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
 		ArrayList<Trainer> trainer = DBManager.getInstance().getTrainer();
+		ArrayList<Trainer> trainerDisponibili = new ArrayList<Trainer>();
+		
+		
+		for(Trainer t : trainer)
+		{
+			if(t.getCorso() == null)
+				trainerDisponibili.add(t);
+		}
+		
 		Trainer trainerAssegnato;
 		Corso corsoDaAssegnare = null;
 	
 	
 		request.getSession().setAttribute("corsi", corsi);
 		request.getSession().setAttribute("trainer", trainer);
+		request.getSession().setAttribute("trainerDisponibili", trainerDisponibili);
+
+		
 		
 		String trainerI = request.getParameter("trainer");
 		String nomeCorso = request.getParameter("corso");

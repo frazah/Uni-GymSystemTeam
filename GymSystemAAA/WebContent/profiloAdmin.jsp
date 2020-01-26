@@ -106,16 +106,13 @@
       </div>
       
       
-		<div class="col-md-2">
+		<div class="col-md-3">
 		
-      		<h3 class = "my-3">Corsi</h3>
+      		<h3 class = "my-3">Gestione sistema</h3>
       		<div class="my-3">
-      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'gestioneCorsiAdmin.jsp';">Gestisci corsi</button>
+      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'gestioneCorsiAdmin.jsp';">Gestisci corsi e trainer</button>
       		</div>
-      		<h3 class = "my-3">Trainer</h3>
-      		<div class="my-3">
-      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'index.jsp';">Gestisci trainer</button>
-     		</div>
+      		
      	</div> 
       
 

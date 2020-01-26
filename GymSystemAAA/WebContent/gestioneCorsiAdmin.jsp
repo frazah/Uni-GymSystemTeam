@@ -97,11 +97,11 @@
 			        	</form>
 			        </c:if>
 			        <c:if test="${corso.getTrainer() != null}">
-						<form method = "POST" action = "RimuoviTrainerCorso" class = "my-2">
+						<form method = "POST" action = "RimuoviTrainerCorso" class = "my-2" onsubmit="return confirm('Sei sicuro di voler eliminare il trainer dal corso ?')">
 			        		<button type="submit" class="btn btn-primary" name ="trainer" value = "${corso.getTrainer().getMail() }">Rimuovi trainer</button>
 			        	</form>			        
 			        </c:if>
-			        	<form method = "POST" action = "EliminaCorso">
+			        	<form method = "POST" action = "EliminaCorso" onsubmit="return confirm('Sei sicuro di eliminare il corso?')">
 			        		<button type="submit" class="btn btn-primary" name = "nome" value = "${corso.getNome()}">Elimina corso</button>
 			        	</form>
 			        </td>

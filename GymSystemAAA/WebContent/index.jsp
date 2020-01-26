@@ -110,10 +110,10 @@
         <div class="card h-100">
           <h4 class="card-header">Piano allenamenti</h4>
           <div class="card-body">
-            <p class="card-text">La nostra offerta di abbonamento offre la possibilità di iscriversi a tre corsi tra disponibili.</p>
+            <p class="card-text">La nostra offerta di abbonamento offre la possibilità di iscriversi a tre corsi tra quelli disponibili.</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Visualizza corsi disponibili</a>
+            <a href="SchedaOrari" class="btn btn-primary">Visualizza corsi disponibili</a>
           </div>
         </div>
       </div>
@@ -124,7 +124,7 @@
             <p class="card-text">Ogni corso ha a disposizione un trainer che ti seguirà durante tutti gli allenamenti, con la possibilità di farsi assegnare uno specifico workout e una dieta creata appositamente per te</p>
           </div>
           <div class="card-footer">
-            <a href="#" class="btn btn-primary">Per saperne di più</a>
+            <a href="ElencoTrainer" class="btn btn-primary">Per saperne di più</a>
           </div>
         </div>
       </div>

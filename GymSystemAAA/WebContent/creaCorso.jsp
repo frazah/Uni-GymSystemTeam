@@ -69,7 +69,7 @@
 
 
 <div class="my-5 text-center container" style="width: 500px; height: 500px">
-    <form method="POST" action="CreaCorso">
+    <form method="POST" action="CreaCorso" onsubmit="return confirm('Confermi la creazione del corso?')">
     	<div class="form-group col-xl-auto" >
             <label>Nome Corso</label>
             <input type="text" name = "nome" class="form-control" placeholder="Inserisci nome del corso" required>

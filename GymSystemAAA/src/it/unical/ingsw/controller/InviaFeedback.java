@@ -38,7 +38,8 @@ public class InviaFeedback extends HttpServlet {
 		
 		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
 		ArrayList<Trainer> trainer = DBManager.getInstance().getTrainer();
-	
+		
+		
 	
 		request.getSession().setAttribute("corsi", corsi);
 		request.getSession().setAttribute("trainer", trainer);
