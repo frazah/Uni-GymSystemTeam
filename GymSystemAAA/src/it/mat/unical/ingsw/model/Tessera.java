@@ -7,7 +7,8 @@ import java.util.ArrayList;
 public class Tessera {
 	private LocalDateTime dataDiIscrizione;
 	private LocalDateTime dataDiScadenza;
-	private String id;
+	private static int count = 0;
+	private int id; 	
 	private ArrayList<Corso> corsi;
 	private String iscrizione;
 	private String scadenza;
@@ -30,11 +31,11 @@ public class Tessera {
 		this.scadenza = scadenza;
 	}
 
-	public Tessera(LocalDateTime dataDiIscrizione, LocalDateTime dataDiScadenza, String id, ArrayList<Corso> corsi) {
+	public Tessera(LocalDateTime dataDiIscrizione, LocalDateTime dataDiScadenza, ArrayList<Corso> corsi) {
 		super();
 		this.dataDiIscrizione = dataDiIscrizione;
 		this.dataDiScadenza = dataDiScadenza;
-		this.id = id;
+		setID(++count);
 		this.corsi = corsi;
 		iscrizione = new String();
 		scadenza = new String();
@@ -67,10 +68,10 @@ public class Tessera {
 	public void setDataDiScadenza(LocalDateTime dataDiScadenza) {
 		this.dataDiScadenza = dataDiScadenza;
 	}
-	public String getID() {
+	public int getID() {
 		return id;
 	}
-	public void setID(String iD) {
+	public void setID(int iD) {
 		id = iD;
 	}
 	public ArrayList<Corso> getCorsi() {

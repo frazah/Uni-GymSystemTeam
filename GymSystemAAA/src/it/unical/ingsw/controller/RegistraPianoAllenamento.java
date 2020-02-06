@@ -77,7 +77,7 @@ public class RegistraPianoAllenamento extends HttpServlet {
 		    else if (utente.getTipoTessera().equals("annuale"))
 		    	scadenza = today.plusYears(1);
 		    //scadenza = today.minusDays(10);
-		    Tessera tessera = new Tessera(today, scadenza, utente.getCognome(), corsiInserire);
+		    Tessera tessera = new Tessera(today, scadenza, corsiInserire);
 		    utente.setTessera(tessera);
 		    
 		    RequestDispatcher rd = request.getRequestDispatcher("profilo.jsp");

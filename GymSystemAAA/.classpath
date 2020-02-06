@@ -10,8 +10,12 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/java-11-openjdk-amd64">
 		<attributes>
+			<attribute name="module" value="true"/>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="lib/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/org.restlet.lib.org.json-2.0.jar"/>
+	<classpathentry kind="lib" path="lib/postgresql-9.4.1208.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -5,9 +5,19 @@ public class Feedback
 	private int voto;
 	private String testo;
 	private String autore;
+	private static int count = 0;
+	private int id;
 	
 	
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String getAutore() {
 		return autore;
 	}
@@ -18,6 +28,7 @@ public class Feedback
 
 	public Feedback(int voto, String testo, String autore) {
 		super();
+		setId(++count);
 		this.voto = voto;
 		this.testo = testo;
 		this.autore = autore;

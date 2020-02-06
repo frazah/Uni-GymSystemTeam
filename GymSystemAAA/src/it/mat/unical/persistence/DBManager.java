@@ -16,14 +16,35 @@ import it.mat.unical.ingsw.model.Corso;
 import it.mat.unical.ingsw.model.Tessera;
 import it.mat.unical.ingsw.model.Trainer;
 import it.mat.unical.ingsw.model.Utente;
+import it.mat.unical.persistence.dao.UtenteDao;
+import it.mat.unical.persistence.dao.jdbc.UtenteJDBC;
+
 
 public class DBManager {
 	
 	private static DBManager instance = null;
-	ArrayList<Atleta> registrati;
+	/*ArrayList<Atleta> registrati;
 	ArrayList<Corso> corsi;
 	ArrayList<Trainer> trainer;
-	Admin admin;
+	Admin admin;*/
+	
+	private static  DataSource dataSource;
+
+	static {
+		try {
+			
+			//Class.forName("org.postgresql.Driver");
+			//questi vanno messi in file di configurazione!!!	
+//			dataSource=new DataSource("jdbc:postgresql://52.39.164.176:5432/xx","xx","p@xx");
+			dataSource=new DataSource("jdbc:postgresql://localhost:5432/GymSystemDB","postgres","Marco1604");
+			
+		} 
+		catch (Exception e) {
+			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n"+e);
+			e.printStackTrace();
+			System.out.println("NON SI CONNETTE");
+		}
+	}
 	
 	public static DBManager getInstance() {
 		if (instance == null) {
@@ -34,40 +55,44 @@ public class DBManager {
 
 	public ArrayList<Atleta> getRegistrati()
 	{
-		return registrati;
+		//return registrati;
+		return null;
 	}
 
 
 
 	public ArrayList<Corso> getCorsi() {
-		return corsi;
+		//return corsi;
+		return null;
 	}
 
 	public ArrayList<Trainer> getTrainer() {
-		return trainer;
+		//return trainer;
+		return null;
 	}
 	
 	private DBManager() {
-		registrati = new ArrayList<Atleta>();
+		/*registrati = new ArrayList<Atleta>();
 		admin = new Admin();
 		corsi = new ArrayList<Corso>();
 		trainer = new ArrayList<Trainer>();
 		creaCorsiDefault();
 		creaTrainerDefault();
 		creaRegistratiDefault();
-		assegnamentoTrainerCorsi();
+		assegnamentoTrainerCorsi();*/
+		
 		
 	}
 	
 	private void assegnamentoTrainerCorsi() {
-		corsi.get(0).setTrainer(trainer.get(0)); //Pugilato --> Tyson
-		trainer.get(0).setCorso(corsi.get(0)); //Tyson --> Pugilato
+		/*corsi.get(0).setTrainer(trainer.get(0)); //Pugilato --> Tyson
+		trainer.get(0).setCorso(corsi.get(0)); //Tyson --> Pugilato*/
 		
 	}
 
 
 	private void creaRegistratiDefault() {
-		Atleta a1 = new Atleta("Marco","Grande","marcogrande1998@gmail.com","slaythespire");
+		/*Atleta a1 = new Atleta("Marco","Grande","marcogrande1998@gmail.com","slaythespire");
 		Atleta a2 = new Atleta("Andrea","De Seta","squame4@gmail.com","h22rew");
 		Atleta a3 = new Atleta("Francesco","Corigliano","francesco.fbhz@gmail.com","pagliusi");
 		Atleta a4 = new Atleta("Antonino","Scarpelli","antonino@gmail.com","royaldoppioperry");
@@ -75,12 +100,12 @@ public class DBManager {
 		registrati.add(a1);
 		registrati.add(a2);
 		registrati.add(a3);
-		registrati.add(a4);
+		registrati.add(a4);*/
 	}
 
 	private void creaCorsiDefault() {
 
-		String[] giorni1 = new String[]{"1", "2", "3"};
+		/*String[] giorni1 = new String[]{"1", "2", "3"};
 		String[] giorni2 = new String[]{"1", "4", "3"};
 		String[] giorni3 = new String[]{"5", "2", "3"};
 		
@@ -90,37 +115,40 @@ public class DBManager {
 
 		corsi.add(c1);
 		corsi.add(c2);
-		corsi.add(c3);
+		corsi.add(c3);*/
 	}
 	
 	private void creaTrainerDefault()
 	{
-		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
+		/*Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		t1.setFotoProfilo("immagini/trainerMikeTyson.jpeg");
 		Trainer t2 = new Trainer("Connor","McGregor","ufc@hothotmail.com","notorius");
-		t2.setFotoProfilo("immagini/mcgregor.jpg");
+		t2.setFotoProfilo("immagini/mcgregor.jpg");*/
 
 
 		/*Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
 		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");*/
-		trainer.add(t1);
-		trainer.add(t2);
+		/*trainer.add(t1);
+		trainer.add(t2);*/
 	}
 
 	public void svuotaRegistrati()
 	{
-		registrati.clear();
+		//registrati.clear();
 	}
 	
 	public void registraUtente(Atleta atleta)
 	{
-		registrati.add(atleta);
-		stampaRegistrati();
+		UtenteJDBC u = new UtenteJDBC(dataSource);
+		u.save(atleta);
+		/*registrati.add(atleta);
+		stampaRegistrati();*/
 	}
 	
 	public Admin getAdmin() {
-		return admin;
+		//return admin;
+		return null;
 	}
 
 
@@ -128,13 +156,13 @@ public class DBManager {
 
 	public void stampaRegistrati()
 	{
-		for (int i = 0; i<registrati.size();i++)
-			System.out.println(registrati.get(i));
+		/*for (int i = 0; i<registrati.size();i++)
+			System.out.println(registrati.get(i));*/
 	}
 	
 	public Utente login(String username, String password) {
 
-		if (username.equals("admin@admin.com") && password.equals("admin"))
+		/*if (username.equals("admin@admin.com") && password.equals("admin"))
 			return admin;
 		
 
@@ -145,7 +173,7 @@ public class DBManager {
 		
 		for (int i = 0; i<trainer.size();i++)
 			if (username.equals(trainer.get(i).getMail()) && password.equals(trainer.get(i).getPassword()))
-				return trainer.get(i);
+				return trainer.get(i);*/
 
 		return null;
 	}
