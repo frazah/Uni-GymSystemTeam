@@ -1,9 +1,11 @@
 package it.mat.unical.persistence.dao.jdbc;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -41,8 +43,14 @@ public class CorsoJDBC implements CorsoDao{
 			if (result.next()) {
 				corso = new Corso();
 				corso.setNome(result.getString("nome"));				
-				Trainer trainer = DBManager.getInstance().getTrainerDAO().findByPrimaryKey(result.getString("mailtrainer"));
-				corso.setTrainer(trainer);
+				corso.setFasciaOraria(result.getString("fasciaoraria"));
+				Array days = (Array) result.getArray("giorni");
+				corso.setGiorni((String[]) days.getArray()); 
+				corso.setDescrizione(result.getString("descrizione"));
+				corso.setLinkVideo(result.getString("linkvideo"));
+				Array id = (Array) result.getArray("idfeedback");
+				ArrayList<Integer> feed =(ArrayList<Integer>) id;
+				corso.impostaFeedback(feed);
 				
 			}
 		} catch (SQLException e) {
@@ -59,34 +67,7 @@ public class CorsoJDBC implements CorsoDao{
 
 	@Override
 	public List<Corso> findAll() {
-		Connection connection = null;
-		List<Corso> corsi = new LinkedList<>();
-		try {
-			connection = this.dataSource.getConnection();
-			Corso corso;
-			PreparedStatement statement;
-			String query = "select * from corso";
-			statement = connection.prepareStatement(query);
-			ResultSet result = statement.executeQuery();
-			while (result.next()) {
-				corso = new Corso();		
-				corso.setNome(result.getString("nome"));
-				corso.setTrainer(result.getObject("trainer"));
-				corso.setIscritti(result.getObject("iscritti"));
-							
-
-				corsi.add(corso);
-			}
-		} catch (SQLException e) {
-			throw new RuntimeException(e.getMessage());
-		}	 finally {
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e.getMessage());
-			}
-		}
-		return corsi;
+		return null;
 	}
 
 	@Override

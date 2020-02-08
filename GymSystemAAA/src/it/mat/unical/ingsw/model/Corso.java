@@ -2,9 +2,11 @@ package it.mat.unical.ingsw.model;
 
 import java.util.ArrayList;
 
+import it.mat.unical.persistence.DBManager;
+
+
 public class Corso {
 	private String nome;
-	private Trainer trainer;
 	private ArrayList<Atleta> iscritti;
 	private String fasciaOraria;
 	private String giorni[];
@@ -12,21 +14,12 @@ public class Corso {
 	private String linkVideo;
 	private ArrayList<Feedback> feedback;
 	
-	public void setIscritti(Object object)
-	{
-		//iscri
-	}
-	
-	public void setTrainer(Object object)
-	{
-		trainer = (Trainer) object;
-	}
+
 	
 	public Corso(String nome, Trainer trainer, ArrayList<Atleta> iscritti, String fasciaOraria, String [] giorni,
 			String descrizione, String linkVideo) {
 		super();
 		this.nome = nome;
-		this.trainer = trainer;
 		this.iscritti = iscritti;
 		this.fasciaOraria = fasciaOraria;
 		this.setGiorni(giorni);
@@ -57,7 +50,13 @@ public class Corso {
 		this.feedback = feedback;
 	}
 
-
+	public void impostaFeedback(ArrayList<Integer> feed) {
+		for (int i = 0;i<feed.size();i++)
+		{
+			Feedback f = DBManager.getInstance().getFeedbackDAO().findByPrimaryKey(feed.get(i));
+			feedback.add(f);
+		}
+	}
 
 	public int getMediaFeedback()
 	{
@@ -134,13 +133,7 @@ public class Corso {
 
 
 
-	public Trainer getTrainer() {
-		return trainer;
-	}
 	
-	public void setTrainer(Trainer trainer) {
-		this.trainer = trainer;
-	}
 	public ArrayList<Atleta> getIscritti() {
 		return iscritti;
 	}
@@ -174,6 +167,7 @@ public class Corso {
 		this.giorni = giorni;
 	}
 	
+
 	public Boolean contieneGiorno(String s)
 	{
 		for (int i = 0;i < giorni.length; i++)

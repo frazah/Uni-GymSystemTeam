@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,7 +29,7 @@ public class EliminaCorso extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
-		ArrayList<Trainer> trainer = DBManager.getInstance().getTrainer();
+		List<Trainer> trainer = DBManager.getInstance().getTrainer();
 		Trainer trainerAssegnato;
 		ArrayList<Atleta> iscritti = DBManager.getInstance().getRegistrati();
 		
@@ -41,40 +42,30 @@ public class EliminaCorso extends HttpServlet {
 		
 		//System.out.println(nomeCorso);
 		
-		for (int i = 0; i < corsi.size(); i++)
-			if (nomeCorso.contentEquals(corsi.get(i).getNome()))
-			{
-				if (corsi.get(i).getTrainer() != null) {
-					trainerAssegnato = corsi.get(i).getTrainer();
-					trainerAssegnato.setCorso(null);
-					corsi.get(i).setTrainer(null);
-				}
-					
+		for (int i = 0; i < corsi.size(); i++) { 
+			if (nomeCorso.contentEquals(corsi.get(i).getNome())) {
+			
+				for (int j = 0; j < trainer.size(); j++)
 				
+					if (trainer.get(j).getCorso().getNome().equals(nomeCorso))
+					{
+						corsoDaEliminare = trainer.get(j).getCorso();
+						trainer.get(j).setCorso(null);
+						
+					}
+
 				corsoDaEliminare = corsi.get(i);
-				corsi.remove(i);
+				DBManager.getInstance().getCorsoDAO().delete(corsoDaEliminare);
 			}
+		}
 		
-		for(Atleta a : iscritti)
+		/*for(Atleta a : iscritti)
 		{
 			if(a.getTessera()!=null && corsoDaEliminare != null)
 			{
 				a.getTessera().getCorsi().remove(corsoDaEliminare);
-				/*
-				for(int i = 0; i < a.getTessera().getCorsi().size(); i++)
-				{
-					if(a.getTessera().getCorsi().get(i) == corsoDaEliminare)
-					a.getTessera().getCorsi().remove(i);
-				
-				}
-				*/
 			}
-		}
-		
-		
-		
-				
-		
+		}*/
 		
 		
 		Utente utente = DBManager.getInstance().login("admin@admin.com", "admin");

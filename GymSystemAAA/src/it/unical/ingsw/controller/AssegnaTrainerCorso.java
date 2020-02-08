@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,7 +28,7 @@ public class AssegnaTrainerCorso extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
-		ArrayList<Trainer> trainer = DBManager.getInstance().getTrainer();
+		List<Trainer> trainer = DBManager.getInstance().getTrainer();
 		ArrayList<Trainer> trainerDisponibili = new ArrayList<Trainer>();
 		
 		
@@ -62,7 +63,7 @@ public class AssegnaTrainerCorso extends HttpServlet {
 			int trainerIndex = Integer.parseInt(trainerI);
 			trainerAssegnato = trainer.get(trainerIndex);
 			trainerAssegnato.setCorso(corsoDaAssegnare);
-			corsoDaAssegnare.setTrainer(trainerAssegnato);
+			
 		}
 		
 		

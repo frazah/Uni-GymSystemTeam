@@ -34,6 +34,9 @@ public class Feedback
 		this.autore = autore;
 	}
 	
+	public Feedback() {
+	}
+
 	public int getVoto() {
 		return voto;
 	}

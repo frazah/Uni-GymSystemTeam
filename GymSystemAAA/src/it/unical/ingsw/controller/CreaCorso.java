@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,7 +28,7 @@ public class CreaCorso extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
-		ArrayList<Trainer> trainer = DBManager.getInstance().getTrainer();
+		List<Trainer> trainer = DBManager.getInstance().getTrainer();
 		Trainer trainerAssegnato;
 		Boolean corsoEsiste = false;
 	
@@ -72,7 +73,6 @@ public class CreaCorso extends HttpServlet {
 				int trainerIndex = Integer.parseInt(trainerI);
 				trainerAssegnato = trainer.get(trainerIndex);
 				trainerAssegnato.setCorso(corsoCreato);
-				corsoCreato.setTrainer(trainerAssegnato);
 			}
 
 			corsi.add(corsoCreato);

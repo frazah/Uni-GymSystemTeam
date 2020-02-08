@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,7 +28,7 @@ public class ElencoTrainer extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
-		ArrayList<Trainer> trainer = DBManager.getInstance().getTrainer();
+		List<Trainer> trainer = DBManager.getInstance().getTrainer();
 		request.getSession().setAttribute("trainer", trainer);
 		
 			RequestDispatcher rd = request.getRequestDispatcher("elencoTrainer.jsp");

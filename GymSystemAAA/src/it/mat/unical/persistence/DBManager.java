@@ -18,10 +18,12 @@ import it.mat.unical.ingsw.model.Trainer;
 import it.mat.unical.ingsw.model.Utente;
 import it.mat.unical.persistence.dao.AtletaDao;
 import it.mat.unical.persistence.dao.CorsoDao;
+import it.mat.unical.persistence.dao.FeedbackDao;
 import it.mat.unical.persistence.dao.TrainerDao;
 import it.mat.unical.persistence.dao.UtenteDao;
 import it.mat.unical.persistence.dao.jdbc.AtletaJDBC;
 import it.mat.unical.persistence.dao.jdbc.CorsoJDBC;
+import it.mat.unical.persistence.dao.jdbc.FeedbackJDBC;
 import it.mat.unical.persistence.dao.jdbc.TrainerJDBC;
 import it.mat.unical.persistence.dao.jdbc.UtenteJDBC;
 
@@ -72,9 +74,8 @@ public class DBManager {
 		return null;
 	}
 
-	public ArrayList<Trainer> getTrainer() {
-		//return trainer;
-		return null;
+	public List<Trainer> getTrainer() {
+		return getTrainerDAO().findAll();
 	}
 	
 	private DBManager() {
@@ -195,5 +196,9 @@ public class DBManager {
 	
 	public CorsoDao getCorsoDAO() {
 		return new CorsoJDBC(dataSource);
+	}
+
+	public FeedbackDao getFeedbackDAO() {
+		return new FeedbackJDBC(dataSource);
 	}
 }

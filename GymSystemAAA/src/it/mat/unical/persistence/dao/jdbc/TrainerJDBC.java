@@ -51,16 +51,16 @@ public class TrainerJDBC implements TrainerDao{
 				trainer.setCognome(result.getString("cognome"));
 				String mail = result.getString("mail");
 				trainer.setMail(mail);
-				PreparedStatement statement2;
+				/*PreparedStatement statement2;
 				String query2 = "select nomecorso from associazionecorsotrainer where mailtrainer = ?";
 				statement2 = connection.prepareStatement(query2);
 				statement2.setString(1, mail);
 				ResultSet result2 = statement2.executeQuery();
 				trainer.setPassword(result.getString("password"));
 				CorsoJDBC corsoDB = new CorsoJDBC(dataSource);
-				trainer.setCorso(corsoDB.findByPrimaryKey(result2.getString("nomecorso")));
-				/*Corso corso = DBManager.getInstance().getCorsoDAO().findByPrimaryKey(result.getString("nomecorsooccupato"));
-				trainer.setCorso(corso);*/
+				trainer.setCorso(corsoDB.findByPrimaryKey(result2.getString("nomecorso")));*/
+				Corso corso = DBManager.getInstance().getCorsoDAO().findByPrimaryKey(result.getString("nomecorsooccupato"));
+				trainer.setCorso(corso);
 				
 				trainers.add(trainer);
 			}
