@@ -1,10 +1,12 @@
 package it.mat.unical.ingsw.model;
 
+import it.mat.unical.persistence.dao.jdbc.CorsoJDBC;
 
 public class Trainer extends Utente{
 	
 	Corso corsoOccupato;
 	
+
 	public Trainer() {
 		super();
 	}
@@ -28,8 +30,6 @@ public class Trainer extends Utente{
 
 	public void setCorso(Corso corso) {
 		this.corsoOccupato = corso;
-	}
-	
-	
+	}	
 
 }

@@ -16,7 +16,13 @@ import it.mat.unical.ingsw.model.Corso;
 import it.mat.unical.ingsw.model.Tessera;
 import it.mat.unical.ingsw.model.Trainer;
 import it.mat.unical.ingsw.model.Utente;
+import it.mat.unical.persistence.dao.AtletaDao;
+import it.mat.unical.persistence.dao.CorsoDao;
+import it.mat.unical.persistence.dao.TrainerDao;
 import it.mat.unical.persistence.dao.UtenteDao;
+import it.mat.unical.persistence.dao.jdbc.AtletaJDBC;
+import it.mat.unical.persistence.dao.jdbc.CorsoJDBC;
+import it.mat.unical.persistence.dao.jdbc.TrainerJDBC;
 import it.mat.unical.persistence.dao.jdbc.UtenteJDBC;
 
 
@@ -140,10 +146,7 @@ public class DBManager {
 	
 	public void registraUtente(Atleta atleta)
 	{
-		UtenteJDBC u = new UtenteJDBC(dataSource);
-		u.save(atleta);
-		/*registrati.add(atleta);
-		stampaRegistrati();*/
+		getAtletaDAO().save(atleta);
 	}
 	
 	public Admin getAdmin() {
@@ -176,5 +179,21 @@ public class DBManager {
 				return trainer.get(i);*/
 
 		return null;
+	}
+	
+	public AtletaDao getAtletaDAO() {
+		return new AtletaJDBC(dataSource);
+	}
+	
+	public UtenteDao getUtenteDAO() {
+		return new UtenteJDBC(dataSource);
+	}
+	
+	public TrainerDao getTrainerDAO() {
+		return new TrainerJDBC(dataSource);
+	}
+	
+	public CorsoDao getCorsoDAO() {
+		return new CorsoJDBC(dataSource);
 	}
 }

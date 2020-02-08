@@ -12,7 +12,15 @@ public class Corso {
 	private String linkVideo;
 	private ArrayList<Feedback> feedback;
 	
+	public void setIscritti(Object object)
+	{
+		//iscri
+	}
 	
+	public void setTrainer(Object object)
+	{
+		trainer = (Trainer) object;
+	}
 	
 	public Corso(String nome, Trainer trainer, ArrayList<Atleta> iscritti, String fasciaOraria, String [] giorni,
 			String descrizione, String linkVideo) {
