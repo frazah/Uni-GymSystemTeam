@@ -2,6 +2,7 @@ package it.unical.ingsw.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,7 +20,7 @@ public class SchedaOrari extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
+		List<Corso> corsi = DBManager.getInstance().getCorsi();
 		request.getSession().setAttribute("corsi", corsi);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("corsi.jsp");

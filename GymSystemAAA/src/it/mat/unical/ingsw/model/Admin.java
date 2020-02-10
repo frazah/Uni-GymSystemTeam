@@ -1,6 +1,7 @@
 package it.mat.unical.ingsw.model;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Admin extends Utente{
 	
@@ -24,6 +25,14 @@ public class Admin extends Utente{
 
 	public void setRichieste(ArrayList<String> richieste) {
 		this.richieste = richieste;
+	}
+	
+	public void setRichiesteJDBC(String[] richieste)
+	{
+		for (int i = 0; i<richieste.length;i++)
+		{
+			this.richieste.add(richieste[i]);
+		}
 	}
 
 	

@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import it.mat.unical.ingsw.model.Atleta;
 import it.mat.unical.ingsw.model.Corso;
+import it.mat.unical.ingsw.model.Tessera;
 import it.mat.unical.ingsw.model.Trainer;
 import it.mat.unical.persistence.DBManager;
 import it.mat.unical.persistence.DataSource;
@@ -30,7 +32,35 @@ public class TrainerJDBC implements TrainerDao{
 	@Override
 	public Trainer findByPrimaryKey(String mail) {
 		// TODO Auto-generated method stub
-		return null;
+		Connection connection = null;
+		Trainer trainer = null;
+		try {
+			connection = this.dataSource.getConnection();
+			PreparedStatement statement;
+			String query = "select * from trainer where mail = ?";
+			statement = connection.prepareStatement(query);
+			statement.setString(1, mail);
+			ResultSet result = statement.executeQuery();
+			if (result.next()) {
+				trainer = new Trainer();
+				trainer.setNome(result.getString("nome"));				
+				trainer.setCognome(result.getString("cognome"));
+				trainer.setFotoProfilo(result.getString("fotoprofilo"));
+				trainer.setMail(result.getString("mail"));
+				trainer.setPassword(result.getString("password"));
+				Corso corso = DBManager.getInstance().getCorsoDAO().findByPrimaryKey(result.getString("nomecorsooccupato"));
+				trainer.setCorso(corso);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}	
+		return trainer;
 	}
 
 	@Override

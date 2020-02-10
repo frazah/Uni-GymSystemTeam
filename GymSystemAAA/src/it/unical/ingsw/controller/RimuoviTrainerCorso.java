@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -26,8 +27,8 @@ public class RimuoviTrainerCorso extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
-		ArrayList<Trainer> trainer = DBManager.getInstance().getTrainer();
+		List<Corso> corsi = DBManager.getInstance().getCorsi();
+		List<Trainer> trainer = DBManager.getInstance().getTrainer();
 		Corso corsoAssegnato;
 	
 	
@@ -44,7 +45,6 @@ public class RimuoviTrainerCorso extends HttpServlet {
 			{
 				corsoAssegnato = trainer.get(i).getCorso();
 				trainer.get(i).setCorso(null);
-				corsoAssegnato.setTrainer(null);
 			}
 				
 		

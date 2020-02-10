@@ -28,10 +28,10 @@ public class EliminaCorso extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
+		List<Corso> corsi = DBManager.getInstance().getCorsi();
 		List<Trainer> trainer = DBManager.getInstance().getTrainer();
 		Trainer trainerAssegnato;
-		ArrayList<Atleta> iscritti = DBManager.getInstance().getRegistrati();
+		List<Atleta> iscritti = DBManager.getInstance().getRegistrati();
 		
 		Corso corsoDaEliminare = null;
 	

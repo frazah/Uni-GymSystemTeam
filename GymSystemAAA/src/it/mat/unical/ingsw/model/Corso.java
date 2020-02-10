@@ -1,5 +1,6 @@
 package it.mat.unical.ingsw.model;
 
+import java.sql.Array;
 import java.util.ArrayList;
 
 import it.mat.unical.persistence.DBManager;
@@ -13,6 +14,11 @@ public class Corso {
 	private String descrizione;
 	private String linkVideo;
 	private ArrayList<Feedback> feedback;
+	
+	public void stampa()
+	{
+		System.out.println(nome+fasciaOraria);
+	}
 	
 
 	
@@ -51,6 +57,11 @@ public class Corso {
 	}
 
 	public void impostaFeedback(ArrayList<Integer> feed) {
+		
+		if(feedback == null)
+			feedback  =new ArrayList<Feedback>();
+		
+		if(feed != null)
 		for (int i = 0;i<feed.size();i++)
 		{
 			Feedback f = DBManager.getInstance().getFeedbackDAO().findByPrimaryKey(feed.get(i));
@@ -154,13 +165,9 @@ public class Corso {
 	}
 
 
-
-
 	public String[] getGiorni() {
 		return giorni;
 	}
-
-
 
 
 	public void setGiorni(String giorni[]) {

@@ -2,6 +2,7 @@ package it.unical.ingsw.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,7 +20,7 @@ import it.mat.unical.persistence.DBManager;
 public class ScegliAbbonamento extends HttpServlet {
 	
 	DBManager db = DBManager.getInstance();
-	ArrayList<Corso> corsi = db.getCorsi();
+	List<Corso> corsi = db.getCorsi();
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

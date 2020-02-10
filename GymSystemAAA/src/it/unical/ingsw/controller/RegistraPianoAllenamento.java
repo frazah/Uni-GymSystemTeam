@@ -25,7 +25,7 @@ import it.mat.unical.persistence.DBManager;
 public class RegistraPianoAllenamento extends HttpServlet {
 	
 	DBManager db = DBManager.getInstance();
-	ArrayList<Corso> corsi = db.getCorsi();
+	List<Corso> corsi = db.getCorsi();
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)

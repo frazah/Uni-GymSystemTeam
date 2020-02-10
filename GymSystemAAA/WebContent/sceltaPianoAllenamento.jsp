@@ -1,7 +1,8 @@
+<%@page import="it.mat.unical.persistence.DBManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@page import="java.util.ArrayList" %>
+<%@page import="java.util.List" %>
 <%@ page import="it.mat.unical.ingsw.model.Corso" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -90,7 +91,7 @@
       		<div class="my-5 col-md-12"> 
 			    <div class="row">
 				  	<%
-						ArrayList<Corso> corsi = (ArrayList<Corso>) request.getAttribute("arraylist");
+						List<Corso> corsi = DBManager.getInstance().getCorsoDAO().findAll();
 					%>
 					
 					<%
@@ -100,9 +101,7 @@
 							     <div class="form-check form-check-group">
 							        <input class="checks" id="checkbox" type="checkbox" name="boxes" value=<%=c.getNome()%>>
 							        <label for="checkbox"><b><%=c.getNome()%></b>
-							        <c:if test="${c.getTrainer() != null }">
-							        - gestito da <b><%=c.getTrainer().getNome()%> <%=c.getTrainer().getCognome()%></b>
-							        </c:if>
+							       
 							         
 							         </label>
 							     </div>

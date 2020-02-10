@@ -1,5 +1,6 @@
 package it.mat.unical.ingsw.model;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -62,6 +63,7 @@ public class Tessera {
 	public void setDataDiIscrizione(LocalDateTime dataDiIscrizione) {
 		this.dataDiIscrizione = dataDiIscrizione;
 	}
+	
 	public LocalDateTime getDataDiScadenza() {
 		return dataDiScadenza;
 	}
@@ -80,6 +82,7 @@ public class Tessera {
 	public void setCorsi(ArrayList<Corso> corsi) {
 		this.corsi = corsi;
 	}
+
 	
 	
 }

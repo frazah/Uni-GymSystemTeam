@@ -2,6 +2,7 @@ package it.unical.ingsw.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,8 +29,8 @@ public class ReindirizzaCorso extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		
-		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
-		ArrayList<Trainer> trainer = DBManager.getInstance().getTrainer();
+		List<Corso> corsi = DBManager.getInstance().getCorsi();
+		List<Trainer> trainer = DBManager.getInstance().getTrainer();
 	
 	
 		request.getSession().setAttribute("corsi", corsi);
@@ -55,12 +56,26 @@ public class ReindirizzaCorso extends HttpServlet {
 		
 		
 		
-		if(corso.getTrainer() != null)
+		boolean trovato = false;
+		Trainer t = null;
+		
+		for(Trainer i : trainer)
 		{
-			request.setAttribute("nomeTrainer", corso.getTrainer().getNome());
-			request.setAttribute("cognomeTrainer", corso.getTrainer().getCognome());
-			request.setAttribute("fotoTrainer", corso.getTrainer().getFotoProfilo());
-			request.setAttribute("mailTrainer", corso.getTrainer().getMail());
+			if(i.getCorso().equals(corso.getNome()))
+			{
+				trovato = true;
+				t = i;
+				
+			}
+		}
+		
+		
+		if(t != null)
+		{
+			request.setAttribute("nomeTrainer", t.getNome());
+			request.setAttribute("cognomeTrainer", t.getCognome());
+			request.setAttribute("fotoTrainer", t.getFotoProfilo());
+			request.setAttribute("mailTrainer", t.getMail());
 		}
 		else
 		{

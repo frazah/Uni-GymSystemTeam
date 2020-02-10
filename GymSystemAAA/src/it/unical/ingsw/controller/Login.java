@@ -2,6 +2,7 @@ package it.unical.ingsw.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -39,8 +40,8 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		Utente utente = DBManager.getInstance().login(username, password);
-		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
-		ArrayList<Trainer> trainer = DBManager.getInstance().getTrainer();
+		List<Corso> corsi = DBManager.getInstance().getCorsi();
+		List<Trainer> trainer = DBManager.getInstance().getTrainer();
 		//System.out.println(utente.getClass().getSimpleName());
 		//System.out.println(utente.getNome() + " " + utente.getCognome());
 		if (utente != null) {

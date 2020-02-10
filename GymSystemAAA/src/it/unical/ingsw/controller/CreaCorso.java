@@ -27,7 +27,7 @@ public class CreaCorso extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
+		List<Corso> corsi = DBManager.getInstance().getCorsi();
 		List<Trainer> trainer = DBManager.getInstance().getTrainer();
 		Trainer trainerAssegnato;
 		Boolean corsoEsiste = false;
@@ -62,9 +62,7 @@ public class CreaCorso extends HttpServlet {
 			}
 				
 		}
-			
-					
-			
+						
 		if (!corsoEsiste) {
 			
 			if (trainerI == null)
@@ -74,8 +72,8 @@ public class CreaCorso extends HttpServlet {
 				trainerAssegnato = trainer.get(trainerIndex);
 				trainerAssegnato.setCorso(corsoCreato);
 			}
-
-			corsi.add(corsoCreato);
+			
+			DBManager.getInstance().registraCorso(corsoCreato);
 			Utente utente = DBManager.getInstance().login("admin@admin.com", "admin");
 			RequestDispatcher rd = request.getRequestDispatcher("gestioneCorsiAdmin.jsp");
 			rd.forward(request, response);
@@ -86,6 +84,8 @@ public class CreaCorso extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("creaCorso.jsp");
 			rd.forward(request, response);
 		}
+		
+		
 		
 		/*for (int i = 0; i < giorni.length; i++)
 			System.out.println(giorni[i]);

@@ -8,6 +8,8 @@ public class Atleta extends Utente{
 	{
 		return 1;
 	}
+	
+	
 
 	public boolean segue(String s)
 	{
@@ -40,6 +42,7 @@ public class Atleta extends Utente{
 	public void setTessera(Tessera tessera) {
 		this.tessera = tessera;
 	}
+	
 	
 	public Tessera getTessera() {
 		return tessera;

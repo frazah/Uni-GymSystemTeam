@@ -85,7 +85,7 @@
 				<tr>
 					<td scope="col">
 					<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
-					<c:if test="${corso.getTrainer() != null}">
+					<!-- <c:if test="${corso.getTrainer() != null}">
 						<div>
 			             	<a style = "color: white">Trainer associato: ${corso.getTrainer().getNome()} ${corso.getTrainer().getCognome()}</a>
 			        	</div>
@@ -100,7 +100,7 @@
 						<form method = "POST" action = "RimuoviTrainerCorso" class = "my-2" onsubmit="return confirm('Sei sicuro di voler eliminare il trainer dal corso ?')">
 			        		<button type="submit" class="btn btn-primary" name ="trainer" value = "${corso.getTrainer().getMail() }">Rimuovi trainer</button>
 			        	</form>			        
-			        </c:if>
+			        </c:if> -->
 			        	<form method = "POST" action = "EliminaCorso" onsubmit="return confirm('Sei sicuro di eliminare il corso?')">
 			        		<button type="submit" class="btn btn-primary" name = "nome" value = "${corso.getNome()}">Elimina corso</button>
 			        	</form>

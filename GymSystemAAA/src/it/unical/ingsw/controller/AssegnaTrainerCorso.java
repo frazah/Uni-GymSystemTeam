@@ -27,7 +27,7 @@ public class AssegnaTrainerCorso extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		ArrayList<Corso> corsi = DBManager.getInstance().getCorsi();
+		List<Corso> corsi = DBManager.getInstance().getCorsi();
 		List<Trainer> trainer = DBManager.getInstance().getTrainer();
 		ArrayList<Trainer> trainerDisponibili = new ArrayList<Trainer>();
 		

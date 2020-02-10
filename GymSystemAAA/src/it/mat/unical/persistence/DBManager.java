@@ -16,14 +16,18 @@ import it.mat.unical.ingsw.model.Corso;
 import it.mat.unical.ingsw.model.Tessera;
 import it.mat.unical.ingsw.model.Trainer;
 import it.mat.unical.ingsw.model.Utente;
+import it.mat.unical.persistence.dao.AdminDao;
 import it.mat.unical.persistence.dao.AtletaDao;
 import it.mat.unical.persistence.dao.CorsoDao;
 import it.mat.unical.persistence.dao.FeedbackDao;
+import it.mat.unical.persistence.dao.TesseraDao;
 import it.mat.unical.persistence.dao.TrainerDao;
 import it.mat.unical.persistence.dao.UtenteDao;
+import it.mat.unical.persistence.dao.jdbc.AdminJDBC;
 import it.mat.unical.persistence.dao.jdbc.AtletaJDBC;
 import it.mat.unical.persistence.dao.jdbc.CorsoJDBC;
 import it.mat.unical.persistence.dao.jdbc.FeedbackJDBC;
+import it.mat.unical.persistence.dao.jdbc.TesseraJDBC;
 import it.mat.unical.persistence.dao.jdbc.TrainerJDBC;
 import it.mat.unical.persistence.dao.jdbc.UtenteJDBC;
 
@@ -61,17 +65,15 @@ public class DBManager {
 		return instance;
 	}
 
-	public ArrayList<Atleta> getRegistrati()
+	public List<Atleta> getRegistrati()
 	{
-		//return registrati;
-		return null;
+		return getAtletaDAO().findAll();
 	}
 
 
 
-	public ArrayList<Corso> getCorsi() {
-		//return corsi;
-		return null;
+	public List<Corso> getCorsi() {
+		return getCorsoDAO().findAll();
 	}
 
 	public List<Trainer> getTrainer() {
@@ -79,66 +81,9 @@ public class DBManager {
 	}
 	
 	private DBManager() {
-		/*registrati = new ArrayList<Atleta>();
-		admin = new Admin();
-		corsi = new ArrayList<Corso>();
-		trainer = new ArrayList<Trainer>();
-		creaCorsiDefault();
-		creaTrainerDefault();
-		creaRegistratiDefault();
-		assegnamentoTrainerCorsi();*/
-		
-		
-	}
-	
-	private void assegnamentoTrainerCorsi() {
-		/*corsi.get(0).setTrainer(trainer.get(0)); //Pugilato --> Tyson
-		trainer.get(0).setCorso(corsi.get(0)); //Tyson --> Pugilato*/
-		
+
 	}
 
-
-	private void creaRegistratiDefault() {
-		/*Atleta a1 = new Atleta("Marco","Grande","marcogrande1998@gmail.com","slaythespire");
-		Atleta a2 = new Atleta("Andrea","De Seta","squame4@gmail.com","h22rew");
-		Atleta a3 = new Atleta("Francesco","Corigliano","francesco.fbhz@gmail.com","pagliusi");
-		Atleta a4 = new Atleta("Antonino","Scarpelli","antonino@gmail.com","royaldoppioperry");
-
-		registrati.add(a1);
-		registrati.add(a2);
-		registrati.add(a3);
-		registrati.add(a4);*/
-	}
-
-	private void creaCorsiDefault() {
-
-		/*String[] giorni1 = new String[]{"1", "2", "3"};
-		String[] giorni2 = new String[]{"1", "4", "3"};
-		String[] giorni3 = new String[]{"5", "2", "3"};
-		
-		Corso c1 = new Corso("Pugilato", null, null, "1", giorni1, "Corso Pugilato OwO", "https://www.youtube.com/embed/3gHcQe8Q56s?autoplay=1");
-		Corso c2 = new Corso("UFC", null, null, "2", giorni2, null, null);
-		Corso c3 = new Corso("Danza",null,null,"3",giorni3,null,null);
-
-		corsi.add(c1);
-		corsi.add(c2);
-		corsi.add(c3);*/
-	}
-	
-	private void creaTrainerDefault()
-	{
-		/*Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
-		t1.setFotoProfilo("immagini/trainerMikeTyson.jpeg");
-		Trainer t2 = new Trainer("Connor","McGregor","ufc@hothotmail.com","notorius");
-		t2.setFotoProfilo("immagini/mcgregor.jpg");*/
-
-
-		/*Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
-		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");
-		Trainer t1 = new Trainer("Mike","Tyson","tyson@hothotmail.com","onepunchman");*/
-		/*trainer.add(t1);
-		trainer.add(t2);*/
-	}
 
 	public void svuotaRegistrati()
 	{
@@ -148,6 +93,11 @@ public class DBManager {
 	public void registraUtente(Atleta atleta)
 	{
 		getAtletaDAO().save(atleta);
+	}
+	
+	public void registraCorso(Corso corso)
+	{
+		getCorsoDAO().save(corso);
 	}
 	
 	public Admin getAdmin() {
@@ -166,22 +116,30 @@ public class DBManager {
 	
 	public Utente login(String username, String password) {
 
-		/*if (username.equals("admin@admin.com") && password.equals("admin"))
-			return admin;
+		Utente user = null;
 		
-
-		for (int i = 0; i<registrati.size();i++)
-			if (username.equals(registrati.get(i).getMail()) && password.equals(registrati.get(i).getPassword()))
-				return registrati.get(i);
-
+		user = getAdminDAO().findByPrimaryKey(username);
 		
-		for (int i = 0; i<trainer.size();i++)
-			if (username.equals(trainer.get(i).getMail()) && password.equals(trainer.get(i).getPassword()))
-				return trainer.get(i);*/
-
+		if (user != null && password.equals(user.getPassword()))
+			return user;
+		
+		user = getTrainerDAO().findByPrimaryKey(username);
+		
+		if (user != null && password.equals(user.getPassword()))
+			return user;
+		
+		user = getAtletaDAO().findByPrimaryKey(username);
+		
+		if (user != null && password.equals(user.getPassword()))
+			return user;
+		
 		return null;
 	}
 	
+	private AdminDao getAdminDAO() {
+		return new AdminJDBC(dataSource);
+	}
+
 	public AtletaDao getAtletaDAO() {
 		return new AtletaJDBC(dataSource);
 	}
@@ -200,5 +158,9 @@ public class DBManager {
 
 	public FeedbackDao getFeedbackDAO() {
 		return new FeedbackJDBC(dataSource);
+	}
+
+	public TesseraDao getTesseraDAO() {
+		return new TesseraJDBC(dataSource);
 	}
 }
