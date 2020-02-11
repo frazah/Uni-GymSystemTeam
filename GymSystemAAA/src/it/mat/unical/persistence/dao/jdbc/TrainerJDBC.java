@@ -79,16 +79,9 @@ public class TrainerJDBC implements TrainerDao{
 				trainer.setFotoProfilo(result.getString("fotoprofilo"));		
 				trainer.setNome(result.getString("nome"));
 				trainer.setCognome(result.getString("cognome"));
+				trainer.setPassword(result.getString("password"));
 				String mail = result.getString("mail");
 				trainer.setMail(mail);
-				/*PreparedStatement statement2;
-				String query2 = "select nomecorso from associazionecorsotrainer where mailtrainer = ?";
-				statement2 = connection.prepareStatement(query2);
-				statement2.setString(1, mail);
-				ResultSet result2 = statement2.executeQuery();
-				trainer.setPassword(result.getString("password"));
-				CorsoJDBC corsoDB = new CorsoJDBC(dataSource);
-				trainer.setCorso(corsoDB.findByPrimaryKey(result2.getString("nomecorso")));*/
 				Corso corso = DBManager.getInstance().getCorsoDAO().findByPrimaryKey(result.getString("nomecorsooccupato"));
 				trainer.setCorso(corso);
 				
@@ -108,7 +101,32 @@ public class TrainerJDBC implements TrainerDao{
 
 	@Override
 	public void update(Trainer trainer) {
-		// TODO Auto-generated method stub
+		Connection connection = null;
+		try {
+			connection = this.dataSource.getConnection();
+			String update = "update trainer SET nome = ?, cognome = ?, fotoprofilo = ?, password = ?, nomecorsooccupato = ? WHERE mail=?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setString(1, trainer.getNome());
+			statement.setString(2, trainer.getCognome());
+			statement.setString(3, trainer.getFotoProfilo());			
+			statement.setString(4, trainer.getPassword());
+			statement.setString(6, trainer.getMail());
+			String nomeCorso;
+			if (trainer.getCorso() == null)
+				nomeCorso = "null";
+			else
+				nomeCorso = trainer.getCorso().getNome();
+			statement.setString(5, nomeCorso);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
 		
 	}
 

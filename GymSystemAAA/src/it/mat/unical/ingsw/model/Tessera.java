@@ -4,16 +4,20 @@ import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
+
+import it.mat.unical.persistence.DBManager;
 
 public class Tessera {
 	private LocalDateTime dataDiIscrizione;
 	private LocalDateTime dataDiScadenza;
-	private static int count = 0;
 	private int id; 	
 	private ArrayList<Corso> corsi;
 	private String iscrizione;
 	private String scadenza;
 
+	
+	
 	
 	
 	public String getIscrizione() {
@@ -36,7 +40,9 @@ public class Tessera {
 		super();
 		this.dataDiIscrizione = dataDiIscrizione;
 		this.dataDiScadenza = dataDiScadenza;
-		setID(++count);
+		List<Tessera> tessere = DBManager.getInstance().getTessere();
+		int n = tessere.get(tessere.size()-1).getID()+1;
+		setID(n);
 		this.corsi = corsi;
 		iscrizione = new String();
 		scadenza = new String();
@@ -53,8 +59,8 @@ public class Tessera {
 		LocalDateTime scadenza = localTime.plusDays(90);
 		System.out.println(localTime);*/
 		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		iscrizione = dataDiIscrizione.format(myFormatObj);
-		scadenza = dataDiScadenza.format(myFormatObj);
+		iscrizione = "a";//dataDiIscrizione.format(myFormatObj);
+		scadenza = "b";//dataDiScadenza.format(myFormatObj);
 	}
 
 	public LocalDateTime getDataDiIscrizione() {

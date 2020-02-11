@@ -41,7 +41,6 @@ public class CorsoJDBC implements CorsoDao{
 			statement.setString(5, corso.getLinkVideo());		
 			statement.setArray(6, null);
 			statement.executeUpdate();
-			System.out.println(statement);
 
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -131,7 +130,7 @@ public class CorsoJDBC implements CorsoDao{
 
 	@Override
 	public void update(Corso corso) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 

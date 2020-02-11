@@ -63,6 +63,7 @@ public class AssegnaTrainerCorso extends HttpServlet {
 			int trainerIndex = Integer.parseInt(trainerI);
 			trainerAssegnato = trainer.get(trainerIndex);
 			trainerAssegnato.setCorso(corsoDaAssegnare);
+			DBManager.getInstance().aggiornaTrainer(trainerAssegnato);
 			
 		}
 		
@@ -74,7 +75,7 @@ public class AssegnaTrainerCorso extends HttpServlet {
 		Utente utente = DBManager.getInstance().login("admin@admin.com", "admin");
 		
 		RequestDispatcher rd = request.getRequestDispatcher("gestioneCorsiAdmin.jsp");
-		rd.forward(request, response);
+		response.sendRedirect("GestioneCorsiAdmin");
 
 	}
 

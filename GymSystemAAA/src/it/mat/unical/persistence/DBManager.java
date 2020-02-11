@@ -35,10 +35,7 @@ import it.mat.unical.persistence.dao.jdbc.UtenteJDBC;
 public class DBManager {
 	
 	private static DBManager instance = null;
-	/*ArrayList<Atleta> registrati;
-	ArrayList<Corso> corsi;
-	ArrayList<Trainer> trainer;
-	Admin admin;*/
+
 	
 	private static  DataSource dataSource;
 
@@ -95,23 +92,41 @@ public class DBManager {
 		getAtletaDAO().save(atleta);
 	}
 	
+	public void registraTessera(Tessera tessera)
+	{
+		getTesseraDAO().save(tessera);
+	}
+	
 	public void registraCorso(Corso corso)
 	{
 		getCorsoDAO().save(corso);
 	}
 	
 	public Admin getAdmin() {
-		//return admin;
-		return null;
+		return getAdminDAO().findByPrimaryKey("admin@admin.com");
+	}
+	
+	public List<Tessera> getTessere() {
+		return getTesseraDAO().findAll();
 	}
 
-
-
-
-	public void stampaRegistrati()
+	public void aggiornaAdmin(Admin admin)
 	{
-		/*for (int i = 0; i<registrati.size();i++)
-			System.out.println(registrati.get(i));*/
+		getAdminDAO().update(admin);
+	}
+	
+	
+	
+	public void aggiornaAtleta(Atleta a)
+	{
+		getAtletaDAO().update(a);
+	}
+	
+
+
+	public void aggiornaTrainer(Trainer trainer)
+	{
+		getTrainerDAO().update(trainer);
 	}
 	
 	public Utente login(String username, String password) {

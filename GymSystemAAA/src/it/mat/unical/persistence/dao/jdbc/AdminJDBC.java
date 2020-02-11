@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.postgresql.jdbc.PgArray;
+
 import it.mat.unical.ingsw.model.Admin;
 import it.mat.unical.ingsw.model.Corso;
 import it.mat.unical.ingsw.model.Trainer;
@@ -80,8 +82,29 @@ private DataSource dataSource;
 
 	@Override
 	public void update(Admin admin) {
-		// TODO Auto-generated method stub
-		
+		Connection connection = null;
+		try {
+			connection = this.dataSource.getConnection();
+			String update = "update admin SET nome = ?, cognome = ?, fotoprofilo = ?, password = ?, richieste = ? WHERE mail=?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setString(1, admin.getNome());
+			statement.setString(2, admin.getCognome());
+			statement.setString(3, admin.getFotoProfilo());			
+			statement.setString(4, admin.getPassword());
+			statement.setString(6, admin.getMail());
+			final String[] data = admin.getRichieste().toArray(new String[admin.getRichieste().size()]);
+			final java.sql.Array sqlArray = connection.createArrayOf("varchar", data);
+			statement.setArray(5, sqlArray);
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
 	}
 
 	@Override

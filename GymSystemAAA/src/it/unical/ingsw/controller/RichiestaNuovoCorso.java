@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.mat.unical.ingsw.model.Admin;
 import it.mat.unical.ingsw.model.Utente;
 import it.mat.unical.persistence.DBManager;
 
@@ -43,7 +44,9 @@ public class RichiestaNuovoCorso extends HttpServlet {
 			System.out.println("errore");*/
 		//System.out.println(messaggio);
 		
-		DBManager.getInstance().getAdmin().getRichieste().add(messaggio);
+		Admin admin = DBManager.getInstance().getAdmin();
+		admin.getRichieste().add(messaggio);
+		DBManager.getInstance().aggiornaAdmin(admin);
 		RequestDispatcher rd = request.getRequestDispatcher("profiloTrainer.jsp");
 		rd.forward(request, response);
 	}

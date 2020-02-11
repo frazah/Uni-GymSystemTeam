@@ -78,7 +78,9 @@ public class RegistraPianoAllenamento extends HttpServlet {
 		    	scadenza = today.plusYears(1);
 		    //scadenza = today.minusDays(10);
 		    Tessera tessera = new Tessera(today, scadenza, corsiInserire);
+		    db.registraTessera(tessera);
 		    utente.setTessera(tessera);
+		    db.aggiornaAtleta(utente);
 		    
 		    RequestDispatcher rd = request.getRequestDispatcher("profilo.jsp");
 			rd.forward(request, response);

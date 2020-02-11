@@ -38,13 +38,16 @@ public class ReindirizzaCorso extends HttpServlet {
 		
 		
 		String nomeCorso = request.getParameter("corso");
-		System.out.println(nomeCorso);
+		//System.out.println(nomeCorso);
 		Corso corso = null;
 		
 		for(Corso c : corsi)
 		{
+			
 			if(c.getNome().equals(nomeCorso))
 				corso = c;
+			
+				
 		}
 		
 		
@@ -58,16 +61,18 @@ public class ReindirizzaCorso extends HttpServlet {
 		
 		boolean trovato = false;
 		Trainer t = null;
-		
+		System.out.println(trainer.size());
 		for(Trainer i : trainer)
 		{
-			if(i.getCorso().equals(corso.getNome()))
+			if(i.getCorso()!= null && i.getCorso().getNome().equals(corso.getNome()))
 			{
 				trovato = true;
 				t = i;
 				
 			}
 		}
+			
+
 		
 		
 		if(t != null)

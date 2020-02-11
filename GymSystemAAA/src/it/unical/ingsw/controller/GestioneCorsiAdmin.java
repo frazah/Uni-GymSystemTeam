@@ -21,41 +21,47 @@ import it.mat.unical.ingsw.model.Trainer;
 import it.mat.unical.ingsw.model.Utente;
 import it.mat.unical.persistence.DBManager;
 
-@WebServlet("/RimuoviTrainerCorso")
-public class RimuoviTrainerCorso extends HttpServlet {
+@WebServlet("/GestioneCorsiAdmin")
+public class GestioneCorsiAdmin extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		List<Corso> corsi = DBManager.getInstance().getCorsi();
 		List<Trainer> trainer = DBManager.getInstance().getTrainer();
-		Corso corsoAssegnato;
-	
-	
-		request.getSession().setAttribute("corsi", corsi);
 		request.getSession().setAttribute("trainer", trainer);
+		request.getSession().setAttribute("corsi", corsi);
 		
-		String emailTrainer = request.getParameter("trainer");
+			RequestDispatcher rd = request.getRequestDispatcher("gestioneCorsiAdmin.jsp");
+			rd.forward(request, response);
 		
-		//System.out.println(emailTrainer);
-		
-		
-		for (int i = 0; i < trainer.size(); i++)
-			if (emailTrainer.contentEquals(trainer.get(i).getMail()))
-			{
-				corsoAssegnato = trainer.get(i).getCorso();
-				trainer.get(i).setCorso(null);
-				DBManager.getInstance().aggiornaTrainer(trainer.get(i));
-			}
-				
+	
 		
 		
 		
-		Utente utente = DBManager.getInstance().login("admin@admin.com", "admin");
 		
-		RequestDispatcher rd = request.getRequestDispatcher("gestioneCorsiAdmin.jsp");
-		rd.forward(request, response);
 
 	}
+	
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		List<Corso> corsi = DBManager.getInstance().getCorsi();
+		List<Trainer> trainer = DBManager.getInstance().getTrainer();
+		request.getSession().setAttribute("trainer", trainer);
+		request.getSession().setAttribute("corsi", corsi);
+		
+			RequestDispatcher rd = request.getRequestDispatcher("gestioneCorsiAdmin.jsp");
+			rd.forward(request, response);
+		
+	
+		
+		
+		
+		
+
+	}
+	
+	
 
 }

@@ -112,7 +112,7 @@
 		
       		<h3 class = "my-3">Gestione sistema</h3>
       		<div class="my-3">
-      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'gestioneCorsiAdmin.jsp';">Gestisci corsi e trainer</button>
+      			<button type="button" class="btn btn-primary" onclick = "window.location.href = 'GestioneCorsiAdmin';">Gestisci corsi e trainer</button>
       		</div>
       		
      	</div> 

@@ -2,6 +2,7 @@ package it.mat.unical.ingsw.model;
 
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import it.mat.unical.persistence.DBManager;
 
@@ -187,5 +188,21 @@ public class Corso {
 		return false;
 	}
 
+	
+	public Trainer getTrainer()
+	{
+		List<Trainer> trainer = DBManager.getInstance().getTrainer();
+		Trainer t = null;
+		for(Trainer i : trainer)
+		{
+			if(i.getCorso()!= null && i.getCorso().getNome().equals(this.getNome()))
+			{
+				t = i;
+			}
+		}
+		
+		
+		return t;
+	}
 	
 }

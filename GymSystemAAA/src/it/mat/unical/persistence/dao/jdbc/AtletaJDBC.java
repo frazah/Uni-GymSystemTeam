@@ -75,6 +75,31 @@ public class AtletaJDBC implements AtletaDao{
 	public void update(Atleta atleta) {
 		// TODO Auto-generated method stub
 		
+		Connection connection = null;
+		try {
+			connection = this.dataSource.getConnection();
+			String update = "update atleta SET nome = ?, cognome = ?, fotoprofilo = ?, password = ?, tipotessera = ?, idtessera = ? WHERE mail=?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			statement.setString(1, atleta.getNome());
+			statement.setString(2, atleta.getCognome());
+			statement.setString(3, atleta.getFotoProfilo());			
+			statement.setString(4, atleta.getPassword());
+			statement.setString(5, atleta.getTipoTessera());
+			statement.setLong(6, atleta.getTessera().getID());
+			statement.setString(7, atleta.getMail());
+			
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		
+		
 	}
 
 	@Override

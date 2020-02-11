@@ -71,17 +71,19 @@ public class CreaCorso extends HttpServlet {
 				int trainerIndex = Integer.parseInt(trainerI);
 				trainerAssegnato = trainer.get(trainerIndex);
 				trainerAssegnato.setCorso(corsoCreato);
+				DBManager.getInstance().aggiornaTrainer(trainerAssegnato);
 			}
 			
 			DBManager.getInstance().registraCorso(corsoCreato);
 			Utente utente = DBManager.getInstance().login("admin@admin.com", "admin");
-			RequestDispatcher rd = request.getRequestDispatcher("gestioneCorsiAdmin.jsp");
-			rd.forward(request, response);
+			RequestDispatcher rd = request.getRequestDispatcher("GestioneCorsiAdmin");
+			response.sendRedirect("GestioneCorsiAdmin");
 		}
 		else {
 			Utente utente = DBManager.getInstance().login("admin@admin.com", "admin");
-			request.setAttribute("nomeErrore","Corso gi� presente, � pregato di scegliere un altro nome.");
+			request.setAttribute("nomeErrore","Corso gia' presente, e' pregato di scegliere un altro nome.");
 			RequestDispatcher rd = request.getRequestDispatcher("creaCorso.jsp");
+			
 			rd.forward(request, response);
 		}
 		

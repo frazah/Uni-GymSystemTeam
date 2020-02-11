@@ -51,6 +51,7 @@ public class EliminaCorso extends HttpServlet {
 					{
 						corsoDaEliminare = trainer.get(j).getCorso();
 						trainer.get(j).setCorso(null);
+						DBManager.getInstance().aggiornaTrainer(trainer.get(j));
 						
 					}
 
@@ -68,10 +69,11 @@ public class EliminaCorso extends HttpServlet {
 		}*/
 		
 		
+		
+		
 		Utente utente = DBManager.getInstance().login("admin@admin.com", "admin");
 		
-		RequestDispatcher rd = request.getRequestDispatcher("gestioneCorsiAdmin.jsp");
-		rd.forward(request, response);
+		response.sendRedirect("GestioneCorsiAdmin");
 
 	}
 
