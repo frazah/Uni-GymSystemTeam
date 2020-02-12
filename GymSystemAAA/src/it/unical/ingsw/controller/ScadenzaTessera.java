@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.mat.unical.ingsw.model.Atleta;
+import it.mat.unical.persistence.DBManager;
 
 /**
  * Servlet implementation class ScadenzaTessera
@@ -24,7 +25,7 @@ public class ScadenzaTessera extends HttpServlet {
 		LocalDateTime today =  LocalDateTime.now();
 		if (atleta.getTessera() != null && today.isAfter(atleta.getTessera().getDataDiScadenza()))
 		{
-			atleta.setTessera(null);
+			DBManager.getInstance().getTesseraDAO().delete(atleta.getTessera());
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("profilo.jsp");
 		rd.forward(request, response);

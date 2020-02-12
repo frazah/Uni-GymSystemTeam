@@ -1,11 +1,14 @@
 package it.mat.unical.ingsw.model;
 
+import java.util.List;
+
+import it.mat.unical.persistence.DBManager;
+
 public class Feedback 
 {
 	private int voto;
 	private String testo;
 	private String autore;
-	private static int count = 0;
 	private int id;
 	
 	
@@ -28,7 +31,14 @@ public class Feedback
 
 	public Feedback(int voto, String testo, String autore) {
 		super();
-		setId(++count);
+		int n;
+		List<Feedback> feedback = DBManager.getInstance().getFeedbackDAO().findAll();
+		if (feedback.size() == 0)
+			n = 1;
+		else
+			n = feedback.get(feedback.size()-1).getId()+1;
+		
+		setId(n);
 		this.voto = voto;
 		this.testo = testo;
 		this.autore = autore;

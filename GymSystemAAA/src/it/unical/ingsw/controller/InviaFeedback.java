@@ -67,6 +67,7 @@ public class InviaFeedback extends HttpServlet {
 		
 		for(Trainer i : trainer)
 		{
+			if(i.getCorso() != null)
 			if(i.getCorso().equals(corso.getNome()))
 			{
 				trovato = true;
@@ -102,7 +103,11 @@ public class InviaFeedback extends HttpServlet {
 		for(Corso c : DBManager.getInstance().getCorsi())
 		{
 			if(c.getNome().equals(nomeCorso))
-				c.aggiungiFeedback(new Feedback(v,testo,autore));
+			{
+				Feedback f = new Feedback(v,testo,autore);
+				c.aggiungiFeedback(f);
+				DBManager.getInstance().getCorsoDAO().update(c);
+			}
 		}
 		
 		
@@ -112,10 +117,10 @@ public class InviaFeedback extends HttpServlet {
 		
 		
 		
-		RequestDispatcher rd = request.getRequestDispatcher("corso.jsp");
-		rd.forward(request, response);
+		/*RequestDispatcher rd = request.getRequestDispatcher("ReindirizzaCorso?corso="+nomeCorso);
+		rd.forward(request, response);*/
 		
-		
+		response.sendRedirect("ReindirizzaCorso?corso="+nomeCorso);
 		
 		
 	}

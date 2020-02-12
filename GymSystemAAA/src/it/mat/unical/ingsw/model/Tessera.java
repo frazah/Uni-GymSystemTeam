@@ -2,7 +2,8 @@ package it.mat.unical.ingsw.model;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatter;import java.time.temporal.Temporal;
+import java.time.temporal.TemporalUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,54 +14,51 @@ public class Tessera {
 	private LocalDateTime dataDiScadenza;
 	private int id; 	
 	private ArrayList<Corso> corsi;
-	private String iscrizione;
-	private String scadenza;
+
 
 	
 	
 	
 	
 	public String getIscrizione() {
+		String iscrizione = new String();
+		
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		iscrizione = dataDiIscrizione.format(myFormatObj);
+		
 		return iscrizione;
 	}
 
-	public void setIscrizione(String iscrizione) {
-		this.iscrizione = iscrizione;
-	}
+	
 
 	public String getScadenza() {
+		
+		String scadenza = new String();
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		scadenza = dataDiScadenza.format(myFormatObj);
 		return scadenza;
 	}
 
-	public void setScadenza(String scadenza) {
-		this.scadenza = scadenza;
-	}
-
+	
 	public Tessera(LocalDateTime dataDiIscrizione, LocalDateTime dataDiScadenza, ArrayList<Corso> corsi) {
 		super();
 		this.dataDiIscrizione = dataDiIscrizione;
 		this.dataDiScadenza = dataDiScadenza;
 		List<Tessera> tessere = DBManager.getInstance().getTessere();
-		int n = tessere.get(tessere.size()-1).getID()+1;
+		int n;
+		if (tessere.size() == 0)
+			n = 1;
+			
+		else
+			n = tessere.get(tessere.size()-1).getID()+1;
+		
 		setID(n);
 		this.corsi = corsi;
-		iscrizione = new String();
-		scadenza = new String();
-		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		iscrizione = dataDiIscrizione.format(myFormatObj);
-		scadenza = dataDiScadenza.format(myFormatObj);
+		
 	}
 	
 	public Tessera() {
 		corsi = new ArrayList<Corso>();
-		iscrizione = new String();
-		scadenza = new String();
-		/*LocalDateTime localTime = LocalDateTime.now();
-		LocalDateTime scadenza = localTime.plusDays(90);
-		System.out.println(localTime);*/
-		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-		iscrizione = "a";//dataDiIscrizione.format(myFormatObj);
-		scadenza = "b";//dataDiScadenza.format(myFormatObj);
 	}
 
 	public LocalDateTime getDataDiIscrizione() {

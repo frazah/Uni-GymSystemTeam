@@ -2,6 +2,7 @@ package it.mat.unical.persistence.dao.jdbc;
 
 import java.sql.Array;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -38,8 +39,10 @@ public class CorsoJDBC implements CorsoDao{
 			Array sqlArray = connection.createArrayOf("varchar", data);
 			statement.setArray(3, sqlArray);
 			statement.setString(4, corso.getDescrizione());
-			statement.setString(5, corso.getLinkVideo());		
-			statement.setArray(6, null);
+			statement.setString(5, corso.getLinkVideo());	
+			Integer[] data2 = {};
+			Array sqlArray2 = connection.createArrayOf("integer", data2);
+			statement.setArray(6, sqlArray2);
 			statement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -74,8 +77,13 @@ public class CorsoJDBC implements CorsoDao{
 				corso.setDescrizione(result.getString("descrizione"));
 				corso.setLinkVideo(result.getString("linkvideo"));
 				Array id = (Array) result.getArray("idfeedback");
-				ArrayList<Integer> feed =(ArrayList<Integer>) id;
-				corso.impostaFeedback(feed);
+				Integer[] lista = (Integer[]) id.getArray();
+				ArrayList<Integer> listaTemp = new ArrayList<Integer>();
+				for (int i = 0; i<lista.length;i++)
+				{
+					listaTemp.add(lista[i]);
+				}
+				corso.impostaFeedback(listaTemp);
 				
 			}
 		} catch (SQLException e) {
@@ -110,8 +118,13 @@ public class CorsoJDBC implements CorsoDao{
 				corso.setDescrizione(result.getString("descrizione"));
 				corso.setLinkVideo(result.getString("linkvideo"));
 				Array id = (Array) result.getArray("idfeedback");
-				ArrayList<Integer> feed =(ArrayList<Integer>) id;
-				corso.impostaFeedback(feed);
+				Integer[] lista = (Integer[]) id.getArray();
+				ArrayList<Integer> listaTemp = new ArrayList<Integer>();
+				for (int i = 0; i<lista.length;i++)
+				{
+					listaTemp.add(lista[i]);
+				}
+				corso.impostaFeedback(listaTemp);
 								
 				corsi.add(corso);
 			}
@@ -128,9 +141,43 @@ public class CorsoJDBC implements CorsoDao{
 	}
 	
 
-	@Override
+	@Override //(nome, fasciaoraria, giorni, descrizione, linkvideo, idfeedback)
 	public void update(Corso corso) {
-		
+		Connection connection = null;
+		try {
+			connection = this.dataSource.getConnection();
+			String update = "update corso SET fasciaoraria = ?, giorni = ?, descrizione= ?, linkvideo = ?, idfeedback = ? WHERE nome = ?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			
+			statement.setString(1, corso.getFasciaOraria());
+			String[] data = corso.getGiorni();
+			Array sqlArray = connection.createArrayOf("varchar", data);
+			statement.setArray(2, sqlArray);
+			statement.setString(3, corso.getDescrizione());
+			statement.setString(4, corso.getLinkVideo());		
+			
+			
+			ArrayList<Integer> idF = new ArrayList<Integer>();
+			for(int i= 0; i <corso.getFeedback().size(); i++)
+				idF.add(corso.getFeedback().get(i).getId());
+			Integer[] idFeedback = idF.toArray(new Integer[idF.size()]);
+			java.sql.Array a = connection.createArrayOf("integer", idFeedback);
+			statement.setArray(5, a);
+			
+			
+			statement.setString(6, corso.getNome());
+			
+			
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
 		
 	}
 

@@ -73,19 +73,24 @@ public class Corso {
 	public int getMediaFeedback()
 	{
 		
-		if(feedback.isEmpty())
+		
+		if(feedback.isEmpty() || feedback == null)
 			return 1;
-		else
-		{
+		
 			int m = 0;
-			for(Feedback f : feedback)
+			for(int i = 0; i < feedback.size(); i++)
 			{
-				m+=f.getVoto();
+				if(feedback != null)
+					if(feedback.get(i) != null)
+					{
+						System.out.println(feedback.get(i).getVoto());
+						m+=feedback.get(i).getVoto();
+					}
 			}
 			m/=feedback.size();
 			
 			return m;
-		}
+		
 	
 	}
 	
@@ -99,6 +104,7 @@ public class Corso {
 				presente =true;
 				feed.setTesto(f.getTesto());
 				feed.setVoto(f.getVoto());
+				DBManager.getInstance().getFeedbackDAO().update(feed);
 			}
 			
 		}
@@ -106,7 +112,10 @@ public class Corso {
 		
 
 		if(!presente)
-		feedback.add(f);
+		{
+			feedback.add(f);
+			DBManager.getInstance().getFeedbackDAO().save(f);
+		}
 	}
 	
 	
@@ -114,7 +123,7 @@ public class Corso {
 	
 
 	public Corso() {
-		// TODO Auto-generated constructor stub
+		feedback = new ArrayList<Feedback>();
 }
 
 	public String getFasciaOraria() {
@@ -145,7 +154,6 @@ public class Corso {
 
 
 
-	
 	public ArrayList<Atleta> getIscritti() {
 		return iscritti;
 	}

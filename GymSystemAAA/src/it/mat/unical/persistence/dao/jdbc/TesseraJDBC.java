@@ -1,10 +1,12 @@
 package it.mat.unical.persistence.dao.jdbc;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -36,9 +38,14 @@ public class TesseraJDBC implements TesseraDao{
 			statement.setDate(1, sqlDate1);
 			Date sqlDate2 = Date.valueOf(tessera.getDataDiScadenza().toLocalDate());
 			statement.setDate(2, sqlDate2);
-			statement.setLong(3, tessera.getID()); //CONTINUA
-			final String[] data = tessera.getNomiCorsi().toArray(new String[tessera.getNomiCorsi().size()]);
-			final java.sql.Array sqlArray = connection.createArrayOf("varchar", data);
+			statement.setLong(3, tessera.getID());
+			ArrayList<String> nomi = new ArrayList<String>();
+			for (int i = 0; i < tessera.getCorsi().size();i++)
+			{
+				nomi.add(tessera.getCorsi().get(i).getNome());
+			}
+			String[] data = nomi.toArray(new String[nomi.size()]);
+			java.sql.Array sqlArray = connection.createArrayOf("varchar", data);
 			statement.setArray(4, sqlArray);
 
 			statement.executeUpdate();
@@ -72,7 +79,15 @@ public class TesseraJDBC implements TesseraDao{
 				tessera.setID(result.getInt("id"));				
 				tessera.setDataDiIscrizione(result.getTimestamp("datadiiscrizione").toLocalDateTime());
 				tessera.setDataDiScadenza(result.getTimestamp("datadiscadenza").toLocalDateTime());
-				tessera.setNomiCorsi();
+				Array a = result.getArray("nomicorsi");
+				String[] nomi = (String[])a.getArray();
+				ArrayList<Corso> corsi = new ArrayList<Corso>();
+				for (int i=0;i<nomi.length;i++)
+				{
+					corsi.add(DBManager.getInstance().getCorsoDAO().findByPrimaryKey(nomi[i]));
+				}
+				tessera.setCorsi(corsi);
+				
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
@@ -102,6 +117,14 @@ public class TesseraJDBC implements TesseraDao{
 				tessera.setDataDiIscrizione(result.getTimestamp("datadiiscrizione").toLocalDateTime());
 				tessera.setDataDiScadenza(result.getTimestamp("datadiscadenza").toLocalDateTime());	
 				tessera.setID(result.getInt("id"));
+				Array a = result.getArray("nomicorsi");
+				String[] nomi = (String[])a.getArray();
+				ArrayList<Corso> corsi = new ArrayList<Corso>();
+				for (int i=0;i<nomi.length;i++)
+				{
+					corsi.add(DBManager.getInstance().getCorsoDAO().findByPrimaryKey(nomi[i]));
+				}
+				tessera.setCorsi(corsi);
 				
 				tessere.add(tessera);
 			}
@@ -119,14 +142,57 @@ public class TesseraJDBC implements TesseraDao{
 
 	@Override
 	public void update(Tessera tessera) {
-		// TODO Auto-generated method stub
-		
+		Connection connection = null;
+		try {
+			connection = this.dataSource.getConnection();
+			String update = "update tessera SET datadiiscrizione = ?, datadiscadenza = ?, nomicorsi = ? WHERE id = ?";
+			PreparedStatement statement = connection.prepareStatement(update);
+			Date sqlDate1 = Date.valueOf(tessera.getDataDiIscrizione().toLocalDate());
+			statement.setDate(1, sqlDate1);
+			Date sqlDate2 = Date.valueOf(tessera.getDataDiScadenza().toLocalDate());
+			statement.setDate(2, sqlDate2);
+			
+			ArrayList<String> nomi = new ArrayList<String>();
+			for (int i = 0; i < tessera.getCorsi().size();i++)
+			{
+				nomi.add(tessera.getCorsi().get(i).getNome());
+			}
+			String[] data = nomi.toArray(new String[nomi.size()]);
+			java.sql.Array sqlArray = connection.createArrayOf("varchar", data);
+			statement.setArray(3, sqlArray);
+			
+			statement.setLong(4, tessera.getID());
+			
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
 	}
 
 	@Override
 	public void delete(Tessera tessera) {
-		// TODO Auto-generated method stub
-		
+		Connection connection = null;
+		try {
+			connection = this.dataSource.getConnection();
+			String delete = "delete FROM tessera WHERE id = ? ";
+			PreparedStatement statement = connection.prepareStatement(delete);
+			statement.setInt(1, tessera.getID());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
 	}
 
 }

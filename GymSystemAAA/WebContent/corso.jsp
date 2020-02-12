@@ -77,7 +77,7 @@
         <a href="index.jsp">Homepage</a>
       </li>
       <li class="breadcrumb-item">
-        <a href="corsi.html">Corsi</a>
+        <a href="corsi.jsp">Corsi</a>
       </li>
       <li class="breadcrumb-item active">${nomeCorso}</li>
     </ol>

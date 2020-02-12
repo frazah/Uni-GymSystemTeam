@@ -18,6 +18,7 @@ import org.apache.tomcat.util.http.fileupload.FileUtils;
 
 import it.mat.unical.ingsw.model.Atleta;
 import it.mat.unical.ingsw.model.Corso;
+import it.mat.unical.ingsw.model.Tessera;
 import it.mat.unical.ingsw.model.Trainer;
 import it.mat.unical.ingsw.model.Utente;
 import it.mat.unical.persistence.DBManager;
@@ -42,12 +43,14 @@ public class EliminaCorso extends HttpServlet {
 		
 		//System.out.println(nomeCorso);
 		
+		
+		
 		for (int i = 0; i < corsi.size(); i++) { 
 			if (nomeCorso.contentEquals(corsi.get(i).getNome())) {
 			
 				for (int j = 0; j < trainer.size(); j++)
 				
-					if (trainer.get(j).getCorso().getNome().equals(nomeCorso))
+					if (trainer.get(j).getCorso() != null && trainer.get(j).getCorso().getNome().equals(nomeCorso))
 					{
 						corsoDaEliminare = trainer.get(j).getCorso();
 						trainer.get(j).setCorso(null);
@@ -56,9 +59,21 @@ public class EliminaCorso extends HttpServlet {
 					}
 
 				corsoDaEliminare = corsi.get(i);
+				eliminaCorsoDaTessere(corsoDaEliminare);
 				DBManager.getInstance().getCorsoDAO().delete(corsoDaEliminare);
 			}
 		}
+		
+		
+		
+			
+
+			
+			
+		
+		
+		
+		
 		
 		/*for(Atleta a : iscritti)
 		{
@@ -75,6 +90,24 @@ public class EliminaCorso extends HttpServlet {
 		
 		response.sendRedirect("GestioneCorsiAdmin");
 
+	}
+	
+	public void eliminaCorsoDaTessere (Corso corsoDaEliminare)
+	{
+		
+		List<Tessera> tessere = DBManager.getInstance().getTessere();
+		
+		if (corsoDaEliminare != null)
+			for (int i= 0; i< tessere.size(); i++)
+			{
+				if(tessere.get(i).getCorsi() != null)
+					for (int j = 0; j<  tessere.get(i).getCorsi().size(); j++) 
+						if(tessere.get(i).getCorsi().get(j).getNome().equals(corsoDaEliminare.getNome()))
+						{
+							tessere.get(i).getCorsi().remove(j);
+							DBManager.getInstance().aggiornaTessera(tessere.get(i));
+						}
+			}
 	}
 
 }

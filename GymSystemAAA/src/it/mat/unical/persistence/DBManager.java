@@ -115,6 +115,11 @@ public class DBManager {
 		getAdminDAO().update(admin);
 	}
 	
+	public void aggiornaTessera(Tessera t)
+	{
+		getTesseraDAO().update(t);
+	}
+	
 	
 	
 	public void aggiornaAtleta(Atleta a)
