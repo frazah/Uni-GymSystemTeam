@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import it.mat.unical.ingsw.model.Atleta;
@@ -27,7 +28,32 @@ public class AtletaJDBC implements AtletaDao{
 	
 	@Override
 	public void save(Atleta atleta) {
-		// TODO Auto-generated method stub
+		Connection connection = null;
+		try {
+			connection = this.dataSource.getConnection();
+			String insert = "insert into atleta(fotoProfilo, nome, cognome,"
+					+ " mail, password, tipotessera) values (?,?,?,?,?,?)";
+			PreparedStatement statement = connection.prepareStatement(insert);
+			statement.setString(2, atleta.getNome());
+			statement.setString(3, atleta.getCognome());
+			statement.setString(1, atleta.getFotoProfilo());			
+			statement.setString(5, atleta.getPassword());
+			statement.setString(6, atleta.getTipoTessera());
+			//statement.setLong(7, );
+			statement.setString(4, atleta.getMail());
+			statement.executeUpdate();
+			//System.out.println(statement);
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				if (connection != null)
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
 		
 	}
 
@@ -67,8 +93,39 @@ public class AtletaJDBC implements AtletaDao{
 
 	@Override
 	public List<Atleta> findAll() {
-		// TODO Auto-generated method stub
-		return null;
+		Connection connection = null;
+		List<Atleta> atleti = new LinkedList<>();
+		try {
+			connection = this.dataSource.getConnection();
+			Atleta atleta;
+			PreparedStatement statement;
+			String query = "select * from atleta";
+			statement = connection.prepareStatement(query);
+			ResultSet result = statement.executeQuery();
+			while (result.next()) {
+				atleta = new Atleta();
+				atleta = new Atleta();
+				atleta.setNome(result.getString("nome"));				
+				atleta.setCognome(result.getString("cognome"));
+				atleta.setFotoProfilo(result.getString("fotoprofilo"));
+				atleta.setMail(result.getString("mail"));
+				atleta.setPassword(result.getString("password"));
+				Tessera tessera = DBManager.getInstance().getTesseraDAO().findByPrimaryKey(result.getInt("idtessera"));
+				atleta.setTessera(tessera);
+				atleta.setTipoTessera(result.getString("tipotessera"));
+				
+				atleti.add(atleta);
+			}
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		}	 finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
+		return atleti;
 	}
 
 	@Override

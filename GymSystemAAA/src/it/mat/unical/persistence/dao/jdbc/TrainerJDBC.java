@@ -25,7 +25,31 @@ public class TrainerJDBC implements TrainerDao{
 
 	@Override
 	public void save(Trainer trainer) {
-		// TODO Auto-generated method stub
+		Connection connection = null;
+		try {
+			connection = this.dataSource.getConnection();
+			String insert = "insert into trainer(fotoProfilo, nome, cognome,"
+					+ " mail, password, nomecorsooccupato) values (?,?,?,?,?,?)";
+			PreparedStatement statement = connection.prepareStatement(insert);
+			statement.setString(1, "null");
+			statement.setString(2, trainer.getNome());
+			statement.setString(3, trainer.getCognome());
+			statement.setString(4, trainer.getMail());
+			statement.setString(5, trainer.getPassword());
+			statement.setString(6, "null");
+			statement.executeUpdate();
+			//System.out.println(statement);
+
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				if (connection != null)
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
 		
 	}
 
@@ -132,7 +156,22 @@ public class TrainerJDBC implements TrainerDao{
 
 	@Override
 	public void delete(Trainer trainer) {
-		// TODO Auto-generated method stub
+		Connection connection = null;
+		try {
+			connection = this.dataSource.getConnection();
+			String delete = "delete FROM trainer WHERE mail = ? ";
+			PreparedStatement statement = connection.prepareStatement(delete);
+			statement.setString(1, trainer.getMail());
+			statement.executeUpdate();
+		} catch (SQLException e) {
+			throw new RuntimeException(e.getMessage());
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e.getMessage());
+			}
+		}
 		
 	}
 

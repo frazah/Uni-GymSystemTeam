@@ -89,7 +89,16 @@
         </div>
     </form>
 
+
+     <c:if test="${not empty mailErrore}">
+    	<script>
+         	alert("${mailErrore}");
+    	</script>
+	</c:if>
+
 </div>
+
+
 
 
 <!-- Footer -->

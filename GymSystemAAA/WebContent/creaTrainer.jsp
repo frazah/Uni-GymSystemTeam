@@ -69,82 +69,35 @@
 
 
 <div class="my-5 text-center container" style="width: 500px; height: 500px">
-    <form method="POST" action="CreaCorso" onsubmit="return confirm('Confermi la creazione del corso?')">
+    <form method="POST" action="CreaTrainer" onsubmit="return confirm('Confermi la registrazione del trainer?')">
     	<div class="form-group col-xl-auto" >
-            <label>Nome Corso</label>
-            <input type="text" name = "nome" class="form-control" placeholder="Inserisci nome del corso" required>
+            <label>Nome trainer</label>
+            <input type="text" name = "nome" class="form-control" placeholder="Inserisci nome del trainer" required>
         </div>
         <div class="form-group col-xl-auto" >
-            <label>Descrizione del corso</label>
-            <input type="text" name = "descrizione" class="form-control" placeholder="Inserisci descrizione del corso" required>
-        </div>
-                <div class="form-group col-xl-auto" >
-            <label>Link video YouTube</label>
-            <input type="text" name = "linkVideo" class="form-control" placeholder="Inserisci link di un video riguardante il corso" required>
-        </div>
-        <div class="pricing-levels-3">
-	          <p><strong>Seleziona i giorni (MAX 3 Giorni)</strong></p>
-	          <input class="single-checkbox" type="checkbox" name="giorno" value="1">Lunedi'<br>
-	          <input class="single-checkbox" type="checkbox" name="giorno" value="2">Martedi'<br>
-	          <input class="single-checkbox" type="checkbox" name="giorno" value="3">Mercoledi'<br>
-	          <input class="single-checkbox" type="checkbox" name="giorno" value="4">Giovedi'<br>
-	          <input class="single-checkbox" type="checkbox" name="giorno" value="5">Venerdi'<br>
-	          <input class="single-checkbox" type="checkbox" name="giorno" value="6">Sabato<br>  
+            <label>Cognome trainer</label>
+            <input type="text" name = "cognome" class="form-control" placeholder="Inserisci cognome" required>
         </div>
         <div class="form-group col-xl-auto" >
-        <p>Seleziona la fascia oraria:</p>
-            <select name="fasciaOra">
-   			 <option value="1">8.00-10.00</option>
-    		 <option value="2">10.00-12.00</option>
-    		 <option value="3">14.00-16.00</option>
-    		 <option value="4">16.00-18.00</option>
-    		 <option value="5">18.00-20.00</option>
-  		   </select>
+            <label>Mail trainer</label>
+            <input type="email" name = "mail" class="form-control" placeholder="Inserisci mail con cui il trainer accedera'" required>
         </div>
         <div class="form-group col-xl-auto" >
-        <p>Seleziona Trainer da assegnare:</p>
-        <select name="trainer">
-        <c:forEach items="${trainer}" var="trainer" varStatus="loop">
-        	<c:if test="${trainer.getCorso() == null}">
-        		<option value="${loop.index}">${trainer.getNome()} ${trainer.getCognome()}</option>
-        	</c:if>
-        </c:forEach>
-        </select>
+            <label>Password trainer</label>
+            <input type="password" name = "password" class="form-control" placeholder="Inserisci password con cui il trainer accedera'" required>
         </div>
         <div class="form-group col-xl-auto">
-            <button id = "submit" type="submit" class="btn btn-primary">Crea corso</button>
+            <button id = "submit" type="submit" class="btn btn-primary">Registra trainer</button>
         </div>
     </form>
     
-    <c:if test="${not empty nomeErrore}">
+    <c:if test="${not empty mailErrore}">
     	<script>
-         	alert("${nomeErrore}");
+         	alert("${mailErrore}");
     	</script>
 	</c:if>
 
 </div>
-
-<script src = "js/creaCorso.js"></script>
-
-<script>
-  $('#submit').prop("disabled", true);
-  
-  $('input:checkbox').click(function() {
-   if ($(this).is(':checked')) {
-   $('#submit').prop("disabled", false);
-   }
-   
-   if ($('.single-checkbox').filter(':checked').length == 0 ) {
-	  
-	   $('#submit').attr('disabled',true);
-   }
-   
-   if ($('.single-checkbox').filter(':checked').length > 0) {
-
-	   $('#submit').attr('disabled',false);
-   }
-  });
-  </script>
 
 
 <!-- Footer -->

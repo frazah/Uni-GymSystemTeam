@@ -145,8 +145,13 @@
 						<thead>
 							<tr>
 								<th  scope="col">
-								<a href="ReindirizzaCorso?corso=${corso.getNome()}">${corso.getNome()}</a>								</th>
+								<a href="ReindirizzaCorso?corso=${corso.getNome()}">${corso.getNome()}</a>	
+									</th>
+								
+		    										
 		    				</tr>
+		    				
+								
 						</thead>
  					</table>
  				</c:forEach>

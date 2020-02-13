@@ -70,17 +70,26 @@
   <!-- Page Content -->
   <div class="container">
   
-  <div class = "mx-5 my-5">
-  	<button type="submit" class="btn btn-primary" id = "nuovoCorso" onclick = "window.location.href = 'creaCorso.jsp' "">Crea corso</button>
+  <div class="row">
+  <div class = "col mx-5 my-5">
+  	<button type="submit" class="btn btn-primary" id = "nuovoCorso" onclick = "window.location.href = 'creaCorso.jsp' ">Crea corso</button>
+  </div>
+  <div class = "col text-right mx-5 my-5">
+  	<button type="submit" class="btn btn-primary" id = "nuovoTrainer" onclick = "window.location.href = 'creaTrainer.jsp' ">Crea trainer</button>
+  </div>
   </div>
   
+  <div class="row">
+  
+ <div class="col">
   <c:choose>
   	<c:when test="${empty corsi}">
   		<h1>Nel sistema non è presente nessun corso</h1>
   	</c:when>
   	<c:when test="${not empty corsi}">
   		<c:forEach items="${corsi}" var="corso">
-	    <table class="table table-bordered table-dark mx-5 my-5 text-center container" style="width: 500px; height : 500px">
+  		<div>
+	    <table class="table table-bordered table-dark mx-5 my-5 text-center container" >
 			<thead>
 				<tr>
 					<td scope="col">
@@ -108,12 +117,39 @@
 			    </tr>
 			</thead>
 	 	</table>
+	 	</div>
  		</c:forEach>
   	</c:when>
   </c:choose>
+</div>	
 
-  	
-  
+<div class="col text-right">
+<c:choose>
+  	<c:when test="${empty trainer}">
+  		<h1>Nel sistema non è presente nessun trainer</h1>
+  	</c:when>
+  	<c:when test="${not empty trainer}">
+  		<c:forEach items="${trainer}" var="trainer">
+  		
+	    <table class="table table-bordered table-dark mx-5 my-5 text-center container" >
+			<thead>
+				<tr>
+					<td scope="col">
+					<a style="color: yellow"> ${trainer.getNome()} ${trainer.getCognome()}</a>
+			        	<form method = "POST" action = "EliminaTrainer" onsubmit="return confirm('Sei sicuro di eliminare il trainer?')">
+			        		<button type="submit" class="btn btn-primary" name = "mail" value = "${trainer.getMail()}">Elimina trainer</button>
+			        	</form>
+			        </td>
+			    </tr>
+			</thead>
+	 	</table>
+	 	
+ 		</c:forEach>
+  	</c:when>
+  </c:choose>
+  </div>
+ 
+  </div>
   
 
     </div>
@@ -125,7 +161,7 @@
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class=" py-5 bg-dark">
+  <footer class="fixed-bottom py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
     </div>

@@ -1,6 +1,7 @@
 package it.unical.ingsw.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,42 +11,83 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.mat.unical.ingsw.model.Atleta;
+import it.mat.unical.ingsw.model.Corso;
+import it.mat.unical.ingsw.model.Trainer;
 import it.mat.unical.ingsw.model.Utente;
 import it.mat.unical.persistence.DBManager;
 
-/**
- * Servlet implementation class IscriviAtleta
- */
+
 @WebServlet("/IscriviAtleta")
 public class IscriviAtleta extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public IscriviAtleta() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		List<Corso> corsi = DBManager.getInstance().getCorsi();
+		List<Trainer> trainer = DBManager.getInstance().getTrainer();
+		List<Atleta> iscritti = DBManager.getInstance().getRegistrati();
+		
 		String nome = request.getParameter("nome");
 		String cognome = request.getParameter("cognome");
 		String mail = request.getParameter("mail");
 		String password = request.getParameter("password");
-		//System.out.println(nome + cognome + username + password);
+		Boolean atletaEsiste = false;
 		
-		Atleta atleta = new Atleta (nome,cognome,mail,password);
+		for (int i = 0; i < trainer.size(); i++) {
+			
+			String mailAtletaParam = mail;
+			String mailTrainerArray = trainer.get(i).getMail();
+			
+			//trasformo le due stringhe in minuscolo per fare il confronto
+			
+			mailAtletaParam = mailAtletaParam.toLowerCase();
+			mailTrainerArray = mailTrainerArray.toLowerCase();
 		
-		DBManager.getInstance().registraUtente(atleta);
+			
+			if (mailAtletaParam.equals(mailTrainerArray)) {
+				atletaEsiste = true;
+				
+			}
+				
+		}
 		
-		request.getSession().setAttribute("utente", atleta);
+		for (int i = 0; i < iscritti.size(); i++) {
+			
+			String mailAteltaParam = mail;
+			String mailAteltaArray = iscritti.get(i).getMail();
+			
+			//trasformo le due stringhe in minuscolo per fare il confronto
+			
+			mailAteltaParam = mailAteltaParam.toLowerCase();
+			mailAteltaArray = mailAteltaArray.toLowerCase();
 		
-		RequestDispatcher view = request.getRequestDispatcher("iscritto.jsp");
-		view.forward(request, response);
+			
+			if (mailAteltaParam.equals(mailAteltaArray)) {
+				atletaEsiste = true;
+				
+			}
+				
+		}
+
+		
+		if (!atletaEsiste) {
+			
+			Atleta atleta = new Atleta (nome,cognome,mail,password);
+			
+			DBManager.getInstance().registraUtente(atleta);
+			
+			request.getSession().setAttribute("utente", atleta);
+			
+			RequestDispatcher view = request.getRequestDispatcher("iscritto.jsp");
+			view.forward(request, response);
+		}
+		else {
+			
+			request.setAttribute("mailErrore","Mail gia' presente, e' pregato di scegliere un' altra mail.");
+			RequestDispatcher rd = request.getRequestDispatcher("registrazione.jsp");
+			
+			rd.forward(request, response);
+		}
 	}
 
 }
