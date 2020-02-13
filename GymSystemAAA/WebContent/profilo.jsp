@@ -7,6 +7,7 @@
 
 <head>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -16,7 +17,9 @@
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+  <link href="css/uploadFotocss.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
 
@@ -80,17 +83,30 @@
       <li class="breadcrumb-item active">Profilo</li>
     </ol>
 
+
     <!-- Portfolio Item Row -->
     <div class="row">
 
-      <div class="col-md-2">
-        <img class="img-fluid" src="${utente.getFotoProfilo()}" alt="">
-        <div class = "my-2">
-    	<button type="button" class="btn btn-primary" >Carica foto profilo</button>
-		</div>
-      </div> 
+  <div class="row">
+   <div class="small-12 medium-2 large-2 columns">
+     <div class="circle">
+       <!-- User Profile Image -->
+       <img class="profile-pic" >
+
+       <!-- Default Image -->
+       <!-- <i class="fa fa-user fa-5x"></i> -->
+     </div>
+     <div class="p-image">
+       <i class="fa fa-camera upload-button"></i>
+        <input class="file-upload" type="file" accept="image/*"/>
+        <script src = "js/uploadFoto.js"></script>
+     </div>
+  </div>
+</div>
+
+
      
-      
+    
       
       <div class="col-md-6">
         <h2>Le mie informazioni</h2>
@@ -173,7 +189,7 @@
   <!-- /.container -->
 
   <!-- Footer -->
-   <footer class=" py-5 bg-dark">
+   <footer class="fixed-bottom py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
     </div>
