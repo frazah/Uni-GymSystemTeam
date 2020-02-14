@@ -7,7 +7,7 @@
 
 <head>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -87,22 +87,20 @@
     <!-- Portfolio Item Row -->
     <div class="row">
 
-  <div class="row">
-   <div class="small-12 medium-2 large-2 columns">
-     <div class="circle">
-       <!-- User Profile Image -->
-       <img class="profile-pic" >
+<form method = "POST" id="uploadFoto" action="UploadFoto">
+ <div class="profile-img">
+  <img class="profile-thumb" src="https://tinyurl.com/kdc5vlp" id="bannerImg" />
+  <input type="hidden" id="temp" name = "temp" value = "https://tinyurl.com/kdc5vlp"/>
+  <div class="upload">
+    <div class="upload-button"><img src="https://tinyurl.com/mrphx9r" alt="" /></div>
+    <input  class="file-upload" type="file" accept="image/*"  name = "foto"/>
+    <script src="js/uploadFoto.js"></script>
+    
+    <input type="submit" value="Salva foto profilo" class = "btn btn-primary" >
 
-       <!-- Default Image -->
-       <!-- <i class="fa fa-user fa-5x"></i> -->
-     </div>
-     <div class="p-image">
-       <i class="fa fa-camera upload-button"></i>
-        <input class="file-upload" type="file" accept="image/*"/>
-        <script src = "js/uploadFoto.js"></script>
-     </div>
   </div>
 </div>
+</form>
 
 
      

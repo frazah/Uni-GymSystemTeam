@@ -1,27 +1,31 @@
-$(document).ready(function() {
-
+if(localStorage.img) { 
+debugger;
+$('#bannerImg').attr('src', localStorage.img);
+}
+function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
     
-    var readURL = function(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('.profile-pic').attr('src', e.target.result);
-            }
+    reader.onload = function(e) {
+    localStorage.setItem('img', e.target.result);
     
-            reader.readAsDataURL(input.files[0]);
-            
-            alert(input.files[0].mozFullPath);
-        }
+    
+    $('#bannerImg').attr('src', reader.result);
+    $('#temp').attr('value', reader.result);
+    
     }
+    reader.readAsDataURL(input.files[0]);
     
+    
+    
+  }
+}
 
-    $(".file-upload").on('change', function(){
-        readURL(this);
-    });
-    
-    $(".upload-button").on('click', function() {
-       $(".file-upload").click();
-    });
+$(".file-upload").change(function() {
+  readURL(this);
 });
 
+$(".upload-button").on('click', function() {
+  $(".file-upload").click();
+  
+});

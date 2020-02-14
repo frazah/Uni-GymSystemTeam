@@ -1,51 +1,43 @@
-@charset "UTF-8";
+.profile-img {
+  margin: 0 auto;
+  position: relative;
+  width: 130px;
+}
 
-body {
-	  background-color: #efefef;
-	  
-	}
+.profile-thumb {
+  background: #fff none repeat scroll 0 0;
+  border-radius: 50%;
+  box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.1);
+  height: 130px;
+  margin: 0 0 0;
+  padding: 3px;
+  width: 130px;
+}
 
-	.profile-pic {
-	    max-width: 200px;
-	    max-height: 200px;
-	    display: block;
-	}
+.upload {
+  bottom: -10px;
+  position: absolute;
+  right: 0;
+}
 
-	.file-upload {
-	    display: none;
-	}
-	.circle {
-	    border-radius: 1000px !important;
-	    overflow: hidden;
-	    width: 128px;
-	    height: 128px;
-	    border: 8px solid rgba(0, 0, 0, 0.5);
-	    position: absolute;
-	    top: 200px;
-	    left: 240px;
-	    
-	}
-	img {
-	    max-width: 100%;
-	    height: auto;
-	}
-	.p-image {
-	  position: absolute;
-	  top: 200px;
-	  left: 240px;
+.upload img {
+  cursor: pointer;
+}
 
-	  color: #666666;
-	  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
-	}
-	.p-image:hover {
-	  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
-	}
-	.upload-button {
-	  font-size: 1.2em;
-	}
+.file-upload {
+  display: none !important;
+}
 
-	.upload-button:hover {
-	  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
-	  color: #999;
-	}
-	
+.upload-button {
+  width:32px;
+  height:32px;
+  background: #FFF;
+  border-radius:50%;
+  border:2px solid #CCC;
+}
+
+.upload-button img {
+  width: 22px;
+  height: 22px;
+  padding:5px 0 0 5px;
+}
