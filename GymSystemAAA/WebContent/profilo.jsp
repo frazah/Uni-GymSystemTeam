@@ -86,7 +86,7 @@
 
     <!-- Portfolio Item Row -->
     <div class="row">
-
+<!--  
 <form method = "POST" id="uploadFoto" action="UploadFoto">
  <div class="profile-img">
   <img class="profile-thumb" src="https://tinyurl.com/kdc5vlp" id="bannerImg" />
@@ -101,8 +101,15 @@
   </div>
 </div>
 </form>
+-->
 
 
+      <div class="col-md-2">
+        <img class="img-fluid" src="${utente.getFotoProfilo()}" alt="">
+        <div class = "my-2">
+    	<button type="button" class="btn btn-primary" >Carica foto profilo</button>
+		</div>
+      </div> 
      
     
       

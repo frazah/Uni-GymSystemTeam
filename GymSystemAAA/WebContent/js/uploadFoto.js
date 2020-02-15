@@ -12,7 +12,7 @@ function readURL(input) {
     
     $('#bannerImg').attr('src', reader.result);
     $('#temp').attr('value', reader.result);
-    
+   
     }
     reader.readAsDataURL(input.files[0]);
     
