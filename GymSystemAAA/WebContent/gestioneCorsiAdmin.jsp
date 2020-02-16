@@ -6,6 +6,9 @@
 <html lang="en">
 
 <head>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js/mostraInfoCorso.js"></script>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -94,6 +97,9 @@
 				<tr>
 					<td scope="col">
 					<a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${corso.getNome()}</a>
+					<div id ="infoCorso">
+					<button type= "button"class="btn btn-primary" id ="nomeCorso" value = ${corso.getNome()}  onclick="mostraInfoCorso()"> Mostra informazioni corso </button>
+					</div>
 					<c:if test="${corso.getTrainer() != null}">
 						<div>
 			             	<a style = "color: white">Trainer associato: ${corso.getTrainer().getNome()} ${corso.getTrainer().getCognome()}</a>

@@ -6,7 +6,7 @@
     		<a>Non ci sono richieste</a>
     		</c:if>
     		<c:if test="${utente.getRichieste().size() > 0}">
-    		<b class = "nMessaggio" id = "1">Messaggio piÃ¹ recente: </b>
+    		<b class = "nMessaggio" id = "1">Messaggio più recente: </b>
     		<div> <a class = "messaggio">${utente.getRichieste().get(utente.getRichieste().size()-1)}</a></div>
     		</c:if>
     		<c:if test="${utente.getRichieste().size() > 1}">

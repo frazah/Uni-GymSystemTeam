@@ -7,6 +7,9 @@
 
 <head>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js/mostraNotifiche.js"></script>
+  <script src="js/nascondiNotifiche.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -120,16 +123,17 @@
 
     </div>
     <!-- /.row -->
-    <div id = "result" class = "my-5 col-md-6">
-    <button type="button" onclick="mostraNotifiche()">Mostra notifiche</button>
+    <div id = "notifiche" class = "my-5 col-md-6">
+    <button type="button" class="btn btn-primary" onclick="mostraNotifiche()">Mostra notifiche</button>
     </div>
+    
     
 
   </div>
   <!-- /.container -->
 
   <!-- Footer -->
-   <footer class="fixed-bottom py-5 bg-dark">
+   <footer class="py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
     </div>

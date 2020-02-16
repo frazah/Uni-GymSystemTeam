@@ -1,4 +1,4 @@
-function mostraNotifiche() {
+function nascondiNotifiche() {
 	
 	var asyncRequest;    
 	function start(){
@@ -6,7 +6,7 @@ function mostraNotifiche() {
 	    {
 	        asyncRequest = new XMLHttpRequest();
 	        asyncRequest.addEventListener("readystatechange", stateChange, false);
-	        asyncRequest.open('GET', 'Notifiche', true);    
+	        asyncRequest.open('GET', 'NascondiNotifiche', true);    
 	        asyncRequest.send(null);
 	    }
 	    catch(exception)
