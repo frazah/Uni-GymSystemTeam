@@ -50,6 +50,44 @@ public class Corso {
 	public ArrayList<Feedback> getFeedback() {
 		return feedback;
 	}
+	
+	public Feedback getFeedbackMigliore()
+	{
+		if(feedback.isEmpty())
+			return null;
+			
+		int max = feedback.get(0).getVoto();
+		Feedback migliore = null;
+		for(int i = 0; i < feedback.size(); i++)
+		{
+			if(feedback.get(i).getVoto() >= max)
+			{
+				max = feedback.get(i).getVoto();
+				migliore = feedback.get(i);
+			}
+		}
+		
+		return migliore;
+	}
+	
+	public Feedback getFeedbackPeggiore()
+	{
+		if(feedback.isEmpty())
+			return null;
+			
+		int min = feedback.get(0).getVoto();
+		Feedback peggiore = null;
+		for(int i = 0; i < feedback.size(); i++)
+		{
+			if(feedback.get(i).getVoto() <= min)
+			{
+				min = feedback.get(i).getVoto();
+				peggiore = feedback.get(i);
+			}
+		}
+		
+		return peggiore;
+	}
 
 
 

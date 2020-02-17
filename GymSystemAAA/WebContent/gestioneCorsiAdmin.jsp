@@ -78,7 +78,7 @@
   	<button type="submit" class="btn btn-primary" id = "nuovoCorso" onclick = "window.location.href = 'creaCorso.jsp' ">Crea corso</button>
   </div>
   <div class = "col text-right mx-5 my-5">
-  	<button type="submit" class="btn btn-primary" id = "nuovoTrainer" onclick = "window.location.href = 'creaTrainer.jsp' ">Crea trainer</button>
+  	<button type="submit" class="btn btn-primary" id = "nuovoTrainer" onclick = "window.location.href = 'creaTrainer.jsp' ">Registra trainer</button>
   </div>
   </div>
   

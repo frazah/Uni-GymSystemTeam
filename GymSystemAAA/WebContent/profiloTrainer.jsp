@@ -7,6 +7,7 @@
 
 <head>
 
+  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -16,6 +17,7 @@
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/profiloTrainer.css" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
@@ -105,13 +107,16 @@
 
       </div>
       
-      <div class="my-3">
+      <div id = "corsoTrainer" class="my-3">
       		<h3>Il tuo corso:</h3>
       		
       <div class="my-3">
       <c:if test="${utente.getCorso() == null}">
     		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'richiestaNuovoCorso.jsp';">Richiedi corso</button>
 		</c:if>
+		
+		
+		
       </div>
       
       
@@ -121,7 +126,7 @@
       			<table class="table table-bordered table-dark mx-0 my-2 text-center container" style="width: 300px; height : 50px">
 		        <thead>
 		        <tr>
-		            <th scope="col"><a href="ReindirizzaCorso?corso=${corso.getNome()}" style="color: yellow"> ${utente.getCorso().getNome()}</th>
+		            <th scope="col"><a href="ReindirizzaCorso?corso=${utente.getCorso().getNome()}" style="color: yellow"> ${utente.getCorso().getNome()}</th>
 		        </tr>
 		        
 		        
@@ -132,7 +137,70 @@
 		            <button type="button" class="btn btn-primary" onclick = "window.location.href = 'richiestaModificaCorso.jsp';">Modifica o rimuovi corso</button>
 		        </tr> 
 
-      		
+      		<div class="py-5">
+	            <h4 class="card-title">La media dei feedback del tuo corso</h4>
+	            <c:if test="${utente.getCorso().getMediaFeedback() == 1}">
+	            <h5 class="card-text">&#10032</h5>
+	            </c:if>
+	            <c:if test="${utente.getCorso().getMediaFeedback() == 2}">
+	            <h5 class="card-text">&#10032 &#10032</h5>
+	            </c:if>
+	            <c:if test="${utente.getCorso().getMediaFeedback() == 3}">
+	            <h5 class="card-text">&#10032 &#10032 &#10032</h5>
+	            </c:if>
+	            <c:if test="${utente.getCorso().getMediaFeedback() == 4}">
+	            <h5 class="card-text">&#10032 &#10032 &#10032 &#10032</h5>
+	            </c:if>
+	            <c:if test="${utente.getCorso().getMediaFeedback() == 5}">
+	            <h5 class="card-text">&#10032 &#10032 &#10032 &#10032 &#10032</h5>
+	            </c:if>
+            </div> 
+            
+            <c:if test = "${utente.getCorso().getFeedbackMigliore() != null }">
+            	<div class = "card bg-info" style = "color : white"> <h4>Il feedback migliore :</h4>
+            		<c:if test="${utente.getCorso().getFeedbackMigliore().getVoto() == 1}">
+	            <h5 class="card-text">&#10032</h5>
+	            </c:if>
+	            <c:if test="${utente.getCorso().getFeedbackMigliore().getVoto() == 2}">
+	            <h5 class="card-text">&#10032 &#10032</h5>
+	            </c:if>
+	            <c:if test="${utente.getCorso().getFeedbackMigliore().getVoto() == 3}">
+	            <h5 class="card-text">&#10032 &#10032 &#10032</h5>
+	            </c:if>
+	            <c:if test="${utente.getCorso().getFeedbackMigliore().getVoto() == 4}">
+	            <h5 class="card-text">&#10032 &#10032 &#10032 &#10032</h5>
+	            </c:if>
+	            <c:if test="${utente.getCorso().getFeedbackMigliore().getVoto() == 5}">
+	            <h5 class="card-text">&#10032 &#10032 &#10032 &#10032 &#10032</h5>
+	            </c:if>
+            		
+            		<h5>${utente.getCorso().getFeedbackMigliore().getTesto() }</h5>
+            		
+            	</div>
+            </c:if>
+            
+            <c:if test = "${utente.getCorso().getFeedbackPeggiore() != null }">
+            	<div class = "card bg-secondary" style = " color : white;" > <h4>Il feedback peggiore :</h4>
+            		<c:if test="${utente.getCorso().getFeedbackPeggiore().getVoto() == 1}">
+	            <h5 class="card-text">&#10032</h5>
+	            </c:if>
+	            <c:if test="${utente.getCorso().getFeedbackPeggiore().getVoto() == 2}">
+	            <h5 class="card-text">&#10032 &#10032</h5>
+	            </c:if>
+	            <c:if test="${utente.getCorso().getFeedbackPeggiore().getVoto() == 3}">
+	            <h5 class="card-text">&#10032 &#10032 &#10032</h5>
+	            </c:if>
+	            <c:if test="${utente.getCorso().getFeedbackPeggiore().getVoto() == 4}">
+	            <h5 class="card-text">&#10032 &#10032 &#10032 &#10032</h5>
+	            </c:if>
+	            <c:if test="${utente.getCorso().getFeedbackPeggiore().getVoto() == 5}">
+	            <h5 class="card-text">&#10032 &#10032 &#10032 &#10032 &#10032</h5>
+	            </c:if>
+            		
+            		<h5>${utente.getCorso().getFeedbackPeggiore().getTesto() }</h5>
+            		
+            	</div>
+            </c:if>
       		
       	</c:if>
       </div>

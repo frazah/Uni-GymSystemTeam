@@ -43,7 +43,7 @@ public class ReindirizzaCorso extends HttpServlet {
 		
 		for(Corso c : corsi)
 		{
-			
+			System.out.println(c.getNome() + " " + nomeCorso);
 			if(c.getNome().equals(nomeCorso))
 				corso = c;
 			

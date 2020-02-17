@@ -7,6 +7,9 @@
 
 <head>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="js/mostraFeedback.js"></script>
+  <script src="js/nascondiFeedback.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -139,6 +142,9 @@
             
             <div class="py-5">
             
+            
+           	
+            
             <h4>Ultimo feedback ricevuto :</h4>
             
             <c:if test= "${feedback.isEmpty() }">
@@ -182,17 +188,22 @@
                 <br /> Voto &#10032
                 <input max="5" min="1" name="voto" step="1" type="number" value="3" />
                 <br />
-                <input name="mail" type="text" value = "${utente.getMail()}" readonly>
+                <input name="mail" type="hidden" value = "${utente.getMail()}" readonly>
                 <br />
-                <input name="nomeCorso" type="text" value = "${nomeCorso}" readonly>
+                <input name="nomeCorso" type="hidden" value = "${nomeCorso}" readonly>
                 <br />
                 <input type="submit" value="Invia feedback"/>
+                
+                
             </form>
             
             </c:if>
             </c:if>
             </c:if>
- 
+            
+ 			<div id = "feedback" class = "my-5 text-center">
+    			<button type="button" class="btn btn-primary" onclick="mostraFeedback()" id ="nomeCorso" value = ${nomeCorso}>Mostra tutti i feedback</button>
+    		</div>
             
             </div>
         </div>
