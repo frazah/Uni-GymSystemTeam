@@ -20,6 +20,7 @@
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <link href="css/ProfiloAdmin.css" rel="stylesheet" type="text/css">
+  <link href="css/uploadFotocss.css" rel="stylesheet" type="text/css">
   
 
   <!-- Custom styles for this template -->
@@ -94,13 +95,16 @@
     <!-- Portfolio Item Row -->
     <div class="row">
 
-      <div class="col-md-2">
-        <img class="img-fluid" src="${utente.getFotoProfilo()}" alt="">
-        <div class = "my-2">
-    	<button type="button" class="btn btn-primary" >Carica foto profilo</button>
-		</div>
-      </div> 
-     
+       <div class="profile-img">
+
+  <img class="profile-thumb" src="${utente.getFotoProfilo()}" id="bannerImg" />
+  <!--<div class="upload">
+    <div class="upload-button"><img src="https://tinyurl.com/mrphx9r" alt="" /></div>
+    <input type="hidden" id = "nomeUtente" value = "${utente.getMail()}"></input>
+    <script src="js/uploadFoto.js"></script>
+
+  </div> -->
+   </div>  
       
       
       <div class="col-md-6">

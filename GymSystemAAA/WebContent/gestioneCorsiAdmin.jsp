@@ -174,11 +174,11 @@
 
   <!-- Footer -->
   <c:if test="${utente.getClass().getSimpleName().equals('Admin')}">
-  	<footer class="fixed-bottom py-5 "style = "background-color:#45008a;">
+  	<footer class=" py-5 "style = "background-color:#45008a;">
   </c:if>
     
   <c:if test="${!utente.getClass().getSimpleName().equals('Admin')}">
-  <footer class="fixed-bottom py-5 bg-dark">
+  <footer class=" py-5 bg-dark">
   </c:if>
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>

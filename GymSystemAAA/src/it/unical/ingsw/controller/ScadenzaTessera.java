@@ -29,11 +29,13 @@ public class ScadenzaTessera extends HttpServlet {
 		}
 		RequestDispatcher rd = request.getRequestDispatcher("profilo.jsp");
 		rd.forward(request, response);
+		//response.sendRedirect("profilo.jsp");
+		//System.out.println("non va");
 	}
 
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doGet(request, response);
 	}
 
 }

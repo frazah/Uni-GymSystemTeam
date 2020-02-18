@@ -156,7 +156,7 @@ public class DBManager {
 		return null;
 	}
 	
-	private AdminDao getAdminDAO() {
+	public AdminDao getAdminDAO() {
 		return new AdminJDBC(dataSource);
 	}
 

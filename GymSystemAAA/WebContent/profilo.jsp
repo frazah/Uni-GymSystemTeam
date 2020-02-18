@@ -89,20 +89,14 @@
  
 
  <div class="profile-img">
- <c:if test="${utente.getFotoProfilo() == null}">
-  <img class="profile-thumb" src="https://tinyurl.com/kdc5vlp" id="bannerImg" />
-  </c:if>
-  
-  <c:if test="${utente.getFotoProfilo() != null}">
-  <img class="profile-thumb" src="${utente.getFotoProfilo()}" id="bannerImg" />
-  </c:if>
-  
-  <div class="upload">
+
+  <img class="profile-thumb" src="https://cdn4.iconfinder.com/data/icons/sports-fitness-line-color-vol-5/52/weight__dumbbell__fitness__gym__lifter__avatar__body-512.png" id="bannerImg" />
+  <!--<div class="upload">
     <div class="upload-button"><img src="https://tinyurl.com/mrphx9r" alt="" /></div>
     <input type="hidden" id = "nomeUtente" value = "${utente.getMail()}"></input>
     <script src="js/uploadFoto.js"></script>
 
-  </div>
+  </div> --> 
 </div>
 
 

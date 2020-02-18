@@ -23,6 +23,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 
+import it.mat.unical.ingsw.model.Admin;
+import it.mat.unical.ingsw.model.Atleta;
+import it.mat.unical.ingsw.model.Trainer;
 import it.mat.unical.ingsw.model.Utente;
 import it.mat.unical.persistence.DBManager;
 
@@ -37,26 +40,39 @@ public class UploadFoto extends HttpServlet {
 	    
 	    Utente utente = DBManager.getInstance().getUtenteDAO().findByPrimaryKey(mail);
 	    
+	    Atleta atleta = DBManager.getInstance().getAtletaDAO().findByPrimaryKey(mail);
+	    
+	    Trainer trainer = DBManager.getInstance().getTrainerDAO().findByPrimaryKey(mail);
+	    	    
 	    utente.setFotoProfilo(urlImmagine);
 	    
 	    DBManager.getInstance().getUtenteDAO().update(utente);
 	    
-	    DBManager.getInstance().login(mail, utente.getPassword());
+	    //System.out.println();
 		
-	    if(utente.getClass().getSimpleName().equals("Atleta"))	    
+	    if (atleta != null)	    
+	    {
+	    	System.out.println("sas");
 	    	response.sendRedirect("profilo.jsp");
+			System.out.println("sas2");
+			
+	    }
+	    	//response.sendRedirect("profilo.jsp");
 	    
-	    else if (utente.getClass().getSimpleName().equals("Trainer"))
-	    	response.sendRedirect("profiloTrainer.jsp");
+	    else if (trainer != null)
+	    {
+	    	RequestDispatcher rd = request.getRequestDispatcher("profiloTrainer.jsp");
+			rd.forward(request, response);
+	    }
 	    	
 	    else
-	    	response.sendRedirect("profiloAdmin.jsp");
+	    {
+	    	RequestDispatcher rd = request.getRequestDispatcher("profiloAdmin.jsp");
+			rd.forward(request, response);
+	    }
 	    	
 	    
-		
-
-	    
-	    //System.out.println(urlImmagine+" "+mail);
+	   
 		
 	}
 

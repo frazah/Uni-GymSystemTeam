@@ -7,7 +7,7 @@
 
 <head>
 
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -17,7 +17,10 @@
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/profiloTrainer.css" rel="stylesheet" type="text/css">
+  <c:if test="${utente.getCorso() == null}">
+  	<link href="css/profiloTrainer.css" rel="stylesheet" type="text/css">
+  </c:if>
+  <link href="css/uploadFotocss.css" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template -->
   <link href="css/modern-business.css" rel="stylesheet">
@@ -83,14 +86,18 @@
     </ol>
 
     <!-- Portfolio Item Row -->
-    <div class="row">
+    <div class="row" id = "corsoTrainer">
 
-      <div class="col-md-2">
-        <img class="img-fluid" src="${utente.getFotoProfilo()}" alt="">
-        <div class = "my-2">
-    	<button type="button" class="btn btn-primary" >Carica foto profilo</button>
-		</div>
-      </div> 
+       <div class="profile-img">
+
+	  <img class="profile-thumb" src="${utente.getFotoProfilo()}" id="bannerImg" />
+	  <!--<div class="upload">
+	    <div class="upload-button"><img src="https://tinyurl.com/mrphx9r" alt="" /></div>
+	    <input type="hidden" id = "nomeUtente" value = "${utente.getMail()}"></input>
+	    <script src="js/uploadFoto.js"></script>
+	
+	  </div> -->
+	  </div>
      
       
       
@@ -109,9 +116,12 @@
       
       <div id = "corsoTrainer" class="my-3">
       		<h3>Il tuo corso:</h3>
+      
       		
       <div class="my-3">
+
       <c:if test="${utente.getCorso() == null}">
+
     		<button type="button" class="btn btn-primary" onclick = "window.location.href = 'richiestaNuovoCorso.jsp';">Richiedi corso</button>
 		</c:if>
 		
@@ -217,7 +227,7 @@
   <!-- /.container -->
 
   <!-- Footer -->
-   <footer class=" py-5 bg-dark">
+   <footer class="fixed-bottom py-5 bg-dark">
     <div class="container">
       <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
     </div>
