@@ -1,31 +1,30 @@
-if(localStorage.img) { 
-debugger;
-$('#bannerImg').attr('src', localStorage.img);
-}
-function readURL(input) {
-  if (input.files && input.files[0]) {
-    var reader = new FileReader();
-    
-    reader.onload = function(e) {
-    localStorage.setItem('img', e.target.result);
-    
-    
-    $('#bannerImg').attr('src', reader.result);
-    $('#temp').attr('value', reader.result);
-   
-    }
-    reader.readAsDataURL(input.files[0]);
-    
-    
-    
-  }
-}
-
-$(".file-upload").change(function() {
-  readURL(this);
-});
-
 $(".upload-button").on('click', function() {
-  $(".file-upload").click();
   
+  var urlImmagine = prompt("Inserisci URL della foto che vuoi caricare");
+  var nomeUtente = document.getElementById("nomeUtente").value;
+  //alert(urlImmagine);
+  //alert(nomeUtente);
+  var asyncRequest;
+  function start(){
+	    try
+	    {
+	        asyncRequest = new XMLHttpRequest();
+	        asyncRequest.addEventListener("readystatechange", stateChange, false);
+	        asyncRequest.open('GET', 'UploadFoto?urlImmagine=' + urlImmagine+'&nomeUtente='+nomeUtente, true);    
+	        asyncRequest.send(null);
+	    }
+	    catch(exception)
+	   {
+	    alert("Request failed");
+	   }
+	}
+  
+  function stateChange(){
+		if(asyncRequest.readyState == 4 && asyncRequest.status == 200)
+		{
+			
+		}
+	}
+  
+  	window.addEventListener("load", start(), false);
 });

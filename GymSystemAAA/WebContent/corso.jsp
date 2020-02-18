@@ -28,7 +28,13 @@
 <body>
 	
   <!-- Navigation -->
+  <c:if test="${utente.getClass().getSimpleName().equals('Admin')}">
+  	<nav class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top" style = "background-color:#45008a;">
+  </c:if>
+    
+  <c:if test="${!utente.getClass().getSimpleName().equals('Admin')}">
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+  </c:if>
     <div class="container">
       <a class="navbar-brand" href="index.jsp">Gym System</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -218,7 +224,13 @@
   <!-- /.container -->
 
 <!-- Footer -->
-<footer class=" py-5 bg-dark">
+<c:if test="${utente.getClass().getSimpleName().equals('Admin')}">
+  	<footer class=" py-5 "style = "background-color:#45008a;">
+  </c:if>
+    
+  <c:if test="${!utente.getClass().getSimpleName().equals('Admin')}">
+  <footer class="py-5 bg-dark">
+  </c:if>
   <div class="container">
     <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
   </div>

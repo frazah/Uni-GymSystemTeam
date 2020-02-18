@@ -86,30 +86,33 @@
 
     <!-- Portfolio Item Row -->
     <div class="row">
-<!--  
-<form method = "POST" id="uploadFoto" action="UploadFoto">
+ 
+
  <div class="profile-img">
+ <c:if test="${utente.getFotoProfilo() == null}">
   <img class="profile-thumb" src="https://tinyurl.com/kdc5vlp" id="bannerImg" />
-  <input type="hidden" id="temp" name = "temp" value = "https://tinyurl.com/kdc5vlp"/>
+  </c:if>
+  
+  <c:if test="${utente.getFotoProfilo() != null}">
+  <img class="profile-thumb" src="${utente.getFotoProfilo()}" id="bannerImg" />
+  </c:if>
+  
   <div class="upload">
     <div class="upload-button"><img src="https://tinyurl.com/mrphx9r" alt="" /></div>
-    <input  class="file-upload" type="file" accept="image/*"  name = "foto"/>
+    <input type="hidden" id = "nomeUtente" value = "${utente.getMail()}"></input>
     <script src="js/uploadFoto.js"></script>
-    
-    <input type="submit" value="Salva foto profilo" class = "btn btn-primary" >
 
   </div>
 </div>
-</form>
--->
 
 
-      <div class="col-md-2">
+
+     <!--<div class="col-md-2">
         <img class="img-fluid" src="${utente.getFotoProfilo()}" alt="">
         <div class = "my-2">
     	<button type="button" class="btn btn-primary" >Carica foto profilo</button>
 		</div>
-      </div> 
+      </div>   --> 
      
     
       
