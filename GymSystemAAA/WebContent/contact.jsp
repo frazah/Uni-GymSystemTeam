@@ -107,7 +107,7 @@
           </a>
         </p>
         <p>
-          <abbr title="Hours">Orari</abbr>: LunedÃ¬ - Sabato: dalle 8:00 fino alle 20:00
+          <abbr title="Hours">Orari</abbr>: Lunedi' - Sabato: dalle 8:00 fino alle 20:00
         </p>
       </div>
  

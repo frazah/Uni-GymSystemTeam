@@ -82,12 +82,14 @@
       <h2>I nostri Trainer</h2>
     </div>
 
+	<div class="card-deck " >
+	<div class = "row">
 	<c:forEach items="${trainer}" var="trainer">
-    <div class="row">
-      <div class="col-md-6 mb-4">
-        <div class="card h-100 text-center">
+
+      <div class = "col-md-6 mb-4">
+        <div class="card h-200 text-center">
           <img class="card-img-top" src="${trainer.getFotoProfilo()}" alt="">
-          <div class="card-body">
+          <div class="card-body" >
             <h4 class="card-title">${trainer.getNome()} ${trainer.getCognome()}</h4>
             <c:if test="${trainer.getCorso() != null}">
             <h6 class="card-subtitle mb-2 text-muted"> <a href="ReindirizzaCorso?corso=${trainer.getCorso().getNome()}"> ${trainer.getCorso().getNome()}</a> </h6>
@@ -97,26 +99,24 @@
             <a href="mailto:${trainer.getMail()}">${trainer.getMail()}</a>
           </div>
         </div>
-      </div>
+     </div>
       </c:forEach>
-      
-      
-    </div>
-    <!-- /.row -->
+      </div>
+       </div>
+   
 
-    </div>
-    <!-- /.row -->
+
 
   </div>
   <!-- /.container -->
 
 <!-- Footer -->
 <c:if test="${utente.getClass().getSimpleName().equals('Admin')}">
-  	<footer class="fixed-bottom py-5 "style = "background-color:#45008a;">
+  	<footer class=" py-5 "style = "background-color:#45008a;">
   </c:if>
     
   <c:if test="${!utente.getClass().getSimpleName().equals('Admin')}">
-  <footer class="fixed-bottom py-5 bg-dark">
+  <footer class=" py-5 bg-dark">
   </c:if>
   <div class="container">
     <p class="m-0 text-center text-white">Copyright &copy; GymSystem 2020</p>
