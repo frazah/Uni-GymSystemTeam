@@ -59,6 +59,7 @@ public class CorsoJDBC implements CorsoDao{
 
 	@Override
 	public Corso findByPrimaryKey(String nome) {
+		
 		Connection connection = null;
 		Corso corso = null;
 		try {
@@ -84,6 +85,8 @@ public class CorsoJDBC implements CorsoDao{
 					listaTemp.add(lista[i]);
 				}
 				corso.impostaFeedback(listaTemp);
+				
+				
 				
 			}
 		} catch (SQLException e) {
@@ -127,6 +130,8 @@ public class CorsoJDBC implements CorsoDao{
 				corso.impostaFeedback(listaTemp);
 								
 				corsi.add(corso);
+				
+				
 			}
 		} catch (SQLException e) {
 			throw new RuntimeException(e.getMessage());
