@@ -45,8 +45,9 @@ public class DBManager {
 			//Class.forName("org.postgresql.Driver");
 			//questi vanno messi in file di configurazione!!!	
 //			dataSource=new DataSource("jdbc:postgresql://52.39.164.176:5432/xx","xx","p@xx");
-			dataSource=new DataSource("jdbc:postgresql://localhost:5432/GymSystemDB","postgres","Marco1604");
-			
+			//dataSource=new DataSource("jdbc:postgresql://localhost:5432/GymSystemDB","postgres","Marco1604");
+			dataSource=new DataSource("jdbc:postgresql://rogue.db.elephantsql.com:5432/xzypnpdn","xzypnpdn","S5A9NDTTRnGAt3aYBjQWw3rUaz5hV1nP");
+
 		} 
 		catch (Exception e) {
 			System.err.println("PostgresDAOFactory.class: failed to load MySQL JDBC driver\n"+e);
