@@ -12,4 +12,5 @@ qualità nell’insegnamento dei singoli trainer.
 
 # Note:
 
-1) Il file .jar riguardantre postegres è stato inserito all'interno della cartella del server tomcat.
+1) Il file .jar riguardante postgresql deve essere inserito all'interno della cartella del server tomcat per il corretto funzionamento.
+2) Il sito potrebbe avere rallentamenti a causa della comunicazione del database in remoto.
