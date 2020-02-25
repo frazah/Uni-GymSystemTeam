@@ -10,6 +10,20 @@ di una tessera virtuale. La tessera permette l’iscrizione esattamente a tre co
 Il sito fornisce la possibilità di rilasciare feedback anonimi per garantire una maggiore consapevolezza della
 qualità nell’insegnamento dei singoli trainer.
 
+# Istruzioni:
+
+Per accedere come admin:
+User: admin@admin.com
+Password: admin
+
+Per accedere come atleta:
+User: devil@gmail.com
+Password: minecraft
+
+Per accedere come trainer:
+User: tyson@gmail.com
+Password: onepunchman
+
 # Note:
 
 1) Il file .jar riguardante postgresql deve essere inserito all'interno della cartella del server tomcat per il corretto funzionamento.
